@@ -248,7 +248,7 @@ JavaScript: 控制网页内容，增加动态交互效果
 
 <h4 id="#">变量交换</h4>
 
-**Method - 1**
+**Example - 1**
 
 第三方变量交换
 
@@ -273,7 +273,7 @@ console.log(num2); //10
 
 ```
 
-**Method - 2**
+**Example - 2**
 
 适用于数字交换
 
@@ -298,7 +298,7 @@ console.log(num2); //10
 
 ```
 
-**Method - 3**
+**Example - 3**
 
 变量交换扩展: 位运算 ( C 语言 )
 
@@ -1007,5 +1007,3 @@ console.log(Boolean(undefined));            //false
 <hr/>
 <br/>
 
-
-c
