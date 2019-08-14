@@ -873,18 +873,18 @@ console.log( String( num ) );       //undefined / null
 ```javascript
 
 
-console.log( Boolean( 1 ) );                    //true
-console.log( Boolean( 0 ) );                    //false
-console.log( Boolean( 11 ) );                   //true
-console.log( Boolean( -10 ) );                  //true    
-console.log( Boolean( "哈哈" ) );                //true
+console.log( Boolean( 1 ));                    //true
+console.log( Boolean( 0 ));                    //false
+console.log( Boolean( 11 ));                   //true
+console.log( Boolean( -10 ));                  //true    
+console.log( Boolean( "哈哈" ));                //true
 
 //有值有意义的都是true
 
  
-console.log( Boolean( "" ) );                   //false
-console.log( Boolean( null ) );                 //false
-console.log( Boolean( undefined ) );            //false
+console.log( Boolean( "" ));                   //false
+console.log( Boolean( null ));                 //false
+console.log( Boolean( undefined ));            //false
 
 //没有意义或空都是 false
 
