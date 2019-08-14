@@ -364,7 +364,7 @@ console.log( num1, num2 );
     
     * string: 字符串类型; ( 一般都是用 单引号 或者 双引号 括号起来 )
     
-    * boolean: 布尔类型; ( 只有两个值: ture ( 真 1 )、false ( 假 0 ) )
+    * boolean: 布尔类型; ( 只有两个值: true ( 真 1 )、false ( 假 0 ) )
     
     * null: 空类型; ( 一个对象只想为空，此时可以赋值为 null )
     
@@ -493,6 +493,7 @@ console.log( typeof function myfunction(){} )           // function
 
 ```javascript
 
+
 //JS 中可以书写的 进制
 
 var num = 10;           //十进制书写: 正常数字
@@ -500,6 +501,7 @@ var num = 10;           //十进制书写: 正常数字
 var num2 = 0o12;        //八进制书写: 以 0o 开头
 
 var num3 = 0x12;        //十六进制书写: 以 0x 开头
+
 
 ```
 
