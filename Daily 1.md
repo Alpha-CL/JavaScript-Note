@@ -267,8 +267,8 @@ num1 = num2;
 num2 = temp;
 //新建变量 num2 存放 temp 的值 = num1 的值
 
-console.log(num1); //20
-console.log(num2); //10
+console.log( num1 ); //20
+console.log( num2 ); //10
 
 
 ```
@@ -292,8 +292,8 @@ num2 = num1 - num2; // 10
 num1 = num1 - num2; // 20
 //用新建的 num1 减去后来新建的变量 num2 等于 20
 
-console.log(num1); //20
-console.log(num2); //10
+console.log( num1 ); //20
+console.log( num2 ); //10
 
 
 ```
@@ -318,7 +318,7 @@ num1 = num1 ^ num2;
 //找到 10和20 的二进制的 源码 的 反码 的 补码放在一起，并且是正数的情况下
 //接着进行位移的运算
 
-console.log(num1, num2);
+console.log( num1, num2 );
 
 
 ```
@@ -382,7 +382,7 @@ console.log(num1, num2);
 
 
 var num;
-console.log(num + 10); // NaN
+console.log( num + 10 ); // NaN
 
 
 ```
@@ -415,28 +415,28 @@ var nll = null;
 var undef;
 
 var obj = new Object();
+    
+console.log( typeof num );                            // number 
+console.log( typeof str );                            // string
+console.log( typeof fla );                            // boolean
 
-console.log(typeof num);                            // number 
-console.log(typeof str);                            // string
-console.log(typeof fla);                            // boolean
-
-console.log(typeof nll);                            // object
+console.log( typeof nll );                            // object
 
 
-console.log(String (nll));                          // null
+console.log( String (nll ));                          // null
 //以字符串类型输出 nll
 
-console.log(typeof undef);                          // undefined
-console.log(typeof obj);                            // object
+console.log( typeof undef );                          // undefined
+console.log( typeof obj );                            // object
 
 
 // 复杂数据类型
 
-console.log(typeof {name: 'john', age: '34'});      // object
-console.log(typeof [1,2,3,4]);                      // object
-console.log(typeof null);                           // object
+console.log( typeof {name: 'john', age: '34'} );      // object
+console.log( typeof [1,2,3,4] );                      // object
+console.log( typeof null );                           // object
 
-console.log(typeof function myfunction(){})           // function
+console.log( typeof function myfunction(){} )           // function
 
 
 ```
@@ -463,7 +463,7 @@ console.log(typeof function myfunction(){})           // function
         
     * NaN & isNaN
     
-        不要使用 NaN 判断是不是 NaN，应该使用 isNaN(值/变量)
+        不要使用 NaN 判断是不是 NaN，应该使用 isNaN( 值 / 变量 )
         
         * NaN
         
@@ -477,7 +477,7 @@ console.log(typeof function myfunction(){})           // function
             
             * 用于判断是否是数字, 结果为 Boolean 值
         
-            * isNaN() ==> 不是数字  == te;
+            * isNaN() ==> 不是数字  == true;
         
             * isNaN() ==> 是数字    == false;
     
@@ -485,7 +485,7 @@ console.log(typeof function myfunction(){})           // function
     
         * 十进制: 正常数字
          
-        * 八进制: 以 0 开头
+        * 八进制: 以 0o 开头
         
         * 十六进制: 以 0x 开头
     
@@ -497,7 +497,7 @@ console.log(typeof function myfunction(){})           // function
 
 var num = 10;           //十进制书写: 正常数字
 
-var num2 = 012;         //八进制书写: 以 0 开头
+var num2 = 0o12;        //八进制书写: 以 0o 开头
 
 var num3 = 0x12;        //十六进制书写: 以 0x 开头
 
@@ -510,9 +510,9 @@ var num3 = 0x12;        //十六进制书写: 以 0x 开头
 ```javascript
 
 
-console.log(NUmber .MAX_VALUE)      //数字的最大值
+console.log( NUmber .MAX_VALUE)       //数字的最大值
 
-console.log(Number .Min_VALUE)      //数字的最小值
+console.log( Number .MIN_VALUE)      //数字的最小值
 
 
 //  Infinity： 无穷大
@@ -539,9 +539,9 @@ var y = 0.2;
 
 var sum = x + y;
 
-console.log(sum)            //0.30000000000000004
+console.log( sum )            //0.30000000000000004
 
-console.lgg(sum == 0.3);    //false
+console.lgg( sum == 0.3 );    //false
 
 
 ```
@@ -555,10 +555,10 @@ console.lgg(sum == 0.3);    //false
 
 var num;
 
-console.log(num+10 == NaN);         //false
+console.log( num + 10 == NaN );         //false
 
 
-console.log("小猫" == "小狗");       //false
+console.log( "小猫" == "小狗" );       //false
 
 
 ```
@@ -577,7 +577,7 @@ var num;
 
 var sum = num + 10;
 
-console.log(inNaN(sum))     //ture
+console.log( inNaN( sum ))     //ture
 
 
 ```
@@ -660,7 +660,7 @@ console.log(inNaN(sum))     //ture
 
 var str = "what are you no sha lei";
 
-console.log(str.length)
+console.log( str.length )
 
 
 ```
@@ -692,7 +692,7 @@ JS 转义符
 var str1 = "10";
 var str2 = "20";
 
-console.log(str1 + str2);          // str3 == 1020
+console.log( str1 + str2 );          // str3 == 1020
 
 
 //一个字符串和其他类型连接
@@ -700,7 +700,7 @@ console.log(str1 + str2);          // str3 == 1020
 var str1 = "10";
 var str2 = 20;
 
-console.log(str1 + str2);          // str3 = 1020
+console.log( str1 + str2 );          // str3 = 1020
 
 
 //一个字符串减去不是字符串的类型
@@ -708,7 +708,7 @@ console.log(str1 + str2);          // str3 = 1020
 var str1 = "10";
 var str2 = 20;
 
-console.log(str1 - str2);          
+console.log( str1 - str2 );          
 // 浏览器自动 ( 隐式转换 ) 把字符串类型转成了数字类型进行计算
 
 
@@ -795,12 +795,12 @@ console.log(str1 - str2);
 ```javascript
 
 
-console.log(persenInt("10"))                    //10
-console.log(persenInt("10afrewssa"))            //10
-console.log(persenInt("g10"))                   //NaN
-console.log(persenInt("1fsd0"))                 //1
-console.log(persenInt("10.98"))                 //10
-console.log(persenInt("10.98dwafag"))           //10
+console.log(persenInt( "10" ))                    //10
+console.log(persenInt( "10afrewssa" ))            //10
+console.log(persenInt( "g10" ))                   //NaN
+console.log(persenInt( "1fsd0" ))                 //1
+console.log(persenInt( "10.98" ))                 //10
+console.log(persenInt( "10.98dwafag" ))           //10
 
 
 ```
@@ -811,12 +811,12 @@ console.log(persenInt("10.98dwafag"))           //10
 ```javascript
 
 
-console.log(persenFloat("10"))                    //10
-console.log(persenFloat("10afrewssa"))            //10
-console.log(persenFloat("g10"))                   //NaN
-console.log(persenFloat("1fsd0"))                 //1
-console.log(persenFloat("10.98"))                 //10.98
-console.log(persenFloat("10.98dwafag"))           //10.98
+console.log(persenFloat( "10" ))                    //10
+console.log(persenFloat( "10afrewssa" ))            //10
+console.log(persenFloat( "g10" ))                   //NaN
+console.log(persenFloat( "1fsd0" ))                 //1
+console.log(persenFloat( "10.98" ))                 //10.98
+console.log(persenFloat( "10.98dwafag" ))           //10.98
 
 
 ```
@@ -828,12 +828,12 @@ console.log(persenFloat("10.98dwafag"))           //10.98
 ```javascript
 
 
-console.log(Number("10"))                    //10
-console.log(Number("10afrewssa"))            //NaN
-console.log(Number("g10"))                   //NaN
-console.log(Number("1fsd0"))                 //NaN
-console.log(Number("10.98"))                 //10
-console.log(Number("10.98dwafag"))           //NaN
+console.log( Number( "10" ))                    //10
+console.log( Number( "10afrewssa" ))            //NaN
+console.log( Number( "g10" ))                   //NaN
+console.log( Number( "1fsd0" ))                 //NaN
+console.log( Number( "10.98" ))                 //10
+console.log( Number( "10.98dwafag" ))           //NaN
 
 
 ```
@@ -844,9 +844,9 @@ console.log(Number("10.98dwafag"))           //NaN
 
     * .toString() ------> 主动调用转换
     
-        * 如果变量有意义, 调用 .tostring() 转换
+        * 如果变量有意义, 调用 .toString() 转换
     
-    * String() ------> 被调用于 string()
+    * String() ------> 被调用于 String()
     
         * 如果变量没有意义, 调用 String() 转换 
 
@@ -859,7 +859,7 @@ console.log(Number("10.98dwafag"))           //NaN
 
 var num = undefined / null;
 
-console.log(String(num));       //undefined / null
+console.log( String( num ) );       //undefined / null
 
 //String() 可以把没有意义的类型，转换为 字符串
 
@@ -873,18 +873,18 @@ console.log(String(num));       //undefined / null
 ```javascript
 
 
-console.log(Boolean(1));                    //true
-console.log(Boolean(0));                    //false
-console.log(Boolean(11));                   //true
-console.log(Boolean(-10));                  //true    
-console.log(Boolean("哈哈"));                //true
+console.log( Boolean( 1 ) );                    //true
+console.log( Boolean( 0 ) );                    //false
+console.log( Boolean( 11 ) );                   //true
+console.log( Boolean( -10 ) );                  //true    
+console.log( Boolean( "哈哈" ) );                //true
 
 //有值有意义的都是true
 
-
-console.log(Boolean(""));                   //false
-console.log(Boolean(null));                 //false
-console.log(Boolean(undefined));            //false
+ 
+console.log( Boolean( "" ) );                   //false
+console.log( Boolean( null ) );                 //false
+console.log( Boolean( undefined ) );            //false
 
 //没有意义或空都是 false
 

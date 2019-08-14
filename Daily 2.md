@@ -151,11 +151,11 @@ if ( condition1 ) {
  
 //Example
 
-if ( 6 > 9 ) {                                  //condition is false
+if ( 6 > 9 ) {                                  //condition is false，judge next condition
     console.log( "Hello World" );               
-} else if ( 7 > 9 ) {                           //condition is false
+} else if ( 7 > 9 ) {                           //condition is false，judge next condition
     console.log( "See you again" );             
-} else if ( 8 > 9 ) {                           //condition is false
+} else if ( 8 > 9 ) {                           //condition is false，judge next condition
     console.log( "See you again" );             
 } else {
     console.log( "Goodbye" )                    //Output: Goodbye, because all other condition is false
@@ -163,6 +163,38 @@ if ( 6 > 9 ) {                                  //condition is false
 
 
  ```
+ 
+<br/>
+
+**三元表达式**
+
+使用条件: 有两个分支，并且最终结果是两个分支中的一个
+
+```javascript
+
+
+//Syntax
+
+var demo = condition1 ? condition2 : condition3;
+
+// 如果 condition1 为 true，则执行 condition2，然后将 condition2 赋给变量 demo
+// 如果 condition1 为 false，则执行 condition3，然后将 condition3 赋给变量 demo
+
+
+```
+
+<br/>
+
+**短路语句**
+
+```javascript
+
+
+
+
+
+
+```
 
 <br/>
 
@@ -181,6 +213,11 @@ if ( num1 > num2 ) {
 } else {
     console.log( num2 );
 }
+
+
+// 三元表达式
+
+var Maxnum = num1 > num2 ? console.log( num1 ) : console.log( num2 );
 
 
 ```
@@ -205,18 +242,6 @@ if ( num % 2 == 0 ) {
 
 ```
 
-**三元表达式**
-
-```javascript
-
-
-//使用条件: 有两个分支，并且最终结果是两个分支中的一个
-
-
-
-
-
-```
 
 
 <br/>
