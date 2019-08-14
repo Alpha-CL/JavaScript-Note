@@ -25,6 +25,21 @@
     * for
     
     * for-in
+    
+
+<br/>
+
+<h4 id="#">if 语句</h4>
+
+```javascript
+
+
+if(condition) {
+    // block of code to be executed if the condition is ture
+}
+
+
+```
 
 
 
