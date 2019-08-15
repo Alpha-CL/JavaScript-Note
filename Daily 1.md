@@ -91,7 +91,7 @@ Brendan Eich 1961 年用**十天**时间创造出了 LiveScript
 JavaScript 和 Java 没有任何关系，只是因为 LiveScript 为了迅速推广修改成 JavaScript
 
 
-
+ 
 <br/>
 <hr/>
 <br/>
@@ -262,13 +262,13 @@ var temp = mun1;
 //新建变量 temp 存放 num1 的值；
 
 num1 = num2;
-//新建变量 num1 存放 num2 的值
+//新建变量 num1 存放 num2 的值 ( 这个新建属于一个新的数据单元格 )
 
 num2 = temp;
 //新建变量 num2 存放 temp 的值 = num1 的值
 
-console.log( num1 ); //20
-console.log( num2 ); //10
+console.log(num1);              //20
+console.log(num2);              //10
 
 
 ```
@@ -284,7 +284,7 @@ var num1 = 10;
 var num2 = 20;
 
 num1 = num1 + num1;
-//新建变量 num1 存放 num1 + num2 的值 等于 30 
+//新建变量 num1 存放 num1 + num2 的值 等于 30 ( 这个新建属于一个新的数据单元格 ) 
 
 num2 = num1 - num2; // 10
 //用新建的 num1 减去之前的变量 num2 等于 10
@@ -318,7 +318,7 @@ num1 = num1 ^ num2;
 //找到 10和20 的二进制的 源码 的 反码 的 补码放在一起，并且是正数的情况下
 //接着进行位移的运算
 
-console.log( num1, num2 );
+console.log(num1, num2);
 
 
 ```
@@ -360,11 +360,29 @@ console.log( num1, num2 );
 
 * JS 原始数据类型: number、string、boolean、null、undefined、object
 
-    * number: 数字类型; ( 整数 和 小数 )
+    * number: 数字类型; 
     
-    * string: 字符串类型; ( 一般都是用 单引号 或者 双引号 括号起来 )
+        * integer: 整数
+        
+        * float: 浮点型小数
+        
+        * 
+    
+    * string: 字符串类型;
+    
+        一般都是用 单引号 或者 双引号 括号起来
+        
+        * 
     
     * boolean: 布尔类型; ( 只有两个值: true ( 真 1 )、false ( 假 0 ) )
+    
+        大多判断都是用 Boolean 类型判断
+    
+        * 除了这六个类型转换为 false ，其他都是 true
+        
+            0、""、null、undefined、NaN、false
+            
+        * 
     
     * null: 空类型; ( 一个对象只想为空，此时可以赋值为 null )
     
@@ -375,6 +393,8 @@ console.log( num1, num2 );
         * 函数没有明确返回值，如果接收了，结果也是 undefined
         
         * 如果一个变量的结果是 undefined 和一个数字进行计算，结果是 Not a Number ( NaN ), 也没有意义
+        
+        * 
     
     * object: 对象类型；
 
@@ -414,27 +434,27 @@ var nll = null;
 
 var undef;
 
-var obj = new Object();
+var obj = new Object(age=13, year=14);
     
-console.log( typeof num );                            // number 
-console.log( typeof str );                            // string
-console.log( typeof fla );                            // boolean
+console.log(typeof num);                            // number 
+console.log(typeof str);                            // string
+console.log(typeof fla);                            // boolean
 
-console.log( typeof nll );                            // object
+console.log(typeof nll);                            // object
 
 
-console.log( String (nll ));                          // null
+console.log(String (nll));                          // null
 //以字符串类型输出 nll
 
-console.log( typeof undef );                          // undefined
-console.log( typeof obj );                            // object
+console.log(typeof undef);                          // undefined
+console.log(typeof obj);                            // object
 
 
 // 复杂数据类型
 
-console.log( typeof {name: 'john', age: '34'} );      // object
-console.log( typeof [1,2,3,4] );                      // object
-console.log( typeof null );                           // object
+console.log(typeof {name: 'john', age: '34'});      // object
+console.log(typeof [1,2,3,4]);                      // object
+console.log(typeof null);                           // object
 
 console.log( typeof function myfunction(){} )           // function
 
@@ -512,9 +532,9 @@ var num3 = 0x12;        //十六进制书写: 以 0x 开头
 ```javascript
 
 
-console.log( NUmber .MAX_VALUE)       //数字的最大值
+console.log(Number .MAX_VALUE)      //数字的最大值
 
-console.log( Number .MIN_VALUE)      //数字的最小值
+console.log(Number .MIN_VALUE)      //数字的最小值
 
 
 //  Infinity： 无穷大
@@ -541,9 +561,9 @@ var y = 0.2;
 
 var sum = x + y;
 
-console.log( sum )            //0.30000000000000004
-
-console.lgg( sum == 0.3 );    //false
+console.log(sum)            //0.30000000000000004
+ 
+console.log(sum == 0.3);    //false
 
 
 ```
@@ -557,10 +577,10 @@ console.lgg( sum == 0.3 );    //false
 
 var num;
 
-console.log( num + 10 == NaN );         //false
+console.log(num + 10 == NaN);         //false
 
 
-console.log( "小猫" == "小狗" );       //false
+console.log("小猫" == "小狗");         //false
 
 
 ```
@@ -579,7 +599,7 @@ var num;
 
 var sum = num + 10;
 
-console.log( inNaN( sum ))     //ture
+console.log(inNaN(sum))     //ture
 
 
 ```
@@ -694,7 +714,7 @@ JS 转义符
 var str1 = "10";
 var str2 = "20";
 
-console.log( str1 + str2 );          // str3 == 1020
+console.log(str1 + str2);          // str3 == 1020
 
 
 //一个字符串和其他类型连接
@@ -702,7 +722,7 @@ console.log( str1 + str2 );          // str3 == 1020
 var str1 = "10";
 var str2 = 20;
 
-console.log( str1 + str2 );          // str3 = 1020
+console.log(str1 + str2);          // str3 = 1020
 
 
 //一个字符串减去不是字符串的类型
@@ -710,7 +730,7 @@ console.log( str1 + str2 );          // str3 = 1020
 var str1 = "10";
 var str2 = 20;
 
-console.log( str1 - str2 );          
+console.log(str1 - str2);          
 // 浏览器自动 ( 隐式转换 ) 把字符串类型转成了数字类型进行计算
 
 
@@ -861,7 +881,7 @@ console.log( Number( "10.98dwafag" ))           //NaN
 
 var num = undefined / null;
 
-console.log( String( num ) );       //undefined / null
+console.log(String(num));       //undefined / null
 
 //String() 可以把没有意义的类型，转换为 字符串
 
@@ -872,21 +892,27 @@ console.log( String( num ) );       //undefined / null
 
     * Boolean();
     
+        * **0、null、undefined、NaN、""、false** 将会被转换为 false
+        
+        * 其他数据类型都为 ture
+        
 ```javascript
 
 
-console.log( Boolean( 1 ));                    //true
-console.log( Boolean( 0 ));                    //false
-console.log( Boolean( 11 ));                   //true
-console.log( Boolean( -10 ));                  //true    
-console.log( Boolean( "哈哈" ));                //true
+console.log(Boolean(1));                    //true
+
+console.log(Boolean(0));                    //false
+
+console.log(Boolean(11));                   //true
+console.log(Boolean(-10));                  //true    
+console.log(Boolean( "哈哈" ));              //true
 
 //有值有意义的都是true
 
  
-console.log( Boolean( "" ));                   //false
-console.log( Boolean( null ));                 //false
-console.log( Boolean( undefined ));            //false
+console.log(Boolean(""));                   //false
+console.log(Boolean(null));                 //false
+console.log(Boolean(undefined));            //false
 
 //没有意义或空都是 false
 
