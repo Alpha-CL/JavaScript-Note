@@ -2,61 +2,87 @@
 
 * 顺序结构
 
-    * 从上到下，从左到右
+    * 从上到下，从左到右 ( 不严谨 )
 
 * 分支结构
 
     * if 语句: 
     
         多个分支，并且针对范围的判断
-    
-        if 语句条件互斥，相比较的条件不可以有交集
-    
+        
+        语句条件互斥，相比较的条件不可以有交集
+        
         * if
+        
+            * 只有一个分支时用
             
             * 单个分支语句
         
-        * if else
-        
-            * 多分支语句，只执行一个
-        
         * if ... if else ...
         
-            * 多分支语句，只执行一个
+            * 有两个以上分支时用
+        
+            * 多分支语句，只执行 ( if / else if ) 其中的一个
             
         * if ... if else ... else 
         
-            * 多分支语句，只执行一个
+            * 有两个以上分支时用
+        
+            * 多分支语句，只执行 ( if / else if / else) 其中的一个
     
     * switch case 语句：
         
         多个分支，并且针对具体值的判断
     
         * 多分支语句，只执行一个 ( 必须要有 break，否则会一直执行下去 )
+        
+    * 三元表达式    
     
-    * break
-    
-        * 终止循环
-    
-    * continue
-    
-        * 跳出循环
+        * var demo = condition1 ? condition2 : expression;
 
 * 循环结构
 
     * while
     
-        先判断，后循环，有可能一次循环体都不执行
+        * 先判断，后循环
+        
+        * 有可能一次循环体都不执行
     
     * do while
     
-        先循环，再判断，至少执行一次循环体 
+        * 先循环，再判断
+        
+        * 至少执行一次循环体 
         
     * for
     
+        * 已知循环次数时用
+    
     * for in
+    
+        * 
 
+* 循环控制
 
+    * break
+    
+        * 终止当前循环条件
+        
+        * 继续后续循环条件判断
+    
+    * continue
+    
+        * 跳出循环
+        
+        * 不继续后续循环条件判断
+
+* 调试
+
+    * 断点
+    
+        * 控制语句执行步骤
+        
+        * 为了寻找代码错误
 
 <br/>
 <hr/>
@@ -756,15 +782,269 @@ do {
 
 <h4 id="#">The for loop syntax</h4>
 
+循环机制
+
+( 使用有意义的声明变量 )
+
+1. 循环次数变量 ===> initialization
+
+2. 循环条件 ===> codition
+
+3. 循环语句 ===> statements
+
+4. 循环递增条件 ===> final-expression
+
 ```javascript
 
 
 //Syntax
 
+for (initialization; condition; final-expression) {
+    //statements
+}
 
+//initialization: 初始化一个计数器，可以用 var 或 let 关键字声明新变量
+//                使用 var 声明的变量不是该循环的局部变量，而是与 for 循环处于在同样的作用域中
+
+//condition: 该表达式的结果 ( true / false ) 条件被用于判断循环是否继续执行
+//           如果为 ture 继续执行，为 false 则跳出循环体 
+//           该表达式是可选的，如果被忽略，那么永远认为 condition 的结果为 true
+
+
+//final-expression: 每次循环的最后执行的表达式
+//                  执行于下一次 codition 条件计算之前
+//                  通常被用于更新或递增计数器变量
+
+
+//Example
+
+var step;
+
+for (step = 0; step < 5; step++) {
+    //Run 5 times, whith values of step 0 through 4.
+    console.log('Walking east one sttep')
+}
 
 
 ```
+
+<br/>
+
+**Example - 1**
+
+计算 1 ～ 100 之间所有偶数的和
+
+```javascript
+
+var sum1 = 0;
+
+for (var i = 1; i <= 100; i++) {
+    sum1 += i;
+}
+
+console.log(sum1);
+
+
+```
+
+<br/>
+
+**Example - 2**
+
+计算 1 ～ 100 之间所有奇数的和
+
+```javascript
+
+
+var sum2 = 0;
+
+for (var i = 0; i <= 100; i++) {
+    if (i % 2 != 0) {
+        sum2 += i;
+    }
+}
+
+console.lod(sum2);
+
+```
+
+<br/>
+
+**Example - 3**
+
+计算 1 ～ 100 之间所有能被 3 整除数字的和
+
+```javascript
+
+var sum3 = 0;
+
+for (var i = 0; i <= 100; i++) {
+    if (i % 3 == 0) {
+        sum3 += i;
+    }
+}
+
+console.log(sum3);
+
+
+```
+
+<br/>
+
+**Example - 4**
+
+计算 1 ～ 100 之间所有尾数带 7 和能被 7 整除的数字的和
+
+```javascript
+
+
+var  sum4 = 0;
+
+for (var i = 0; i <= 100; i++) {
+    if (i % 10 == 7 || i % 7 == 0) {
+        sum4 += i;
+    }
+}
+
+console.log(sum4);
+
+
+```
+
+<br/>
+
+**Example - 5**
+
+九成九乘法口诀表
+
+```javascript
+
+
+//基础语法
+
+for (var j = 1; j <= 9; j++) {
+
+        for (var k = 1; k <= 9; k++) {
+            document.write(k + "*" + j + "=" + j * k);
+        }
+        document.write("<br/>");
+
+}
+
+
+//三角形块
+
+for (var j = 1; j <= 9; j++) {
+
+        for (var k = 1; k <= i; k++) {
+            document.write(k + "*" + j + "=" + j * k);
+        }
+        document.write("<br/>");
+
+}
+
+
+//增加表格
+
+document.write("<table border='1' cellpadding='10' cellspacing='0'>");
+
+for (var i = 1; i <= 9; i++) {
+    document.write("<tr>");
+
+        for (var j = 1; j <= 9; j++) {
+            document.write("<td>");
+                document.write(i + "*" + j + "=" + i * j);
+            document.write("</td>");
+        }
+        document.write("<br/>");
+
+    document.write("</tr>");
+}
+document.write("</table>");
+
+
+```
+
+<br/>
+
+**Example - 6**
+
+本金 10000 元存入银行，年利率千分支三，每过一年，将被禁和利息作为新的本金
+
+计算五年后本金是多少
+
+```javascript
+
+
+var principal = 10000;
+var rate = 0.003;
+
+for (var i = 1; i <= 5; i++) {
+    
+    console.log(principal *= date + principal);
+    
+}
+
+
+```
+
+<br/>
+
+**Example - 7**
+
+已知有 2 只兔子，并且 2 只兔子每月可以繁殖 2 只兔子
+
+新生的兔字 第三个月起，每月繁殖 2 只兔子
+
+求假如以一年没有发生死亡，那么一对兔子一年能繁殖多少对兔子 ？
+
+```javascript
+
+var rabbit = 1;
+
+for (var i = 1; i <= 10; i++) {
+    
+    if (rabbit % 3 == 0) {
+        rabbit += 2;
+    }
+    
+}
+
+
+```
+
+
+
+<br/>
+<hr/>
+<br/>
+
+
+
+<h4 id="#">调试</h4>
+
+**单步调试**
+
+执行后无法加断点
+
+-> F12 开发者工具 
+
+-> **sources** 
+
+-> 双击文件 
+
+-> 点击行 ( 断点 ) 鼠标悬停会出现 变量类型，此时的代码行是未执行的
+
+-> 电磁右侧上下箭头，表示执行和返回，或者直接点击加号添加变量
+
+
+
+<br/>
+<hr/>
+<br/>
+
+
+
 
 
 
