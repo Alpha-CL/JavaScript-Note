@@ -3,6 +3,8 @@
 * 顺序结构
 
     * 从上到下，从左到右 ( 不严谨 )
+    
+    * 
 
 * 分支结构
 
@@ -31,7 +33,7 @@
             * 多分支语句，只执行 ( if / else if / else) 其中的一个
     
     * switch case 语句：
-        
+    
         多个分支，并且针对具体值的判断
     
         * 多分支语句，只执行一个 ( 必须要有 break，否则会一直执行下去 )
@@ -39,10 +41,12 @@
     * 三元表达式    
     
         * var demo = condition1 ? condition2 : expression;
-
+        
 * 循环结构
 
     * while
+    
+        循环语句 ( 值判断 )
     
         * 先判断，后循环
         
@@ -50,11 +54,15 @@
     
     * do while
     
+        循环语句 ( 循环体至少会执行一行 )
+    
         * 先循环，再判断
         
         * 至少执行一次循环体 
         
     * for
+        
+        循环语句 ( 翻译判断，已知道循环次数时使用较好 )
     
         * 已知循环次数时用
     
@@ -66,23 +74,29 @@
 
     * break
     
-        * 终止当前循环条件
+        * 如果在循环中使用，遇到 break，则立即跳出当前所在的循环
         
-        * 继续后续循环条件判断
-    
     * continue
     
-        * 跳出循环
+        * 终止循环
         
-        * 不继续后续循环条件判断
+            终止循环
+        
+        * " 跳过"  本次循环
+        
+            终止本次循环 ( 跳过 )，开始下一圈循环
 
 * 调试
 
     * 断点
     
+        因为浏览器一打开，就已经执行完代码，增加断电可以一步一步的排查错误
+    
         * 控制语句执行步骤
         
         * 为了寻找代码错误
+
+
 
 <br/>
 <hr/>
@@ -992,6 +1006,8 @@ for (var i = 1; i <= 5; i++) {
 
 **Example - 7**
 
+斐波那契数列: 1、1、2、3、5、8、13、21、34 ...
+
 已知有 2 只兔子，并且 2 只兔子每月可以繁殖 2 只兔子
 
 新生的兔字 第三个月起，每月繁殖 2 只兔子
@@ -1000,15 +1016,20 @@ for (var i = 1; i <= 5; i++) {
 
 ```javascript
 
-var rabbit = 1;
 
-for (var i = 1; i <= 10; i++) {
+var num1 = 1;       //第一位
+var num2 = 1;       //第二位
+var sum = 0;        //第三位
+
+for (var i = 3; i <= 12; i++) {
     
-    if (rabbit % 3 == 0) {
-        rabbit += 2;
-    }
+    sum = num1 + num2;
+    num1 = num2;
+    num2 = sum;
     
 }
+
+console.log(sum);       
 
 
 ```
@@ -1045,16 +1066,118 @@ for (var i = 1; i <= 10; i++) {
 
 
 
+<h4 id="#">The keyword break and continue syntax</h4>
+
+**Break**
+
+如果在循环中使用，遇到 break，则立即跳出当前所在的循环
+
+```javascript
+
+
+for (var i = 0; i < 10; i++) {
+    
+    //增加 break 后，会跳出 while 循环
+    //但是不会跳出 for 循环
+    while (true) {
+        console.log("I am out")
+        break;
+    }
+    
+}
+
+
+```
+
+<br/>
+
+**Example - 1**
+
+求整数 1 ～ 100 的累加值，要求碰到个位为 3 的数则终止累加
+
+```javascript
+
+
+for(var i = 1; i <= 100; i++) {
+    if (i % 10 == 3) {
+        console.log(i);
+        break;
+    }
+}
+
+
+```
+
+<br/>
+
+**Example - 2**
+
+计算整数 1 ～ 100 的累加值， 要求跳过所有个位数为 3 的数
+
+```javascript
+
+
+var sum = 0;
+var i = 100;
+
+while(i <= 200) {
+    if(i % 10 == 3) {
+        i++;
+        continue;
+    }
+    sum += i;
+    i++;
+}
+console.log(sum);
+
+
+```
+
+<br/>
+
+**Example - 3**
+
+找到 100 ～ 200 之间第一个可以被 7 整除的数字
+
+```javascript
+
+
+var sum10 = 0;
+
+for(i = 100; i <= 200; i++) {
+    if(i % 7 == 0) {
+        console.log(i);
+    }
+}
 
 
 
 
+```
+
+<br/>
+
+**Example - 4**
+
+计算 100 ～ 300 之间所有的奇数的和 ( 用 continue )
+
+```javascript
 
 
-<h2 id="#">数组</h2>
+var sum11 = 0;
 
-<h2 id="#">函数</h2>
 
-<h2 id="#">内置对象</h2>
+for(i = 100; i <= 300; i++) {
+    if(i % 2 == 0) {
+        continue;
+    }
+    i++;
+    sum += i;
+}
 
-<h2 id="#">内置对象及一些方法</h2>
+
+```
+
+
+
+
