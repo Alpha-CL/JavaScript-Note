@@ -19,7 +19,7 @@ JavaScript数组的长度和元素的类型都不固定；
             var arrayName = new Array();
             
             * 空数组
-            
+             
                 var cars = new Array(); ==> undefined
                 
             * 定义数组，并且有长度
