@@ -24,8 +24,10 @@
 
 //NO.04: 字面量的方式创建对象
 
+//NO.04_1: 字面量的方式创建对象的缺陷
 
-//NO.05:
+
+//NO.05: 设置和获取属性的另一种方式
 
 //NO.06:
 
@@ -248,7 +250,7 @@ function MyDefinedFunction302(name, age) {
     };
 }
 
-var per305 = new MyDefinedFunction302("alpha",18);
+var per305 = new MyDefinedFunction302("alpha", 18);
 
 per305.sayHi();
 
@@ -316,16 +318,57 @@ newObject.sayHello();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//字面量创建对象的缺陷
+//一次性对象
+
+var myNewObjectShort = {
+
+    name: "alphaNoChanged",                     //修改对象数据方法 - 2
+    agea: 38,
+    sex: "male"
+};
+
+//修改对象数据方法 - 1
+myNewObjectShort.name = "beta";                 //Change name = "beta";
+
+console.log(myNewObjectShort.name);
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//NO.05: 设置和获取属性的另一种方式
+
+//Basic Code
+function anotherChangedMethod(name, age) {
+
+    this.name = name;
+    this.age = age;
+
+    this.play = function () {
+        console.log("I really like playing games ")
+    };
+}
+
+var changedValue = new anotherChangedMethod("alpha", 20);
 
 
+//Change name value on object
+
+//Method - 1
+
+// changedValue.name = "Rebecca";
+// console.log(changedValue.name);
+// changedValue.play();
+
+//Method - 2
+
+changedValue["name"] = "Rebecca";
+console.log(changedValue["name"]);
+changedValue["play"]();
 
 
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
