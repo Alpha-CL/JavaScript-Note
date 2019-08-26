@@ -1,13 +1,29 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//NO.01: 创建一个有手机型号、手机颜色、可以打电话、发短信的 手机对象
+//NO.01: 创建对象( 一个有手机型号、手机颜色、可以打电话、发短信的 手机对象 )
 
-//NO.02:
 
-//NO.03:
+//NO.02: 如何一次性创建多个对象( 把创建对象的代码封装在一个函数中 )
 
-//NO.04:
+//NO.02_01: 创建函数对象
+
+//NO.02_02: 一次性创建多个函数对象
+
+
+//NO.03: 自定义构造函数
+
+//NO.03_01: 获取构造函数数据类型 instanceof
+
+//NO.03_02: 自定义构造函数原理( 内部发生四件事 )
+
+//NO.03_03: 示例 - 1( 创建一个图片的对象，图片有宽、有高、有大小( 4M ), 图片可以展示内容 )
+
+//NO.03_04: 示例 - 2( 创建一个小猫的对象, 猫有颜色、体重、年龄, 小猫可以抓耗子, 可以打架 )
+
+
+//NO.04: 字面量的方式创建对象
+
 
 //NO.05:
 
@@ -29,19 +45,23 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//NO.1: 创建一个有手机型号、手机颜色、可以打电话、发短信的 手机对象
+//NO.1: 创建对象( 一个有手机型号、手机颜色、可以打电话、发短信的 手机对象 )
+
 var phone = new Object();
 
+//Add properties
 phone.size = "iphone6";
 phone.color = "black";
 
+//Add method
 phone.call = function () {
     console.log("Call me");
-}
+};
 phone.msg = function () {
     console.log("Send a message to me");
-}
+};
 
+//Invoking function
 phone.call();
 phone.msg();
 
@@ -49,98 +69,253 @@ phone.msg();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//NO.02: 构造函数的形式创建对象
-function createObject(name, age) {      //step - 1 add name and age variable
+//NO.02: 如何一次性创建多个对象( 把创建对象的代码封装在一个函数中 )
 
-    //create a new object
+
+// 创建函数对象
+
+// function myNewObject() {                         //Add name and age parameter
+//
+//     //Create a new object
+//     var obj = new Object();
+//
+//     //Add properties
+//     obj.name = "alpha";                          //Add name variable
+//     obj.age = 18;                                //Add age variable
+//
+//     //Add method
+//     obj.sayHi = function () {
+//         console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
+//     }
+//     return obj;
+// }
+//
+// var per2 = myNewObject();
+// per2.sayHi();
+
+
+// 一次性创建多个函数对象
+
+function myNewObject(name, age) {
+
+    //Create a new object
     var obj = new Object();
 
-
-    //Add property
-
-    //Step - 1
-    //obj.name = "alpha";               //add name variable
-    //obj.age = "18";                   //add age variable
-
-    //Step - 2
-    //name and age is pair
+    //Add properties
     obj.name = name;
     obj.age = age;
 
-
     //Add method
-    obj.sayHi = function () {
-        console.log("Hello , My name is " + this.name + ", " + this.age + " year old.");
-    };
-    return obj;
-}
-
-
-//批量生产对象, 对象名称相同，值不同
-var per1 = createObject("beta", 20);
-var per2 = createObject("omega", 18);
-
-per1.sayHi();
-per2.sayHi();
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//Principle of this attribute
-function myFunction(name, size) {
-
-    this.name = name;
-    this.size = size;
-
-    this.sayHello = function () {
-        console.log("Hello world");
-    };
-}
-
-
-//Step - 1
-//在内存中开辟控件，储存创建新的对象
-
-
-//Step - 2
-//Set this as the current object
-
-
-//Step - 3
-//Set the value of the properties and method of the Object
-
-
-//Step - 4
-//Return this object
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//自定义方式创建函数
-//自定义构造函数主要用于创建对象
-//构造函数的函数名规则: " 大驼峰命名 "
-function myDefinedFunction() {
-
-
-    //Create a new objectl
-    var obj = new Object();
-
-
-    //Add property
-    obj.name = "alpha";
-    obj.age = 18;
-
-
     obj.sayHi = function () {
         console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
     };
     return obj;
 }
 
+var per21 = myNewObject("beta", 20);
+var per22 = myNewObject("omega", 18);
+
+per21.sayHi();
+per22.sayHi();
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//NO.03: 自定义构造函数
+//自定义构造函数主要用于 ==> 创建对象
+//自定义构造函数命名规则: " 大驼峰命名 "
+//函数和构造函数的区别: 函数命名的首字母谁否是大写( 如果是小写: 普通函数 -> 用于调用; 如果是大写: 自定义构造函数 -> 创建对象 )
+
+
+//定义构造函数
+
+// function myDefinedFunction() {                      //小驼峰命名( 普通函数 )
+//
+//     //Create a new object
+//     var obj = new Object();                         //Remove statement
+//
+//     //Add property
+//     obj.name = "alpha";                             //Add "this" keyword
+//     obj.age = 18;                                   //Add "this" keyword
+//
+//     //Add method
+//     obj.sayHi = function () {                       //Add "this" keyword
+//         console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
+//     };
+//     return obj;                                     //Remove statement
+// }
+//
+// var per3 = myDefinedFunction();
+// per3.sayHi();
+
+
+//==> 自定义构造函数
+
+// function MyDefinedFunction() {                       //大驼峰命名( 自定义构造函数 ) !important
+//
+//     //Remove "var = obj = new Object();"
+//
+//     this.name = "alpha";                             //Create new
+//     this.age = 18;
+//
+//     this.sayHi = function () {
+//         console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
+//     }
+//
+//     //Remove "return obj;"
+// }
+//
+// var per31 = new MyDefinedFunction();
+//
+// console.log(obj.name);
+// console.log(obj.age);
+// per31.sayHi();
+
+
+//==> 自定义构造函数创建对象
+
+function MyDefinedFunction(name, age) {                   //大驼峰命名( 自定义构造函数 ) !important
+
+    this.name = name;
+    this.age = age;
+
+    this.sayHi = function () {
+        console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
+    };
+}
+
+var per32 = new MyDefinedFunction("alpha", 18);
+var per33 = new MyDefinedFunction("alpha2", 19);
+
+per32.sayHi();
+per33.sayHi();
+
+console.log(per32 instanceof MyDefinedFunction);            //true
+console.log(per33 instanceof MyDefinedFunction);            //true
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//NO.03_01 如何获取对象类型
+
+//基础获取
+
+function MasterObjectInstanceof(name, age) {
+
+    this.name = name;
+    this.age = age;
+
+    this.sayHi = function () {
+        console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
+    };
+}
+
+var per301 = new MasterObjectInstanceof("alpha", 18);
+var per302 = new MasterObjectInstanceof("alpha2", 19);
+
+console.log(per301 instanceof MasterObjectInstanceof);            //true
+console.log(per302 instanceof MasterObjectInstanceof);            //true
+
+
+//判断获取
+
+function SonrObjectInstanceof(name, age, sex) {
+
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+}
+
+var son = new SonrObjectInstanceof("son", 20, "male");
+
+console.log(son instanceof MasterObjectInstanceof);               //false
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//NO.03_02: 自定义构造函数原理
+
+function MyDefinedFunction302(name, age) {
+
+    this.name = name;
+    this.age = age;
+
+    this.sayHi = function () {
+        console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
+    };
+}
+
+var per305 = new MyDefinedFunction302("alpha",18);
+
+per305.sayHi();
+
+
+//Step - 1
+//在内存中 开辟( 申请一块空闲的 ) 空间，储存创建的新对象
+
+//Step - 2
+//把 "this" 设置为当前的对象
+// this.name;;
+// this.age;
+// this.sayHi;
+
+//Step - 3
+//设置对象的属性和方法的值
+// this.name = name;
+// this.age = age;
+//
+// this.sayHi = function () {
+//     console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
+// };
+
+//Step - 4
+//把 "this" 这个对象返回
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//NO.04: 字面量的方式创建对象
+
+//字面量方式创建对象
+
+// var newObject = {};
+//
+// //Add properties
+// newObject.name = "alpha";
+// newObject.age = 18;
+//
+// //Add method
+// newObject.sayHello = function () {
+//     console.log("My name is " + newObject.name + ".");
+// };
+//
+// newObject.sayHello();
+
+
+//字面量方式创建对象
+
+var newObject = {
+
+    //Add properties
+    name: "alpha",
+    age: 18,
+
+    //Add method
+    sayHello: function () {
+        console.log("My name is " + this.name + ".");
+    }
+};
+
+newObject.sayHello();
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 
