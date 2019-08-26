@@ -3,11 +3,21 @@
 
 <h2 id="#">Function</h2>
 
+封装重复代码，用于后续调用
+
 1. 函数需要先定义，才能调用
 
-2. 函数命名: 遵循小驼峰命名法
+2. 函数命名: 
 
-    * variable name ==> variableName
+    * 普通函数命名: 遵循小驼峰命名法
+
+        * variable name ==> variableName
+    
+    * 自定义构造函数: 遵循大驼峰命名
+    
+        * variable name ==> VariableName
+    
+    * 
     
 3. 若命名相同的函数名，则后面的函数会覆盖之前的函数
 
@@ -101,7 +111,7 @@
         
         * 函数中有 return，但后面没有内容，则这个函数 没有明确返回值
         
-        * 如果函数 没有明确返回值，函数调用了，则此时返回值为 undefined
+        * 如果函数 没有明确返回值( 没有返回值 )，函数调用了，则此时返回值为 undefined
         
     * console.log(functionName);
     
@@ -111,7 +121,7 @@
     
 * arguments
 
-    * 伪数组
+    * 对象、伪数组
     
     * 用于记录形参
     
@@ -119,8 +129,12 @@
     
         * 调用形参的长度
         
+    * arguments[0 ~ length-1];
+    
+        * 实参值: 根据位置输出
+        
     * 
-
+    
 * 函数的数据类型: 
 
     * function
