@@ -208,6 +208,8 @@
         
 * 引用值( 存放于堆( heap ) 中 ): array、object、function、date
 
+    * 引用值的复杂数据类型存储在 heap 中，地址存放在 staek 中
+
     * array: 数组类型
 
     * object: 对象类型
