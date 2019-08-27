@@ -275,9 +275,17 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
     * 调用系统构造函数创建对象 
     
+        * new Object()
+    
     * 自定义构造函数创建对象( 结合第一种和需求通过工厂模式创建对象 )
     
+        * var obj = new Object(); ==> 必须加 ";"，属于变量赋值
+    
         * 普通函数命名
+            
+            * 小驼峰命名命名( 首字母小写，后面所有单词首字母大写 )
+            
+                * variable name ==> variableName
         
             * 主要用于调用函数
         
@@ -285,7 +293,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
         
             * 大驼峰命名( 首字母大写 ) 
             
-            * variable name ==> VariableName
+                * variable name ==> VariableName
             
             * 用于创建对象
             
@@ -301,9 +309,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
                 
                 * 修改数据对象方法 2: object.objectName = objectNewValue;
         
-        * 
-        
-    * 点语法( 没有什么点什么什么，点之后代表声明并没有赋值 )
+    * 点语法( 没有什么点什么，点之后代表声明并没有赋值 )
     
         * object.objectName = objectValue;
         
@@ -319,10 +325,6 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
                 
                 * console.log(variableName + ": " + JasonName[variable]);
                 
-            * 
-            
-            * 
-        
     * 设置和获取属性的另一种写法
     
         * 错误写法: var obj = new Person();
@@ -333,7 +335,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
           
         * console.log(newVarName["objectPropertyName"]);
           
-        * newVarName["objectMethodName"]();
+        * newVarName[ "objectMethodName"] ();
 
 * Json 格式的数据  
     
@@ -378,41 +380,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
             * 引用类型的值 
             
             * 
-    
-* JS 是一门什么样的语言
 
-    * 解释性语言
-    
-        * 执行一行一行，解释一行
-    
-    * 脚本语言
-        
-        * 不需要编译，直接执行
-        
-    * 弱类型语言，
-    
-        * 声明变量都用 "var"
-    
-    * 基于对象的语言
-    
-        * JS 中已有对象，直接调用
-    
-    * 动态类型的语言
-        
-        * 只有执行到变量，才能获取变量等属性
-    
-            * 代码( 变量 ) 只有执行到这个位置的时候，才知道变量中存储的是什么
-            
-            * 如果是对象，就有对象的属性和方法
-            
-            * 如果是变量就是变量的作用
-        
-        * 对象本没有什么，如果 "." 了( 调用点语法 )
-        
-            * 可以为对象添加属性或者方法
-            
-            * 
-    
 * Key Word: 
 
     * this
