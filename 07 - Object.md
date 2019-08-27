@@ -158,7 +158,108 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
     
     * 方法( Method )
     
-    * 
+    * 调用( Invoking )
+    
+* 对象分类
+    
+    * 实例对象: 通过构造函数创建出来，实例化的对象
+    
+        * 调用: 必须通过实例对象调用
+    
+    * 静态对象: 不需要创建，直接就是一个对象，方法( 静态方法 ) 直接铜鼓这个对象名称调用   
+    
+        * 调用: 必须通过大写的对象调用
+    
+* 三种对象
+
+    * 内置对象: JS 系统自带的对象
+    
+        * Math: 
+        
+            * 具有数学常数和函数的属性和方法, 但不是一个函数对象
+            
+            * Math 的所有属性和方法都是静态的
+            
+            * Method:
+            
+                * Math.PI( π )
+                
+                    * 3.14.15926
+                    
+                * Math.E( 常数的底数 )
+                    
+                * Math.abs( 绝对值 )
+                
+                    * Math.abs( number )
+                    
+                        * console.log(Math.abs('-1')); ==> //1
+                        
+                        * console.log(Math.abs(-2)); ==> //2
+                        
+                        * console.log(Math.abs(null)) ==> //0
+                        
+                    * Math.abs( String )
+                    
+                        * console,log(Math.abs("string")); ==> //NaN
+                        
+                        * 
+                * Math.ceil( 返回大于或等于一个给定数字的最小整数 ) //ceil: 天花板
+                
+                    * 向上取整( 不是四舍五入 ), 无论小数点后面的数字大小
+                
+                    * console.log(Math.ceil(12.3)); ==> //13
+
+                    * console.log(Math.ceil(12.9)); ==> //13
+
+                    * console.log(Math.ceil(12.09)); ==> //13
+                    
+                * Math.floor( 返回小于或等于一个给定数字的最小整数 ) //floor: 地板
+                
+                    * 向下取整( 不是四舍五入 ), 无论小数点后面的数字大小
+                    
+                    * console.log(Math.ceil(12.3)); ==> //12
+                    
+                    * console.log(Math.ceil(12.9)); ==> //12
+
+                    * console.log(Math.ceil(12.09)); ==> //12
+                    
+                * Math.max( 返回一组数中的最大值 )
+                
+                    * console.log(Math.max(10, 1, 9, 100, 200, 45, 78)); ==> //200
+                    
+                * Math.min( 返回一组数中的最小值 )
+                                
+                    * console.log(Math.min(10, 1, 9, 100, 200, 45, 78)); ==> //1
+                    
+                * Math.pow( 返回一个数字的幂 )
+                
+                    * console.log(Math.pow(25, 2)); ==> //625
+                    
+                * Math.sqrt( 返回一个数字的平方根 )
+                
+                    * console.log(Math.sqrt(16)); ==> //4
+                
+                * Math.random( 返回一个浮点 ) //返回伪随机数
+                
+                    * console.log(Math.random()); ==> 0.3178073015831
+                    
+                    * console.log(parseInt(Math.random()*5)); ==> //整数随机数( 0 ~ 4 )
+
+                    * console.log(parseInt(Math.random() * 5) + 1); ==> //整数随机数( 0 ~ 5 )
+
+                    * console.log(parseInt(Math.random() * 100)); ==> //整数随机数( 0 ~ 99 )
+
+                    * console.log(parseInt(Math.random() * 100) + 1); ==> //整数随机数( 0 ~ 100 )
+        
+        * Date
+        
+        * String
+        
+        * Object
+    
+    * 自定义对象: 自己定义的构造函数的对象
+    
+    * 浏览器对象: BOM 时候讲
 
 
 
@@ -202,13 +303,25 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
         
         * 
         
-    * 点语法
+    * 点语法( 没有什么点什么什么，点之后代表声明并没有赋值 )
     
         * object.objectName = objectValue;
         
         * object.objectName = Function ();
         
-        * 
+        * for ... in ... 循环
+        
+            * for (var variableName in jsonName){ "jsonDataName": "jsonDataValue", "jsonDataName": "jsonDataValue"}
+            
+                * console.log(variableName);
+                
+                * console.log(jsonName[key]);
+                
+                * console.log(variableName + ": " + JasonName[variable]);
+                
+            * 
+            
+            * 
         
     * 设置和获取属性的另一种写法
     
@@ -222,15 +335,49 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
           
         * newVarName["objectMethodName"]();
 
-* Json 格式的数据
+* Json 格式的数据  
+    
+    * Json 数据必须用双引号包裹 ==> "JsonCode" = "JsonCode",
 
     * Json 格式的数据: 一般都是成对出现的，是键值对( "键": "值" )
     
-    *
+    * Json 也是一个对象、数据是成对的
+    
+    * 不能用遍历对象( Json 数据是无序的 )
     
     * 
     
-    * 
+* 数据类型
+
+    * 原始数据类型: number、string、boolean、undefined、null、object
+    
+        * 基本类型( 简单类型 )、值类型
+        
+            * number、string、boolean
+            
+        * 复杂类型( 引用类型 )
+        
+            * object
+    
+        * 空类型
+        
+            * undefined、null
+            
+            * 
+            
+    * 存储位置( steak、heap )
+    
+        * 栈( steak )
+        
+            * 值类型
+            
+            * 引用类型的地址 ==> 指向 ==> 引用类型的值
+        
+        * 堆( heap )
+        
+            * 引用类型的值 
+            
+            * 
     
 * JS 是一门什么样的语言
 
@@ -278,8 +425,6 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
     * instanceof
     
-    * 
-    
     * Return value: 
     
         * True
@@ -289,6 +434,22 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
         * False 
         
             * ==> no object
+        
+        * 
+    
+    * 系统内置对象
+        
+        * console.log(Array instanceof Object);
+    
+        * true( 系统内置对象 )
+        
+    * 自定义对象
+    
+        * var obj = {};
+        
+        * console.log(obj instanceof Object);
+        
+        * true( 自定义对象 )
         
         * 
         
@@ -342,110 +503,9 @@ new Object([value]);
 
 ```
 
-<br/>
-
 ```javascript
 
-
-//有一条叫大黄的黄色小狗，今年 3 岁，250 斤的重量走路很慢，喜欢吃大骨头
-
-var smallDog = new Object();
-
-smallDog.name  = "大黄";
-smallDog.age = 3;
-smallDog.color = "yellow";
-smallDog.weight = "250";
-
-
-smallDog.eat = function () {
-    console.log("I like to eat big bones");
-};
-smallDog.walk = function () {
-    console.log("I am very slow");
-};
-
-
-smallDog.eat();
-smallDog.walk();
-
-
-```
-
-<br/>
-
-```javascript
-
-
-//创建一个手机对象，有手即型号、手机颜色、可以打电话、发短信
-
-var phone = new Object();
-
-phone.size = "iphone6";
-phone.color = "black";
-
-phone.call = function () {
-    console.log("Call me");
-};
-phone.msg = function () {
-    console.log("Send a message to me");
-};
-
-phone.call();
-phone.msg();
-
-
-```
-
-<br/>
-
-工厂模式创建对象
-
-```javascript
-
-
-//Custom constructor creation object
-function createObject(name, age) {      //step - 1 add name and age variable
-
-    //Create a new object
-    var obj = new Object();
-
-
-    //Add property
-
-    //Step - 1
-    //obj.name = "alpha";               //add name variable
-    //obj.age = "18";                   //add age variable
-
-    //Step - 2
-    //name and age is pair
-    obj.name = name;
-    obj.age = age;
-
-
-    //Add method
-    obj.sayHi = function () {
-        console.log("Hello , My name is " + this.name + ", " + this.age + " year old.");
-    };
-    return obj;
-}
-
-
-//批量生产对象, 对象名称相同，值不同 
-var per1 = createObject("beta", 20);
-var per2 = createObject("omega", 18);
-
-per1.sayHi();
-per2.sayHi();
-
-
-```
-
-<br/>
-
-自定义方式创建对象
-
-```javascript
-
+//如何验证变量是不是对象
 
 
 
