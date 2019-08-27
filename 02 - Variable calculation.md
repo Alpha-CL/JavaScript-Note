@@ -1,11 +1,82 @@
-
 <h4 id="#">变量</h4>
+
+在 JavaScript 中，使用 "变量" 来作为值的符号名
+
+变量的名字又叫做 "标识符"，其需要遵守一定的规则
+
+* 声明变量
+
+    * 声明变量未赋值: 
+    
+        * var 和 let 变量只声明不赋值: 称为 "变量声明"
+        
+        * 未赋值情况: 返回 undefined
+
+    * var( 全局、局部、声明提升 )
+    
+        * 声明一个变量，可选初始化一个值
+        
+        * var varName = varValue;
+        
+            * var 可以用于声明 "全局变量" 和 "局部变量"
+            
+        * varName = varValue;( 未声明 )
+        
+            * 在全局作用域中: 无法使为声明的变量
+            
+            * 在函数作用域中: 这种情况情况，会生成一个全局变量 
+    
+    * let( 函数体内、局部 )
+    
+        * 声明一个块作用域的 "局部变量"，可选初始化一个值
+    
+    * const( 不可更改 )
+    
+        * 声明一个块作用域的 "只读常量"
+        
+        * 常量不可以通过重新赋值改变其值，也不可以在代码运行时重新声明，它必须被初始化为某个值
+        
+        * 在同一作用域中，不能使用与变量名或函数名相同的名字命名常量
+        
+* 变量作用域
+
+    * 全局作用域( 全局对象: window.varName )
+    
+        * 全局变量: 可以被当前文档中的任何其他代码所访问
+        
+        * window.varName 可以设置和访问全局变量
+    
+    * 局部作用域
+    
+        * 局部变量: 只能在当前函数的内部访问
+        
+    * 块级作用域
+    
+        * ECMAScript 6 之前的 JavaSCript 没有 "语句块" 作用域
+        
+        * 语句块中声明的变量将称为语句块所在函数( 或全局作用域 ) 的局部变量
+
+* 变量及函数提升
+    
+    * 变量提升
+    
+        * 只有 "var" 可以变量提升, let 和 const 不能变量提升
+    
+        * 只提升变量声明 var = varName;
+        
+        * 不提升: varName = varValue; ==> 因只提升声明，所以返回 undefined       
+        
+    * 函数提升
+    
+        * 只有函数声明会被提升到顶部，而函数表达式不会被提升
+    
+        * 提升函数体在函数调用之前
 
 * 操作的数据都是在内存中操作 
 
 * 字面量
 
-    * 在源代码中一个固定值的表示法。 
+    * 在源代码中一个固定值的表示法
     
     * 数值字面量：8, 9, 10
     
@@ -13,41 +84,47 @@
     
     * 布尔字面量：true，false
 
-* JS 中变量的类型 ( number、false、string、undefined、null、object )
+* JS 中变量的类型 ( number、boolean、string、undefined、null、object )
 
-* JS 中声明变量都用 **var**，数据应该有对应的数据类型
+* JS 中声明变量都用 **var**( 弱数据语言 )，数据应该有对应的数据类型
 
 * JS 中字符串类型的值都用 单引号 或 双引号
 
 * " + " " - " 等运算
 
-    * console.log(+str);		// 取正
+    * console.log(+str); ==>        // 取正
     
-    *  console.log(-str);		// 取负
-  
+    *  console.log(-str); ==>		// 取负
+
+
+
 <br/>
+<hr/>
+<br/>
+
+
 
 **总结**
 
-* 变量作用: 用来操作数据 ( 可以存储，可以读取 )
+* 变量作用: 用来操作数据( 可以存储，可以读取 )
 
 * 变量声明: 没有赋值
 
-* var 变量名: 声明存储位置
+* var 变量名: 声明存储位置( 变量为原始值: 存储于 " 栈( staek ) 中 )
 
-* var 变量名 = 值；
+* var variableName = variableValue；
 
 <br/>
 
 **基本代码规范**
 
-* JS 中声明变量都用 var
+* JS 中声明变量都用 " var "
 
-* JS 中的每一行代码结束都应该有分号;
+* JS 中的每一行代码结束都应该有: 分号" ; "
 
-* JS 中的大小写是区分的: var N = 10; var n = 10;
+* JS 中的大小写是区分的: var N = 10; var n = 10; ( 大写 "N" 和 小写 "n"，此时是两个变量 )
 
-* JS 中的字符串可以谁用 单引号 或 双引号
+* JS 中的字符串可以用 单引号 或 双引号
 
 <br/>
 
@@ -55,11 +132,11 @@
 
 1. 变量的名字要有意义
 
-2. 变量名有一定的规范: 一般以字母、" $ "、下划线开头，中间或后面可以有 " $ "、字符、数字
+2. 变量名有一定的规范: 一般以 字母、" $ "、下划线开头，中间 或 后面可以有 " $ "、字符、数字
 
-3. 不能以 关键字 和保留子命名l，例如: for、while...
+3. 不能以 "关键字" 和 "保留字" 命名，例如: for、while...
 
-4. 变量名一般都是小写
+4. 变量名一般都是小写( 有意义 ！important )
 
 5. 驼峰命名法: 如果有多个单词组合命名 ( 常用小驼峰命名 )
 
@@ -75,97 +152,11 @@
 
 
 
-<h4 id="#">变量交换</h4>
-
-**Example - 1**
-
-第三方变量交换
-
-```javascript
-
-
-var num1 = 10;
-var num2 = 20;
-
-var temp = mun1;
-//新建变量 temp 存放 num1 的值；
-
-num1 = num2;
-//新建变量 num1 存放 num2 的值 ( 这个新建属于一个新的数据单元格 )
-
-num2 = temp;
-//新建变量 num2 存放 temp 的值 = num1 的值
-
-console.log(num1);              //20
-console.log(num2);              //10
-
-
-```
-
-**Example - 2**
-
-适用于数字交换
-
-```javascript
-
-
-var num1 = 10;
-var num2 = 20;
-
-num1 = num1 + num1;
-//新建变量 num1 存放 num1 + num2 的值 等于 30 ( 这个新建属于一个新的数据单元格 ) 
-
-num2 = num1 - num2; // 10
-//用新建的 num1 减去之前的变量 num2 等于 10
-
-num1 = num1 - num2; // 20
-//用新建的 num1 减去后来新建的变量 num2 等于 20
-
-console.log( num1 ); //20
-console.log( num2 ); //10
-
-
-```
-
-**Example - 3**
-
-变量交换扩展: 位运算 ( C 语言 )
-
-```javascript
-
-
-var num1 = 10;
-var num2 = 20;
-
-num1 = num1 ^ num2;
-
-num2 = num1 ^ num2;
-
-num1 = num1 ^ num2;
-
-//把数字 10 和 20 转换为 计算机中 二进制的 10 和 20 的数字放在一起
-//找到 10和20 的二进制的 源码 的 反码 的 补码放在一起，并且是正数的情况下
-//接着进行位移的运算
-
-console.log(num1, num2);
-
-
-```
-
-
-
-<br/>
-<hr/>
-<br/>
-
-
-
 <h4 id="#">数据类型</h4>
 
+* 原始值( 存放于栈( staek ) 中 ): number、string、boolean、null、undefined、symbol
 
-* JS 原始数据类型: number、string、boolean、null、undefined、object
-
-    * number: 数字类型; 
+    * number: 数字类型
     
         * integer: 整数
         
@@ -173,25 +164,31 @@ console.log(num1, num2);
         
         * 
     
-    * string: 字符串类型;
+    * string: 字符串类型
     
-        一般都是用 单引号 或者 双引号 括号起来
+        * 必须用 单引号 或者 双引号 括号起来
         
         * 
     
-    * boolean: 布尔类型; ( 只有两个值: true ( 真 1 )、false ( 假 0 ) )
+    * boolean: 布尔类型
     
-        大多判断都是用 Boolean 类型判断
-    
-        * 除了这六个类型转换为 false ，其他都是 true
+        * 只有两个值: 
         
-            0、""、null、undefined、NaN、false
+            * true( 真 1 )
             
-        * 
+            * false( 假 0 )
     
-    * null: 空类型; ( 一个对象只想为空，此时可以赋值为 null )
+        * 大多判断都是用 boolean 类型判断
     
-    * undefined: 未来定义类型; 
+            * 除了这六个类型转换为 false ，其他都是 true
+        
+            * 0、""、null、undefined、NaN、false
+            
+    * null: 空类型
+    
+        * 一个对象只有想为空，此时可以赋值为 null
+    
+    * undefined: 未来定义类型
     
         * 变量声明未赋值，结果为 undefined
         
@@ -199,18 +196,27 @@ console.log(num1, num2);
         
         * 如果一个变量的结果是 undefined 和一个数字进行计算，结果是 Not a Number ( NaN ), 也没有意义
         
-        * 
+            * var num;
+            
+            * console.log(num + 10); ==> //NaN
+        
+    * symbol: 代表类型
     
-    * object: 对象类型；
+        * 在 ECMAScript 6 中新添加的类型
+        
+        * 一种实例是唯一且不可改变的数据类型
+        
+* 引用值( 存放于堆( heap ) 中 ): array、object、function、date
 
-```javascript
+    * array: 数组类型
 
+    * object: 对象类型
 
-var num;
-console.log( num + 10 ); // NaN
-
-
-```
+    * function: 函数类型
+    
+    * date: 日期类型
+    
+    * 
 
 
 
@@ -220,11 +226,15 @@ console.log( num + 10 ); // NaN
 
 
 
-<h4 id="#">typeof</h4>
+<h4 id="#">获取数据类型: typeof</h4>
 
-获取数据类型
+JavaScript是一种动态类型语言( dynamically typed language )
 
-typeof varName
+这意味着你在声明变量时可以不必指定数据类型
+
+而数据类型会在代码执行时会根据需要自动转换
+
+console.log(typeof varName);
 
 ```javascript
 

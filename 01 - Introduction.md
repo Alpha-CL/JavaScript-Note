@@ -16,11 +16,11 @@
 
 * ECMA Script 
 
-    * ECMAScript 是由网景的 布兰登·艾克 开发的一种脚本语言的标准化规范
+    * ECMAScript 是由网景的 " 布兰登 · 艾克 " 开发的一种脚本语言的标准化规范
     
-    * 最初命名为Mocha，后来改名为LiveScript，最后重命名为JavaScript
+    * 最初命名为: Mocha，后来改名为: LiveScript，最后重命名为: JavaScript
     
-    * ECMA Script是由 ECMA-262 标准化的脚本语言的名称
+    * ECMA Script 是由 ECMA - 262 标准化的脚本语言的名称
     
 * DOM --- Document object Model 
 
@@ -73,7 +73,7 @@
 
 5. 类型的语言
 
-    * 强类型语言
+    * 强类型语言: java
     
         * 声明变量: 必须声明变量的类型 
         
@@ -102,7 +102,7 @@
 
 最初的目的: **为了解决用户和浏览器直接的交互所创造的语言** 
 
-Brendan Eich 1961 年用**十天**时间创造出了 LiveScript
+Brendan Eich 1961 年用**十天左右**时间创造出了 LiveScript
 
 JavaScript 和 Java 没有任何关系，只是因为 LiveScript 为了迅速推广修改成 JavaScript
 
@@ -181,6 +181,8 @@ JavaScript: 控制网页内容，增加动态交互效果
 <h4 id="#">有错误的 js 代码，那么后面的文件会如何执行</h4>
 
 1. 同一块中的 js 代码，如有错误，则会终止错误代码后的代码
+    
+    * JS 错误只会影响本身所在的 < script >< /script > 代码块，或本身所在的文件
 
 2. 上一块 js 代码块有错误，不会影响后面的 js 代码块
 
@@ -193,6 +195,8 @@ JavaScript: 控制网页内容，增加动态交互效果
     目前 html 页面中，type 和 language 都可以省略，因为 html 遵循 H5 的标准 ( 如果头部规定低版本的 html 则不能省略 )
 
 4. script 标签在页面中可以出现多次
+
+    * 一个 HTML 文件可以 引入或运行多个 < script >< /script > 代码块
 
 
 
