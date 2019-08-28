@@ -153,7 +153,7 @@ var booleanFalse = false;
 
 
 //String
-var myString = "is a string";
+var myString = "This is a string";
 
 
 //Null
@@ -186,6 +186,7 @@ newFunction();
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 

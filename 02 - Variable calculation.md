@@ -238,46 +238,6 @@ JavaScript是一种动态类型语言( dynamically typed language )
 
 console.log(typeof varName);
 
-```javascript
-
-
-var num = 10;
-
-var str = "小白";
-
-var fla = ture;
-
-var nll = null;
-
-var undef;
-
-var obj = new Object(age=13, year=14);
-    
-console.log(typeof num);                            // number 
-console.log(typeof str);                            // string
-console.log(typeof fla);                            // boolean
-
-console.log(typeof nll);                            // object
-
-
-console.log(String (nll));                          // null
-//以字符串类型输出 nll
-
-console.log(typeof undef);                          // undefined
-console.log(typeof obj);                            // object
-
-
-// 复杂数据类型
-
-console.log(typeof {name: 'john', age: '34'});      // object
-console.log(typeof [1,2,3,4]);                      // object
-console.log(typeof null);                           // object
-
-console.log( typeof function myfunction(){} )           // function
-
-
-```
-
 
 
 <br/>
@@ -321,27 +281,17 @@ console.log( typeof function myfunction(){} )           // function
     * 进值表示方法
     
         * 十进制: 正常数字
+        
+            * var integer = 10;
          
         * 八进制: 以 0o 开头
         
+            * var _8Octal = 0o12;
+        
         * 十六进制: 以 0x 开头
+        
+            * var _160o12 = 0x12;
     
-<br/>
-
-```javascript
-
-
-//JS 中可以书写的 进制
-
-var num = 10;           //十进制书写: 正常数字
-
-var num2 = 0o12;        //八进制书写: 以 0o 开头
-
-var num3 = 0x12;        //十六进制书写: 以 0x 开头
-
-
-```
-
 <br/>
 
 数字类型的范围
@@ -349,9 +299,9 @@ var num3 = 0x12;        //十六进制书写: 以 0x 开头
 ```javascript
 
 
-console.log(Number .MAX_VALUE)      //数字的最大值
+console.log(Number .MAX_VALUE);      //数字的最大值
 
-console.log(Number .MIN_VALUE)      //数字的最小值
+console.log(Number .MIN_VALUE);     //数字的最小值
 
 
 //  Infinity： 无穷大
@@ -378,7 +328,7 @@ var y = 0.2;
 
 var sum = x + y;
 
-console.log(sum)            //0.30000000000000004
+console.log(sum);            //0.30000000000000004
  
 console.log(sum == 0.3);    //false
 
@@ -416,7 +366,7 @@ var num;
 
 var sum = num + 10;
 
-console.log(inNaN(sum))     //ture
+console.log(inNaN(sum));     //ture
 
 
 ```
@@ -536,18 +486,18 @@ console.log(str1 + str2);          // str3 == 1020
 
 //一个字符串和其他类型连接
 
-var str1 = "10";
-var str2 = 20;
+var str3 = "10";
+var str4 = 20;
 
-console.log(str1 + str2);          // str3 = 1020
+console.log(str3 + str4);          // str3 = 1020
 
 
 //一个字符串减去不是字符串的类型
 
-var str1 = "10";
-var str2 = 20;
+var str5 = "10";
+var str6 = 20;
 
-console.log(str1 - str2);          
+console.log(str5 - str6);          
 // 浏览器自动 ( 隐式转换 ) 把字符串类型转成了数字类型进行计算
 
 
@@ -633,13 +583,14 @@ console.log(str1 - str2);
 
 ```javascript
 
+persenInt();
 
-console.log(persenInt( "10" ))                    //10
-console.log(persenInt( "10afrewssa" ))            //10
-console.log(persenInt( "g10" ))                   //NaN
-console.log(persenInt( "1fsd0" ))                 //1
-console.log(persenInt( "10.98" ))                 //10
-console.log(persenInt( "10.98dwafag" ))           //10
+console.log(persenInt( "10" ));                    //10
+console.log(persenInt( "10afrewssa" ));            //10
+console.log(persenInt( "g10" ));                   //NaN
+console.log(persenInt( "1fsd0" ));                 //1
+console.log(persenInt( "10.98" ));                 //10
+console.log(persenInt( "10.98dwafag" ));           //10
 
 
 ```
@@ -647,15 +598,17 @@ console.log(persenInt( "10.98dwafag" ))           //10
 
 **小数转换**
 
+persenFloat();
+
 ```javascript
 
 
-console.log(persenFloat( "10" ))                    //10
-console.log(persenFloat( "10afrewssa" ))            //10
-console.log(persenFloat( "g10" ))                   //NaN
-console.log(persenFloat( "1fsd0" ))                 //1
-console.log(persenFloat( "10.98" ))                 //10.98
-console.log(persenFloat( "10.98dwafag" ))           //10.98
+console.log(persenFloat( "10" ));                    //10
+console.log(persenFloat( "10afrewssa" ));            //10
+console.log(persenFloat( "g10" ));                   //NaN
+console.log(persenFloat( "1fsd0" ));                 //1
+console.log(persenFloat( "10.98" ));                 //10.98
+console.log(persenFloat( "10.98dwafag" ));           //10.98
 
 
 ```
@@ -664,15 +617,17 @@ console.log(persenFloat( "10.98dwafag" ))           //10.98
 
 **数字转换**
 
+Number();
+
 ```javascript
 
 
-console.log( Number( "10" ))                    //10
-console.log( Number( "10afrewssa" ))            //NaN
-console.log( Number( "g10" ))                   //NaN
-console.log( Number( "1fsd0" ))                 //NaN
-console.log( Number( "10.98" ))                 //10
-console.log( Number( "10.98dwafag" ))           //NaN
+console.log( Number( "10" ));                    //10
+console.log( Number( "10afrewssa" ));            //NaN
+console.log( Number( "g10" ));                   //NaN
+console.log( Number( "1fsd0" ));                 //NaN
+console.log( Number( "10.98" ));                 //10
+console.log( Number( "10.98dwafag" ));           //NaN
 
 
 ```
