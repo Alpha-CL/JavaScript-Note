@@ -71,13 +71,15 @@
         
     * 一级作用域
         
-        * function f1() { var num = 20; function F2 (); }
+        * function F1() { var num = 20; function F2 (); }
         
         *
         
     * 二级作用域
     
         * function F2() { var num = 30; function F3 (); }
+        
+        * 
         
     * 三级作用域
     
