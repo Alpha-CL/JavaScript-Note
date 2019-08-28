@@ -300,20 +300,20 @@
             
                 * .length();( 返回字符串长度 )
                 
-                * .charAt(index);( 返回指定索引位置的字符串，超出索引，则返回空 )
+                * .charAt(index);( 返回: 指定索引位置的字符串，超出索引，则返回空 )
                 
-                * .fromCharCode(num1, ..., numN);( 返回 ASCII 码对应的值 )
+                * .fromCharCode(num1, ..., numN);( 返回: ASCII 码对应的值 )
                 
                 * .concat( str1, str2, ... strN ); ( 字符串拼接 )
                 
-                * .indexOf(searchStrName);( 返回 index 的索引值 )
+                * .indexOf(searchStrName);( 返回: index 的索引值 )
                 
                     var str = "one by one"; ==> // indexMax = 10    
                     
                     * var index = str.indexOf("o");
                     * console.log(index); ==> //expected output: 1
                 
-                        * 从左向右寻找( 相同名称只寻找一个 )，就返回 索引值( 索引从左向右排序 )
+                        * 从左向右寻找( 相同名称只寻找一个 )，就返回: 索引值( 索引从左向右排序 )
                     
                     * var index = str.indexOf("o", 5);
                     * console.log(index); ==> //expected output: 8
@@ -327,7 +327,7 @@
                 
                 * .lastIndexOf();
                 
-                    var str = "one by one"; ==> // indexMax = 10 
+                    var str = "one by one"; ==> //indexMax = 10 
                     
                     * var index = str.lastIndexOf("o");
                     * console.log(index); ==> //expected output: 8
@@ -350,11 +350,37 @@
                     
                     * parameter2: 如果检索出字符串包含 parameter1，则用 parameter2 替换 parameter1
                 
-                * 
+                * .slice(index1, index2);( 返回: 新建 index1 到 index2 的字符串)
                 
-                *
+                * .split(parameter1, parameter2);
                 
-                *
+                * .substr(parameter1, parameter2);()
+                
+                    var str = "hello word"; ==> //indexMax = 10
+                
+                    * var index  = str.substr(4);
+                    * console.log(index); ==> //expected output: "lo word"
+                    
+                        * 
+                
+                    * var index = str.substr(4, 8);( 不包含结束索引 )
+                    * console.log(index); ==> //expected output: "lo w"
+                    
+                        * 
+                    
+                    * .toLocaleLowerCase();
+                    * .toLowerCase();
+                    
+                        * 英文转小写
+                        
+                    * .toLocaleUpperCase();
+                    * .toUpperCase();
+                    
+                        * 英文转大写
+                    
+                    * .trim();( 去除字符串两端的空格 )
+                    
+                    *
                 
                 * 正则表达式
                 
