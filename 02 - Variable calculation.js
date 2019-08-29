@@ -260,11 +260,11 @@ var booleanFalse = false;
 
 //Null
 
-//typeof null;                         //"object" (not "null" for legacy reasons)
+// typeof null;                         //"object" (not "null" for legacy reasons)
 
-//null === null;                       //true
-//null == null;                        //true
-//!null;                               //true
+// null === null;                       //true
+// null == null;                        //true
+// !null;                               //true
 
 var myNull = null;                     //null
 
@@ -274,7 +274,7 @@ var myNull = null;                     //null
 
 //Undefined
 
-//typeof undefined;                     //undefined
+// typeof undefined;                     //undefined
 
 // -> variable undefined
 var myUndefined;
@@ -359,9 +359,9 @@ console.log(typeof !!(1) == 'boolean');
 
 //typeof Symbols
 
-//console.log(Symbol() === 'symbol');                            //false
-//console.log(Symbol('foo') === 'symbol');                       //false
-//console.log(Symbol.iterator === "symbol");                     //false
+// console.log(Symbol() === 'symbol');                            //false
+// console.log(Symbol('foo') === 'symbol');                       //false
+// console.log(Symbol.iterator === "symbol");                     //false
 
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
@@ -371,7 +371,7 @@ console.log(typeof !!(1) == 'boolean');
 
 console.log(undefined === 'undefined');                                 //false
 // console.log(declaredButUndefinedVariable === 'undefined');           //undefined
-//console.log(undeclareadVariable === 'undefined');                     //undefined
+// console.log(undeclareadVariable === 'undefined');                    //undefined
 
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
@@ -386,9 +386,9 @@ console.log(typeof [1, 2, 3,] === 'object');
 console.log(typeof new Date() === 'object');
 console.log(typeof /regex/ === 'object');
 
-//console.log(typeof new Boolean(true) === 'object');                   //true
-//console.log(typeof new Boolean(1) === 'object');                      //true
-//console.log(typeof new Boolean(adc) === 'object');                    //false
+// console.log(typeof new Boolean(true) === 'object');                   //true
+// console.log(typeof new Boolean(1) === 'object');                      //true
+// console.log(typeof new Boolean(adc) === 'object');                    //false
 
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
@@ -396,9 +396,9 @@ console.log(typeof /regex/ === 'object');
 
 //typeof Function
 
-//console.log(typeof function () {} === 'function');                      //true
-//console.log(class c {} === 'function');                                 //false
-//console.log(Math.sin === 'function');                                   //false
+// console.log(typeof function () {} === 'function');                      //true
+// console.log(class c {} === 'function');                                 //false
+// console.log(Math.sin === 'function');                                   //false
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -532,11 +532,11 @@ console.log(str5 - str6);
 
 //string = object.toString();
 
-// Let's imagine an <a id="myAnchor" href="https://developer.mozilla.org/en-US/docs/HTMLHyperlinkElementUtils/toString"> element is in the document
+//Let's imagine an <a id="myAnchor" href="https://developer.mozilla.org/en-US/docs/HTMLHyperlinkElementUtils/toString"> element is in the document
 
-//var anchor = document.getElementById('myAnchor');
+// var anchor = document.getElementById('myAnchor');
 
-//var result = anchor.toString();
+// var result = anchor.toString();
 //Return: 'https://developer.mozilla.org/en-US/docs/HTMLHyperlinkElementUtils/toString'
 
 
@@ -584,25 +584,93 @@ console.log(String(numUndefined));
 //-------------------------------------------------------------------------------------------------------------------//
 
 
+//算数运算符
+
+//赋值运算符: "="
+
+//加: "+"
+
+//减: "-"
+
+//乘: "*"
+
+//除: "\"
+
+//余: "%"
 
 
+//-------------------------------------------------------------------------------------------------------------------//
 
 
+//算数运算符表达式 - 一元运算符
 
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 
 
+//算数运算符表达式 - 二元运算符
 
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 
 
+//算数运算符表达式 - 三元运算符
 
 
+//-------------------------------------------------------------------------------------------------------------------//
 
 
+//复合运算符
+
+//加等于: "+="
+
+//减等于: "-="
+
+//乘等于: "*="
+
+//除等于: "\="
+
+//减等于: "-="
+
+//模等于: "%="
 
 
+//-------------------------------------------------------------------------------------------------------------------//
 
 
+//关系运算符
+
+//大于: ">"
+
+//小于: "<"
+
+//大于等于: ">="
+
+//小于等于: "<="
+
+//值等于: "=="
+
+//值与类型等于: "==="
+
+//非等于: "!="
+
+//值与类型非等于: "!=="
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//逻辑运算符
+
+// &&
+
+
+// ||
+
+
+// !=
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
