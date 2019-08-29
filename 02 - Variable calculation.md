@@ -258,6 +258,14 @@ console.log(typeof varName);
         
         * 双精度 double
         
+        * 不要用小数验证小数 ( 语言 BUG ) ==> false
+        
+    * 数字类型范围
+    
+        * 无穷大: Infinity
+
+        * 无穷小: -Infinity
+        
     * NaN & isNaN
     
         不要使用 NaN 判断是不是 NaN，应该使用 isNaN( 值 / 变量 )
@@ -267,6 +275,8 @@ console.log(typeof varName);
             not a number
             
             * 任何类型和 NaN 运算, 结果都是 NaN
+            
+            * 与任何值都不相等，包括他本身
         
         * isNaN(): 
         
@@ -291,87 +301,14 @@ console.log(typeof varName);
         * 十六进制: 以 0x 开头
         
             * var _160o12 = 0x12;
-    
-<br/>
-
-数字类型的范围
-
-```javascript
 
 
-console.log(Number .MAX_VALUE);      //数字的最大值
-
-console.log(Number .MIN_VALUE);     //数字的最小值
-
-
-//  Infinity： 无穷大
-// -Infinity： 无穷小
-
-
-// NaN -> not a number
-// NaN 与任何值都不相等，包括他本身
-
-// isNaN -> is not a number
-
-
-```
 
 <br/>
-
-**不要用小数验证小数 ( 语言 BUG )**
-
-```javascript
-
-
-var x = 0.1;
-var y = 0.2;
-
-var sum = x + y;
-
-console.log(sum);            //0.30000000000000004
- 
-console.log(sum == 0.3);    //false
-
-
-```
-
+<hr/>
 <br/>
 
-**不要用 NaN 验证是否等于 NaN**
 
-```javascript
-
-
-var num;
-
-console.log(num + 10 == NaN);         //false
-
-
-console.log("小猫" == "小狗");         //false
-
-
-```
-
-<br/>
-
-**判断结果不是一个数字，使用 isNaN()**
-
-```javascript
-
-
-//isNaN()不是数字  == ture;
-//isNaN()是数字  == false;
-
-var num;
-
-var sum = num + 10;
-
-console.log(inNaN(sum));     //ture
-
-
-```
-
-<br/>
 
 <h4 id="#">进制原理</h4>
 
@@ -439,21 +376,6 @@ console.log(inNaN(sum));     //ture
     
     * 其他运算会触发浏览器隐式转换，再进行运算
 
-    
-<br/>
-
-**计算字符串的数字个数**
-
-```javascript
-
-
-var str = "what are you no sha lei";
-
-console.log( str.length )
-
-
-```
-
 <br/>
 
 JS 转义符
@@ -468,40 +390,6 @@ JS 转义符
  | \\'        | 一个单引号
  | \\"        | 一个双引号
  | \\\        | 一个反斜杠
-
-<br/>
-
-字符串 连接
-
-```javascript
-
-
-//两个字符串连接
-
-var str1 = "10";
-var str2 = "20";
-
-console.log(str1 + str2);          // str3 == 1020
-
-
-//一个字符串和其他类型连接
-
-var str3 = "10";
-var str4 = 20;
-
-console.log(str3 + str4);          // str3 = 1020
-
-
-//一个字符串减去不是字符串的类型
-
-var str5 = "10";
-var str6 = 20;
-
-console.log(str5 - str6);          
-// 浏览器自动 ( 隐式转换 ) 把字符串类型转成了数字类型进行计算
-
-
-```
 
 
 
@@ -579,64 +467,9 @@ console.log(str5 - str6);
 
 <br/>
 
-**整数转换**
-
-```javascript
-
-persenInt();
-
-console.log(persenInt( "10" ));                    //10
-console.log(persenInt( "10afrewssa" ));            //10
-console.log(persenInt( "g10" ));                   //NaN
-console.log(persenInt( "1fsd0" ));                 //1
-console.log(persenInt( "10.98" ));                 //10
-console.log(persenInt( "10.98dwafag" ));           //10
-
-
-```
-<br/>
-
-**小数转换**
-
-persenFloat();
-
-```javascript
-
-
-console.log(persenFloat( "10" ));                    //10
-console.log(persenFloat( "10afrewssa" ));            //10
-console.log(persenFloat( "g10" ));                   //NaN
-console.log(persenFloat( "1fsd0" ));                 //1
-console.log(persenFloat( "10.98" ));                 //10.98
-console.log(persenFloat( "10.98dwafag" ));           //10.98
-
-
-```
-
-<br/>
-
-**数字转换**
-
-Number();
-
-```javascript
-
-
-console.log( Number( "10" ));                    //10
-console.log( Number( "10afrewssa" ));            //NaN
-console.log( Number( "g10" ));                   //NaN
-console.log( Number( "1fsd0" ));                 //NaN
-console.log( Number( "10.98" ));                 //10
-console.log( Number( "10.98dwafag" ));           //NaN
-
-
-```
-
-<br/>
-
 * 其他类型转字符串类型
 
-    * .toString() ------> 主动调用转换
+    * string = object.toString(); ------> 主动调用转换
     
         * 如果变量有意义, 调用 .toString() 转换
     
@@ -646,20 +479,6 @@ console.log( Number( "10.98dwafag" ));           //NaN
 
 <br/>
 
-**强行把没有意义的类型 ( null、undefined ) 转换为 字符串**
-
-```javascript
-
-
-var num = undefined / null;
-
-console.log(String(num));       //undefined / null
-
-//String() 可以把没有意义的类型，转换为 字符串
-
-
-```
-
 * 其他类型转布尔类型
 
     * Boolean();
@@ -667,29 +486,6 @@ console.log(String(num));       //undefined / null
         * **0、null、undefined、NaN、""、false** 将会被转换为 false
         
         * 其他数据类型都为 ture
-        
-```javascript
-
-
-console.log(Boolean(1));                    //true
-
-console.log(Boolean(0));                    //false
-
-console.log(Boolean(11));                   //true
-console.log(Boolean(-10));                  //true    
-console.log(Boolean( "哈哈" ));              //true
-
-//有值有意义的都是true
-
- 
-console.log(Boolean(""));                   //false
-console.log(Boolean(null));                 //false
-console.log(Boolean(undefined));            //false
-
-//没有意义或空都是 false
-
-
-```
 
 
 

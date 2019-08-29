@@ -125,9 +125,9 @@ console.log(date1);
 //格式化日期和时间
 
 /**
- * 获取指定格式的时间
+ * 获取: 指定格式的时间
  * @param dt 日期对象
- * @returns {string} 返回字符串形式的日期
+ * @returns {string} 返回: 字符串形式的日期
  */
 function getDate(dt) {
 
@@ -152,19 +152,18 @@ function getDate(dt) {
     var second = dt.getSeconds();
 
 
+    // var arr = [month, day, hour, minute, second];
+
     month = month < 10 ? "0" + month : month;
-
     day = day < 10 ? "0" + day : day;
-
     hour = hour < 10 ? "0" + hour : hour;
-
     minute = minute < 10 ? "0" + minute : minute;
-
     second = second < 10 ? "0" + second : second;
 
 
     return year + "年" + month + "月" + day + "日" + hour + ":" + minute + ":" + second;
 }
+
 
 var dt = new Date();
 
