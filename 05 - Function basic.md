@@ -314,7 +314,7 @@ console.log(allNumSum(100));
 function allNumSum(firstNum, lastNum) {
 
     var numSum = 0;
-    for(var i = firstName; i <= lastName; i++) {
+    for(var i = firstNum; i <= lastNum; i++) {
         numSum += i;
     }
     return numSum;
