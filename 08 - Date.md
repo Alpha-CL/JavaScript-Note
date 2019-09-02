@@ -400,7 +400,7 @@
                     var str = "hello word"; ==> //indexMax = 10
                 
                     * var index  = str.substr(4);
-                    * console.log(index); ==> //expected output: "lo word"
+                    * console.log(index); ==> //expected output: "lo word"~~~~
                     
                         * 
                 
