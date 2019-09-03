@@ -170,17 +170,76 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
     
         * 调用: 必须通过大写的对象调用
         
-* new 的执行过程( new 的时候，系统的运行原理 )
 
-    1. 开辟空间，存储创建新的对象
+    |     stack         |         heap          |
+    ---------------------------------------------
+    1011    |   text    |   1001    |   text    |
+    1010    |   text    |   1002	|   text    |
+    1009    |   text    |   1003	|   text    |
+    1008    |   text    |   1004	|   text    |
+    1007    |   text    |   1005	|   text    |
+    1006    |   text    |   1006	|   text    |
+    1005    |   text    |   1007	|   text    |
+    1004    |   text    |   1008	|   text    |
+    1003    |   text    |   1009	|   text    |
+    1002    |   text    |   1010	|   text    |
+    1001    |   text    |   1011	|   text    |   
     
-    2. 把 "this" 设置为当前的对象
+        
+* 自定义构造函数创建对象原理
+
+    * new 的执行过程( new 的时候，系统的运行原理 )
     
-    3. 设置属性和方法的值
+        * 自定义构造函数创建对象 -> 调用时
+        
+            * 创建对象( 实例化对象 )，并初始化对象
+            
+            * -> 新建一个变量( 用于存储 "新的对象函数" ) ==> var newVariable;
+            
+            * -> 存储 "新的对象函数( 必须用 new )" ==> var newVariable = new myDefinedFunctionObject(parament1, parament2, pararmentN);
+            
+                * -> "新的对象函数" === "调用函数的副本"
+            
+                * -> 必须用 "new" 新建调用函数副本
+                
+                * -> 必须传参，否则相当于没有改变调用函数
+                
+                * 
+
+            * 如何调用自定义构造函数对象的属性和方法
+            
+                * -> 调用函数属性 ==> newVariable.Property
+                
+                    * console.log(newVariable.property);
+                    
+                    *
+                
+                * -> 调用函数方法 ==> newVariable.Method
+                
+                    * newVariable.Method();
+                    
+                    *
+
+    1. 开辟空间( 申请一块已有的空间 )，存储创建的新对象
     
-    4. 返回当前的新对象
-    ~~~~  
+    2. 把 "this" 设置为 "当前的对象"
     
+    3. 设置 this( 当前对象 )的 "属性" 和 "方法" 和 "相对应的值"
+    
+    4. 返回 this( 当前对象 )，及它所包含的 "属性" 和 "方法" 
+    
+    
+     | stack( 原始值 )                     | heap( 引用值 )
+    ------------------------------------- | --------------------------------------
+     | 存储基础数据类型                     | 存储引用数据类型
+     | 按值访问                            | 按引用访问         
+     | 存储的值大小固定                     | 存储的值大小不定，可动态调整 
+     | 由系统自动分配内存空间                | 由程序猿通过代码进行分配
+     | 主要用来执行程序                     | 主要用来存放对象
+     | 空间小、运行效率高                   | 空间大、但是运行效率相对较慢
+     | 先进后出( first in, last out )      | 无序存储，可根据引用直接获取
+    
+
 
 <br/>
 <hr/>
@@ -188,15 +247,79 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
 
 
-<h3 id="#">创建对象</h3>
+<h3 id="#">创建对象( 实例化对象 )</h3>
 
-* Creation Method: 
+* 创建对象的三种方法:
 
-    * 调用系统构造函数创建对象 
+    * 1、 调用系统构造函数创建对象 ==> var obj = new Object();
     
-        * new Object()
+        * obj == objectName
     
-    * 自定义构造函数创建对象( 结合第一种和需求通过工厂模式创建对象 )
+        * var obj = new Object();
+        
+            * add property
+            
+                * obj.propertyName = "propertyValue"; ==> obj.name = "alpha";
+            
+                * obj.propertyName = "propertyValue"; ==> obj.age = "18";
+            
+            * add method
+                
+                * obj.methodName = function() { method statements };
+                
+                    * ==> obj.play = function() {"I like playing basketball"};
+                
+                * obj.methodName = function() { method statements };
+                
+                    * ==> obj.eat = function() {"I like to drink milk"};
+                
+                * 
+                
+            * 在当前对象的方法中，可以调用属性
+            
+            * 在当前对象的方法中，可以使用 "this" 代替当情 "objectName"
+                
+                * obj.sayHi() {"My name is " + obj.name}; ==> "My name is alpha"
+                
+                * 使用 keyword ==> " this " replace "objectName"
+                
+                    * obj.sayHi() {"My name is " + this.name} ==> "My name is alpha"
+                
+            * invoking
+            
+                * invoking property 
+                
+                * ==> objectName.objectProperty
+                
+                    * console.log(obj.name); ==> expected output: "alpha"
+                    
+                    * console.log(obj.aeg); ==> expected output: "18"
+                    
+                    * 
+                
+                * invoking method 
+                
+                * ==> objectName.methodProperty()
+                
+                    * console.log(obj.play()); ==> expected output: "I like playing basketball"
+                    
+                    * console.log(obj.eatt()); ==> expected output: "I like to drink milk"
+                    
+                    *
+                    
+            * instanceof( 判断对象类型 )
+            
+            * ==> objectName instanceof typeName;
+            
+                * true: It's this type
+                
+                * false：Not this type
+                
+                *
+            
+    * 2、自定义构造函数创建对象( 结合第一种和需求通过工厂模式创建对象 ) ==> var obj = new myDefinedObjectFunction();
+    
+    * 工厂模式创建对象: 批量产出同类型 函数
     
         * var obj = new Object(); ==> 必须加 ";"，属于变量赋值
     
@@ -216,13 +339,33 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
             
             * 用于创建对象
             
-    * 字面量的方式创建对象
+        * "系统构造函数" 和 "自定义构造函数的区别"
+        
+            "系统构造函数" 和 "自定义构造函数" 的调用方法相同 !
+        
+            * 书写区别( 外观 )
+        
+                * 系统构造函数: "首字母小写"( 遵循小驼峰命名 )
+            
+                * 自定义构造函数函数: "首字母大写"( 大驼峰命名 )
+                
+            * 作用区别
+            
+                * 系统构造函数: 函数的调用
+                
+                * 自定义构造函数: 主要用于 "创建对象"
+                
+                * 
+            
+    * 3、字面量的方式创建对象 ==> var obj = {}
     
         * var obj = {parameter1, parameter2, ... parameterN};
+        
+        * 注意: 添加对象方法语句后，不用加 ";" ( !important )
     
         * 缺陷: 
         
-            * 一次性的对象
+            * 一次性的对象( 修改数据只能在原码上修改 )
             
                 * 修改数据对象方法 1: 直接在源码上更改对象的值
                 
@@ -263,20 +406,54 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
         * console.log(newVarName["objectPropertyName"]);
           
         * newVarName[ "objectMethodName"] ();
+        
+* JS 一门什么样的语言
+
+    * 解释性语言
+    
+    * 脚本语言
+    
+    * 弱类型语言: 声明任何变量都用 var
+    
+    * 基于对象的语言
+    
+    * 动态类型的语言
+    
+        * var num = XXX； 
+        
+            * 只有当代码执行到 "XXX" 位置的时候，才知道这个变量中存储的是什么
+        
+        * 对象没有什么
+        
+            * 只要点了，通过点语法，那么就可以为对象添加属性或方法
 
 * Json 格式的数据  
 
-    * Json 数据实际上是格式化后的一组 "字符串数据"
-    
-    * Json 数据必须用双引号包裹 ==> "JsonCode" = "JsonCode",
+    * 特点
 
-    * Json 格式的数据: 一般都是成对出现的，是键值对( "键": "值" )
+        * var "key" = "word";
+
+        * Json 数据实际上是格式化后的一组 "字符串数据"
     
-    * Json 也是一个对象、数据是成对的
+        * Json 数据必须用双引号包裹 ==> "JsonCode" = "JsonCode"
+
+        * Json 格式的数据: 一般都是成对出现的，是键值对( "键": "值" )
     
-    * 不能用遍历对象( Json 数据是无序的 )
+        * Json 也是一个对象、数据是 "成对的"
     
-    * 
+        * 不能用遍历对象( Json 数据是无序的 )
+    
+    * 调用
+    
+        * 
+        
+        *
+        
+        *
+        
+        *
+        
+        *
     
 * 数据类型
 
@@ -321,6 +498,12 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 * 获取对象变量类型: 
 
     * instanceof
+    
+        * 系统对象构造函数: 无法区分 对象是什么类型类型( 所有返回值都为: object )
+        
+        * 自定义构造函数对象: 可以区分对象类型
+        
+        *
     
     * Return value: 
     
@@ -367,16 +550,6 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
         * 引用值的地址是原始值的内存地址编号
         
         *
-
- | stack( 原始值 )                     | heap( 引用值 )
-------------------------------------- | --------------------------------------
- | 存储基础数据类型                     | 存储引用数据类型
- | 按值访问                            | 按引用访问         
- | 存储的值大小固定                     | 存储的值大小不定，可动态调整 
- | 由系统自动分配内存空间                | 由程序猿通过代码进行分配
- | 主要用来执行程序                     | 主要用来存放对象
- | 空间小、运行效率高                   | 空间大、但是运行效率相对较慢
- | 先进后出( first in, last out )      | 无序存储，可根据引用直接获取
       
 <br/>
 
@@ -400,10 +573,21 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
 ```
 
-```javascript
-
-//如何验证变量是不是对象
 
 
 
-```__
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

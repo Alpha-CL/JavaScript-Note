@@ -65,6 +65,358 @@ phone.call();
 phone.msg();
 
 
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//创建一条黄色的小狗，叫大黄，今年三岁，250斤的重量每次走路很慢，喜欢吃大骨头
+
+
+var smallDog = new Object;
+
+//add property
+smallDog.name = "大黄";
+smallDog.age = "3";
+smallDog.weight = "250kg";
+smallDog.color = "yellow";
+
+//add methods
+smallDog.walk = function () {
+    console.log("I am very slow");
+};
+smallDog.eat = function () {
+    console.log("I like eat big boon");
+};
+
+
+//invoking property
+console.log(smallDog.name);
+console.log(smallDog.age);
+console.log(smallDog.color);
+
+//invoking method
+smallDog.walk();
+smallDog.eat();
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//推理构造函数工厂模式( 一次性创建多个个对象 )
+//
+//推理自定义构造函数
+//
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//01. 创建 人的对象
+
+var person = new Object();
+
+//add property
+person.name = "alpha";
+person.age = "18";
+
+//add method
+person.saySeeYou = function () {
+
+    console.log("See you again");
+};
+
+//invoking
+console.log("This is a " + person.name + person.age + " object");
+person.saySeeYou();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//02. 创建学生的对象
+
+var stu = new Object();
+
+//add property
+stu.name = "beta";
+stu.age = "17";
+
+//add method
+stu.sayLove = function () {
+
+    console.log("I love you");
+};
+
+//invoking
+console.log("This is a " + stu.name + stu.age + " object");
+stu.sayLove();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//03. 创建 小狗对象
+
+var dogXT = new Object();
+
+//add property
+dogXT.name = "哮天犬";
+dogXT.age = "11";
+
+//add method
+dogXT.sayWang = function () {
+    1
+
+    console.log("wang wang .... !")
+};
+
+//invoking
+console.log("This is a " + dogXT.name + dogXT.age + " object");
+dogXT.sayWang();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//判断 人、学生、小狗 是什么对象类型
+//
+// 无法判断出 每个对象 所对应的相对类型
+
+
+// console.log(person instanceof Person);               //ReferenceError: Person is not defined
+// console.log(stu instanceof Beta);                    //ReferenceError: Stu is not defined
+// console.log(dogXT instanceof DogXT);                 //ReferenceError: DogXT is not defined
+
+
+//对象不能分辨出 每个对象属于什么类型
+//
+// objectName instanceof typeName
+//
+console.log(person instanceof Object);                  //Object
+console.log(stu instanceof Object);                     //Object
+console.log(dogXT instanceof Object);                   //Object
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//函数封装
+//
+//调用对象不可缺少的:  1. return:没有 "return" 就没有返回值
+//                  2. 调用封装函数，"必须新建一个变量" 储存 "函数体"
+//                  3. 调用什么就 . 什么
+
+function createMoreObject() {
+
+    var obj = new Object;
+
+    //add property
+    obj.name = "omega";
+    obj.age = 13;
+
+    //add method
+    obj.sayGo = function () {
+
+        console.log("I want go to " + this.name);
+    };
+    return obj;
+}
+
+//invoking
+var master = createMoreObject();
+master.sayGo();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function createMoreObject1() {
+
+    var obj = new Object();
+
+    //add property
+    obj.name = "王大锤";
+    obj.age = "11";
+
+    //add method
+    obj.sayWant = function () {
+
+        console.log("I want " + this.name + "I want" + this.age);
+    };
+    return obj;
+}
+
+//create a function in new variable
+var master1 = createMoreObject1();
+var master2 = createMoreObject1();
+
+//invoking property
+console.log("This is a " + master.name + master.age);
+
+//invoking method
+//
+//重复调用相同属性值的方法
+master1.sayWant();
+master2.sayWant();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//构造函数工厂模式推理
+
+function createMoreObject2(name, age) {
+
+    var obj = new Object();
+
+    //add property
+    obj.name = name;
+    obj.age = age;
+
+    //add method
+    obj.sayYes = function () {
+
+        console.log("My name is " + this.name + ", 今年 " + this.age);
+    };
+    return obj;
+}
+
+var admin1 = createMoreObject2("石榴姐", 99);
+var admin2 = createMoreObject2("秋香", 18);
+
+admin1.sayYes();
+admin2.sayYes();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+//自定义构造对象函数推理
+
+function CreateMoreObject3(name, age) {
+
+    //add property
+    this.name = name;
+    this.age = age;
+
+    //add method
+    this.sayGet = function () {
+
+        console.log("I will get " + this.name + this.age);
+    };
+}
+
+
+//create a function in new variable
+var administrator = new CreateMoreObject3("自定义构造函数", 10);
+
+//invoking property
+console.log(administrator.name);
+console.log(administrator.age);
+
+//invoking method
+administrator.sayGet();
+
+
+//another new CustomConstructorsObject
+var administrator1 = new CreateMoreObject3("另一个自定义构造函数", 20);
+
+administrator1.sayGet();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//自定义构造函数创建对象做了四件事( !important )
+//
+//多数面向对象语言的基本执行原理
+
+// 1. 在内存中开辟空间( 申请一块空闲的空间 )，存储创建的新对象
+//
+// 2. 把 "this" 设置为 "当前对象"
+//
+// 3. 设置对象的 "属性" 和 "方法"
+//
+// 4. 把 "this" 这个对象返回
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//自定义构造对象函数可以用 instanceof 判断是什么类型
+//
+//自定义构造函数仍然属于 object 类型
+//
+//true； 是同一个类型
+//
+//false: 不是同一个类型
+
+console.log(administrator instanceof CreateMoreObject3);            //true
+console.log(administrator1 instanceof CreateMoreObject3);           //true
+console.log(administrator1 instanceof Object);                      //true
+
+
+console.log(administrator1 instanceof createMoreObject1);                 //false
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//通过自定义构造函数创建对象
+
+//创建一个图片对象，图片有宽、有高、有大小( 4M )，图片可以展示内容
+
+
+function PhotoDisplay(width, height, size) {
+
+    //add property
+    this.width = width;
+    this.height = height;
+    this.size = size;
+
+    //add method
+    this.displayContent = function () {
+
+        console.log("I have " + "width = " + this.width + ", height = " + this.height + ", size = " + this.size);
+    };
+}
+
+//create a function in new variable
+var onePhoto = new PhotoDisplay(100, 200, 4);
+
+//invoking method
+onePhoto.displayContent();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//创建一个小猫的对象，小猫有颜色、体重、年龄，小猫可以抓耗子、可以打架
+
+function SmallCat(color, weight, age) {
+
+    //add property
+    this.color = color;
+    this.weight = weight;
+    this.age = age;
+
+    //add method
+    this.catchMice = function () {
+
+        console.log("虽然我有 " + this.weight + "， 但是我可以抓老鼠");
+    };
+    this.fight = function () {
+
+        console.log("虽然我年龄 " + this.age + "，但是我打架很厉害");
+    };
+}
+
+//create a function in new variable
+var oneSmallCat = new SmallCat("black", 180, 250);
+
+//invoking methods
+oneSmallCat.catchMice();
+oneSmallCat.fight();
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -129,6 +481,10 @@ per22.sayHi();
 // 自定义构造函数命名规则: " 大驼峰命名 "
 // 函数和构造函数的区别: 函数命名的首字母谁否是大写( 如果是小写: 普通函数 -> 用于调用; 如果是大写: 自定义构造函数 -> 创建对象 )
 
+// 系统的对象构造函数
+//
+// Object
+// ==> function Object(value) {}
 
 //定义构造函数
 //
@@ -302,6 +658,10 @@ per305.sayHi();
 
 
 //字面量方式创建对象
+//
+// 字面形式创建对象类似于 数组
+//
+// 注意: 方法后不用加 ";"
 
 var newObject = {
 
@@ -363,14 +723,17 @@ var changedValue = new anotherChangedMethod("alpha", 20);
 
 //Method - 1
 //
-// changedValue.name = "Rebecca";
+// changedValue.name = "Rebeca";
 // console.log(changedValue.name);
 // changedValue.play();
 
 //Method - 2
 //
-changedValue["name"] = "Rebecca";
+changedValue["name"] = "Rebeca";
 console.log(changedValue["name"]);
+
+//invoking method - 2
+//
 changedValue["play"]();
 
 
