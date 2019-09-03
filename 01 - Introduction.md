@@ -77,17 +77,17 @@
     
         * 声明变量: 必须声明变量的类型 
         
-            int num = 10; 
+            * int num = 10; 
             
-            float num2 = 90.3;
+            * float num2 = 90.3;
 
     * 弱类型语言: JavaScript
     
         * 声明变量: 所有类型都可以用 var 声明
         
-            var num = 10;
+            * var num = 10;
             
-            var num2 = 90.3;
+            * var num2 = 90.3;
 
 
 
@@ -153,11 +153,11 @@ ECMAScript 5 中引入的 JavaScript 严格模式是一种选择加入受限制�
 
 * 严格模式对常规JavaScript语义进行了一些更改
 
-    1. 通过更改它们以抛出错误来消除一些JavaScript无提示错误。
+    1. 通过更改它们以抛出错误来消除一些 JavaScript 无提示错误。
     
-    2. 修复了使JavaScript引擎难以执行优化的错误：严格模式代码有时可以比非严格模式的相同代码运行得更快。
+    2. 修复了使 JavaScript 引擎难以执行优化的错误：严格模式代码有时可以比非严格模式的相同代码运行得更快。
     
-    3. 禁止在ECMAScript的未来版本中定义某些语法
+    3. 禁止在 ECMAScript 的未来版本中定义某些语法
 
 
 
@@ -219,7 +219,7 @@ JavaScript: 控制网页内容，增加动态交互效果
 
     *   language="javascript" ------ 解决 PHP 解析
     
-    目前 html 页面中，type 和 language 都可以省略，因为 html 遵循 H5 的标准 ( 如果头部规定低版本的 html 则不能省略 )
+    * 目前 html 页面中，type 和 language 都可以省略，因为 html 遵循 H5 的标准 ( 如果头部规定低版本的 html 则不能省略 )
 
 4. script 标签在页面中可以出现多次
 

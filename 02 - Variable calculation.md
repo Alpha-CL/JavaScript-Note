@@ -288,7 +288,7 @@ console.log(typeof varName);
         
             * isNaN() ==> 是数字    == false;
     
-    * 进值表示方法
+    * 进制表示方法
     
         * 十进制: 正常数字
         
@@ -439,7 +439,13 @@ JS 转义符
 
 * object
 
+* array
+
+* date
+
 * function
+
+* 
 
 
 
@@ -455,7 +461,7 @@ JS 转义符
 
 * 其他类型转数字类型
 
-    parseInt/parseFloat，能转则转;
+    parseInt / parseFloat，能转则转;
     
     Number(), 严格转换;
 
