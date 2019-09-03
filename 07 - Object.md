@@ -391,7 +391,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
 
 //以构造函数形式来调用
-new Object([value]);
+// new Object([value]);
 
 
 //nameValuePairl1, nameValuePairl2, ... nameValuePairlN
@@ -406,4 +406,4 @@ new Object([value]);
 
 
 
-```
+```__

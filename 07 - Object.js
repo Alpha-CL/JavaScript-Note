@@ -94,6 +94,8 @@ phone.msg();
 
 
 // 一次性创建多个函数对象
+//
+// 利用构造函数传参
 
 function myNewObject(name, age) {
 
@@ -122,13 +124,14 @@ per22.sayHi();
 
 
 //NO.03: 自定义构造函数
-//自定义构造函数主要用于 ==> 创建对象
-//自定义构造函数命名规则: " 大驼峰命名 "
-//函数和构造函数的区别: 函数命名的首字母谁否是大写( 如果是小写: 普通函数 -> 用于调用; 如果是大写: 自定义构造函数 -> 创建对象 )
+//
+// 自定义构造函数主要用于 ==> 创建对象
+// 自定义构造函数命名规则: " 大驼峰命名 "
+// 函数和构造函数的区别: 函数命名的首字母谁否是大写( 如果是小写: 普通函数 -> 用于调用; 如果是大写: 自定义构造函数 -> 创建对象 )
 
 
 //定义构造函数
-
+//
 // function myDefinedFunction() {                      //小驼峰命名( 普通函数 )
 //
 //     //Create a new object
@@ -150,7 +153,7 @@ per22.sayHi();
 
 
 //==> 自定义构造函数
-
+//
 // function MyDefinedFunction() {                       //大驼峰命名( 自定义构造函数 ) !important
 //
 //     //Remove "var = obj = new Object();"
@@ -173,7 +176,7 @@ per22.sayHi();
 
 
 //==> 自定义构造函数创建对象
-
+//
 function MyDefinedFunction(name, age) {                   //大驼峰命名( 自定义构造函数 ) !important
 
     this.name = name;
@@ -220,14 +223,14 @@ console.log(per302 instanceof MasterObjectInstanceof);            //true
 
 //判断获取
 
-function SonrObjectInstanceof(name, age, sex) {
+function SonObjectInstanceof(name, age, sex) {
 
     this.name = name;
     this.age = age;
     this.sex = sex;
 }
 
-var son = new SonrObjectInstanceof("son", 20, "male");
+var son = new SonObjectInstanceof("son", 20, "male");
 
 console.log(son instanceof MasterObjectInstanceof);               //false
 
@@ -256,13 +259,15 @@ per305.sayHi();
 //在内存中 开辟( 申请一块空闲的 ) 空间，储存创建的新对象
 
 //Step - 2
-//把 "this" 设置为当前的对象
+//
+// 把 "this" 设置为当前的对象
 // this.name;;
 // this.age;
 // this.sayHi;
 
 //Step - 3
-//设置对象的属性和方法的值
+//
+// 设置对象的属性和方法的值
 // this.name = name;
 // this.age = age;
 //
@@ -271,6 +276,7 @@ per305.sayHi();
 // };
 
 //Step - 4
+//
 //把 "this" 这个对象返回
 
 
@@ -316,6 +322,7 @@ newObject.sayHello();
 
 
 //字面量创建对象的缺陷
+//
 //一次性对象
 
 var myNewObjectShort = {
@@ -326,6 +333,7 @@ var myNewObjectShort = {
 };
 
 //修改对象数据方法 - 1
+//
 myNewObjectShort.name = "beta";                 //Change name = "beta";
 
 console.log(myNewObjectShort.name);
@@ -337,6 +345,7 @@ console.log(myNewObjectShort.name);
 //NO.05: 设置和获取属性的另一种方式
 
 //Basic Code
+//
 function anotherChangedMethod(name, age) {
 
     this.name = name;
@@ -353,13 +362,13 @@ var changedValue = new anotherChangedMethod("alpha", 20);
 //Change name value on object
 
 //Method - 1
-
+//
 // changedValue.name = "Rebecca";
 // console.log(changedValue.name);
 // changedValue.play();
 
 //Method - 2
-
+//
 changedValue["name"] = "Rebecca";
 console.log(changedValue["name"]);
 changedValue["play"]();
