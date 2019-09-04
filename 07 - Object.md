@@ -504,7 +504,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
     模拟数据存储原理，及逻辑关系
 
-     | stack                  | heap                     |
+     | stack     |            | heap        |            |
     -------------------------------------------------------
      stkName     | stkValue   | hpAdress    | hpContent  |
      varName1    | number     | objadress   | object     |
