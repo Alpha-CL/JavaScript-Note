@@ -241,6 +241,20 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
 * 创建对象的三种方法:
 
+    * 示例对比
+
+        * 通过调用系统的构造函数创建对象 new Object()
+
+            * var obj1 = new Object();
+
+        * 自定义构造函数创建对象
+
+            * var obj2 = new myDefinedFunction();
+            
+        * 字面量的方式创建对象
+
+            * var obk3 = {}
+
     * 1、 调用系统构造函数创建对象 ==> var obj = new Object();
     
         * obj == objectName
