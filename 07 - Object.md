@@ -152,7 +152,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
 * 有属性和方法，特指某个事物
 
-* 一组无序属性的集合，属性的值可以是任意类型
+* 一组无序属性的集合( 键 值 对 )，属性的值可以是任意类型
 
     * 属性( Property )
     
@@ -174,22 +174,6 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
         
         * 
 
-<br/>
-
-    |     stack         |         heap          |
-    ---------------------------------------------
-    1011    |   text    |   1001    |   text    |
-    1010    |   text    |   1002	|   text    |
-    1009    |   text    |   1003	|   text    |
-    1008    |   text    |   1004	|   text    |
-    1007    |   text    |   1005	|   text    |
-    1006    |   text    |   1006	|   text    |
-    1005    |   text    |   1007	|   text    |
-    1004    |   text    |   1008	|   text    |
-    1003    |   text    |   1009	|   text    |
-    1002    |   text    |   1010	|   text    |
-    1001    |   text    |   1011	|   text    |   
-    
 <br/>
 
 * 自定义构造函数创建对象原理
@@ -244,7 +228,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
      | 主要用来执行程序                     | 主要用来存放对象
      | 空间小、运行效率高                   | 空间大、但是运行效率相对较慢
      | 先进后出( first in, last out )      | 无序存储，可根据引用直接获取
-    
+
 
 
 <br/>
@@ -411,7 +395,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
           
         * console.log(newVarName["objectPropertyName"]);
           
-        * newVarName[ "objectMethodName"] ();
+        * newVarName["objectMethodName"] ();
         
 * JS 一门什么样的语言
 
@@ -433,7 +417,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
         
             * 只要点了，通过点语法，那么就可以为对象添加属性或方法
 
-* Json 格式的数据  
+* Json 格式的数据( JavaScript Object Notation )  
 
     * 特点
 
@@ -469,9 +453,13 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
         
             * number、string、boolean
             
+            * 
+            
         * 复杂类型( 引用类型 )
         
             * object
+            
+            * 
     
         * 空类型
         
@@ -492,8 +480,47 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
             * 引用类型的值 
             
             * 
+            
+            
+<br/>
 
-* Key Word: 
+    模拟初始化数据存储
+
+    |     stack         |         heap          |
+    ---------------------------------------------
+    1011    |   text    |   1001    |   text    |
+    1010    |   text    |   1002	|   text    |
+    1009    |   text    |   1003	|   text    |
+    1008    |   text    |   1004	|   text    |
+    1007    |   text    |   1005	|   text    |
+    1006    |   text    |   1006	|   text    |
+    1005    |   text    |   1007	|   text    |
+    1004    |   text    |   1008	|   text    |
+    1003    |   text    |   1009	|   text    |
+    1002    |   text    |   1010	|   text    |
+    1001    |   text    |   1011	|   text    |
+    
+<br/>
+
+    模拟数据存储原理，及逻辑关系
+
+    |         stack            |              heap             |
+    -------------------------------------------------------------
+    varName1    |   number     |   objadress   |     object    |
+    varName2    |   string     |     1002	   |      text     |
+    varName3    |   boolean    |     1003	   |      text     |
+    varName4    |   objadress  |     1004	   |      text     |
+    1007        |    text      |     1005	   |      text     |
+    1006        |    text      |     1006	   |      text     |
+    1005        |    text      |     1007	   |      text     |
+    1004        |    text      |     1008	   |      text     |
+    1003        |    text      |     1009	   |      text     |
+    1002        |    text      |     1010	   |      text     |
+    1001        |    text      |     1011	   |      text     |      
+             
+   <br/>
+
+* Ke    y    Word: 
 
     * this
     

@@ -687,12 +687,14 @@ newObject.sayHello();
 
 var myNewObjectShort = {
 
-    name: "alphaNoChanged",                     //修改对象数据方法 - 2
+    name: "alphaNoChanged",                     //修改对象数据方法 - 2: 在源码上更改
     agea: 38,
     sex: "male"
 };
 
 //修改对象数据方法 - 1
+//
+// 1. 通过 "." 语法修改( 属性 )
 //
 myNewObjectShort.name = "beta";                 //Change name = "beta";
 
@@ -740,10 +742,78 @@ changedValue["play"]();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//JavaScript Object Notation( Json ) 格式的数据
+
+
+//step - 1
+//
+// Json 数据展示
+
+var jsonDateDisplay = {
+
+    "name": "alpha",
+    "age": "18",
+    "sex": "male"
+};
+
+
+//step - 2
+//
+// invoking json date
+
+//通过 ["keyName"] 调用 【"wordValue"]
+//
+// jsonName["keyName"]; ==> back ==> "wordValue"
+//
+console.log("json: " + jsonDateDisplay["name"]);
+
+
+//推理 json 数据遍历过程
+//
+var jsonKey1 = "age";
+//expected output: 18
+//
+console.log("jsonKey: " + jsonDateDisplay[jsonKey1]);
+//expected output: 18
+
+
+//不能调取 json 中没有的数据
+//
+var jsonKey2 = "weight";
+//expected output: undefined
+
+
+//step - 3
+//
+// for ... in ...
+
+for (var key1 in jsonDateDisplay) {
+
+    console.log(key1);
+    //expected output: name age sex
+
+    console.log(jsonDateDisplay[key1]);
+    //expected output: alpha 18 male
+}
+
+
+//遍历数组对比
+var arrDisplay = [10, 20, 30];
+
+for (var i = 0; i < arrDisplay.length; i++) {
+
+    console.log(arrDisplay[i]);
+}
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
 //NO.06_01: for ... in 循环，遍历 Json 数据
 
-//对象中确实有这个属性用 " . "
-//对象中
+// 对象中确实有这个属性用 " . "
+//
+// 对象中
 
 
 var json = {
@@ -754,11 +824,19 @@ var json = {
 };
 
 
-//
+//json 数据遍历
 for (var key in json) {
 
+    //invoking jsonkey
+    //
     // console.log(key);
+    //expected output: name age sex
+
+    //invoking jsonWord
+    //
     // console.log(json[key]);
+    //expected output: alpha 18 male
+
     console.log(key + ": " + json[key]);
 }
 
