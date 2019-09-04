@@ -507,6 +507,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
      | stack     |            | heap        |            |
     -------------------------------------------------------
      stkName     | stkValue   | hpAdress    | hpContent  |
+                 |            |             |            |
      varName1    | number     | objadress   | object     |
      varName2    | string     | 1002	    | text       |
      varName3    | boolean    | 1003	    | text       |
