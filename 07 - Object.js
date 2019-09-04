@@ -3,7 +3,7 @@
 
 //NO.01: 创建对象( 一个有手机型号、手机颜色、可以打电话、发短信的 手机对象 )
 
-//NO.01_Epl_01: 创建对象( 一个电脑对象，有眼色、重量、品牌、型号，可以看电影、听音乐、打游戏、敲代码 )
+//NO.01_Epl_01: 创建对象( 一个电脑对象，有颜色、重量、品牌、型号，可以看电影、听音乐、打游戏、敲代码 )
 
 //NO.01_Epl_02: 创建对象( 穿件一个按钮对象，有宽、高、背景颜色颜色，可以点击、鼠标进入 )
 
@@ -71,7 +71,7 @@ phone.msg();
 //创建一条黄色的小狗，叫大黄，今年三岁，250斤的重量每次走路很慢，喜欢吃大骨头
 
 
-var smallDog = new Object;
+var smallDog = new Object();
 
 //add property
 smallDog.name = "大黄";
@@ -96,6 +96,214 @@ console.log(smallDog.color);
 //invoking method
 smallDog.walk();
 smallDog.eat();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//NO.01_Epl_01: 创建对象( 一个电脑对象，有颜色、重量、品牌、型号，可以看电影、听音乐、打游戏、敲代码 )
+
+
+//Method - 1: 调用系统 Object 创建对象
+
+var computer1 = new Object();
+
+//add property
+computer1.name = "Mac";
+computer1.color = "gray";
+computer1.weight = "3kg";
+computer1.brand = "apple";
+computer1.version = "2019";
+
+//add methods
+computer1.iCanDo = function () {
+
+    console.log("I can watch movies, listen to music, play games and write code " + this.name + this.color);
+};
+
+//invoking
+computer1.iCanDo();
+
+
+//Method - 2: 自定义构造函数创建对象
+
+function Computer2(name, color, weight, brand, version) {
+
+    //add property
+    this.name = name;
+    this.color = color;
+    this.weight = weight;
+    this.brand = brand;
+    this.version = version;
+
+    //add methods
+    this.iCanDo = function () {
+
+        console.log("I can watch movies, listen to music, play games and write code " + this.name + this
+            .color);
+    };
+}
+
+var computer2 = new Computer2("beta", "black", "10g", "2018");
+
+//invoking
+computer2.iCanDo();
+
+
+//Method - 3: 字面量方式创建对象
+
+var computer3 = {
+
+    //add property
+    name: "omega",
+    color: "red",
+    weight: "20kg",
+    brand: "HuaWei",
+    version: "2000",
+
+    //add method
+    iCanDo() {
+        console.log("I can watch movies, listen to music, play games and write code " + this.name + this
+            .color);
+    }
+};
+
+//invoking
+computer3.iCanDo();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//NO.01_Epl_02: 创建对象( 穿件一个按钮对象，有宽、高、背景颜色颜色，可以点击、鼠标进入 )
+
+
+//Method - 1: 调用系统 Object 创建对象
+
+var button1 = new Object();
+
+//add property
+button1.width = "10cm";
+button1.height = "20cm";
+button1.backggroundColor = "yellow";
+
+//add method
+button1.actions = function () {
+
+    console.log("button1: " + "I can click in " + this.width + this.height);
+};
+
+//invoking
+button1.actions();
+
+
+//Method - 2: 自定义构造函数创建对象
+
+function Button2(width, height, backgroundColor) {
+
+    //add property
+    this.width = width;
+    this.height = height;
+    this.background = backgroundColor;
+
+    //add methods
+    this.actions = function () {
+
+        console.log("button2: " + "I can click in " + this.width + this.height);
+    };
+}
+
+var button2 = new Button2("30cm", "20cm", "green");
+
+//invoking
+button2.actions();
+
+
+//Method - 3: 字面量方式创建对象
+
+var button3 = {
+
+    //add property
+    width: "50cm",
+    height: "60cm",
+    backgroundColor: "blue",
+
+    //add methods
+    actions() {
+
+        console.log("button3: " + "I can click in " + this.width + this.height);
+    }
+};
+
+//invoking
+button3.actions();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//NO.01_Epl_03: 创建对象( 一个车对象，有重量、颜色、牌子，可以载入、拉货 )
+
+
+//Method - 1: 调用系统 Object 创建对象
+
+var objCar = new Object();
+
+//add property
+objCar.name = "BWM";
+objCar.weight = "20T";
+objCar.color = "black";
+
+//add methods
+objCar.carGo = function () {
+
+    console.log("objCar1: " + "I can haul a lot of goods " + this.weight + this.name);
+};
+
+//invoking
+objCar.carGo();
+
+
+//Method - 2: 自定义构造函数创建对象
+
+function ObjCar2(name, weight, color) {
+
+    //add property
+    this.name = name;
+    this.weight = weight;
+    this.color = color;
+
+    //add method
+    this.carGo = function () {
+
+        console.log("objCar2: " + "I can haul a lot of goods " + this.weight + this.name);
+    };
+}
+
+var objCar2 = new ObjCar2("Volvo", "90T", "red");
+
+//invoking
+objCar2.carGo();
+
+
+//Method - 3: 字面量方式创建对象
+
+var objCar3 = {
+
+    //add property
+    name: "WWE",
+    weight: "22T",
+    color: "blue",
+
+    //add method
+    carGo() {
+
+        console.log("objCar3: " + "I can haul a lot of goods " + this.weight + this.name);
+    }
+};
+
+//invoking
+objCar3.carGo();
 
 
 //-------------------------------------------------------------------------------------------------------------------//
@@ -164,7 +372,6 @@ dogXT.age = "11";
 
 //add method
 dogXT.sayWang = function () {
-    1
 
     console.log("wang wang .... !")
 };
@@ -207,7 +414,7 @@ console.log(dogXT instanceof Object);                   //Object
 
 function createMoreObject() {
 
-    var obj = new Object;
+    var obj = new Object();
 
     //add property
     obj.name = "omega";
@@ -844,8 +1051,182 @@ for (var key in json) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// steak heap 中数据存储原理分析
+//
 
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+var numBefore = 10;
+
+//step - 1
+//
+// 在 steak 中申请一个空间
+//
+// 名为: numBefore，值为: 10
+
+var numAfter = numBefore;
+
+//step - 2
+//
+// 在 steak 中 "重新" 申请另一个空间
+//
+// 名为: numAfter，值为: 复制 numBefore 的值 10
+
+console.log(numAfter);
+//expected output: 10
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function f1(x) {
+
+    x = 100;
+}
+
+//step - 1
+//
+// 在 heap 中，申请一块空间 存储函数 --> 函数名为: f1 函数体为: x = 100
+//
+// 在 steak 中，申请一个空间，存储参数 --> 参数名为: x 参数值为 100
+
+var num = 10;
+
+//step - 2
+//
+// 在 steak 中申请一个空间
+//
+// 名为: num, 值为: 10
+
+f1(num);
+
+//step - 3
+//
+// 调用 steak 中名为 num 空间的 值，存储进名为 x 空间中
+//
+// 此时: num 的值仍然是 10( steak 中 存储的原始值是无法改变的，除非内存已满，数据覆盖 )
+//
+//      x 的值为 num 变量的值 10
+//
+
+console.log(num);
+//expected output: 10
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+var obj = {
+
+    name: "alpha"
+};
+
+function f2(obj2) {
+
+    obj2.name = "beta";
+}
+
+console.log(obj.name);
+//expected output: alpha
+
+f2(obj);
+
+console.log(obj.name);
+//expected output: beta
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+var num1 = 10;
+var num2 = num1;
+
+num1 = 20;
+
+console.log(num1);
+//expected output: 20
+
+console.log(num2);
+//expected output: 10
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+var num3 = 50;
+
+function f3(num3) {
+
+    num3 = 60;
+    console.log(num3);
+    60
+}
+
+f3(num3);
+
+console.log(num3);
+//expected output: 50
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+// var num4 = 55;
+// var num5 = 66;
+//
+// function f4(num66, num4) {
+//
+//     num66 = 100;                        //55    全局变量( 未声明 ) -> num66
+//     num4 = 100;                         //100   全局变量 -> num5
+//     num5 = 100;                         //100   全局变量 -> num5
+//
+//     console.log(num);                   //100
+//     console.log(num4);                  //100
+//     console.log(num5);                  //100
+// }
+//
+// f4(num4, num5);
+//
+// console.log(num4);
+// //expected output: 55
+//
+// console.log(num5);
+// //expected output: 100
+//
+// console.log(num66);
+// //expected output: Error: num is not defined
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function Person(name, age, salary) {
+
+    this.name = name;
+    this.age = age;
+    this.salary = salary;
+}
+
+function f5(person) {
+
+    person.name = "1s";
+    person = new Person("aa", 18, 10);
+}
+
+var p = new Person("zs", 18, 1000);
+
+console.log(p.name);
+//expected output: "zs"
+
+f5(p);
+
+console.log(p.name);
+//expected output: "1s"
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 
 
 
