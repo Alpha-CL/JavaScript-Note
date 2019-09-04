@@ -506,20 +506,20 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
 
      | stack                  | heap                     
     -------------------------------------------------------
-     | stkName   | stkValue   | hpAdress    | hpContent  
-     |           |            |             |            
-     | varName1  | number     | objadress   | object     
-     | varName2  | string     | 1002	    | text       
-     | varName3  | boolean    | 1003	    | text       
-     | varName4  | objadress  | 1004	    | text       
-     | 1007      | text       | 1005	    | text       
-     | 1006      | text       | 1006	    | text       
-     | 1005      | text       | 1007	    | text       
-     | 1004      | text       | 1008	    | text       
-     | 1003      | text       | 1009	    | text       
-     | 1002      | text       | 1010	    | text       
-     | 1001      | text       | 1011	    | text             
-          
+     | stkName   | stkValue  | hpAdress   | hpContent  
+     |           |           |            |            
+     | varName1  | number    | objadress  | object     
+     | varName2  | string    | 1002	      | text       
+     | varName3  | boolean   | 1003	      | text       
+     | varName4  | objadress | 1004	      | text       
+     | 1007      | text      | 1005	      | text       
+     | 1006      | text      | 1006	      | text       
+     | 1005      | text      | 1007	      | text       
+     | 1004      | text      | 1008	      | text       
+     | 1003      | text      | 1009	      | text       
+     | 1002      | text      | 1010	      | text       
+     | 1001      | text      | 1011	      | text             
+                 
    <br/>
 
 * KeyWord: 
