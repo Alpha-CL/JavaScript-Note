@@ -586,24 +586,110 @@ str25 = str25.trim();
 console.log(".trim: " + str25);
 
 
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//Example - 1
+//
+// 从字符串中截取，用于输入的字符串
+
+
+var str26 = "I love becca the most. It's so beautiful";
+
+//提示用户输入需要截取的字符串
+var key = prompt("请输入需要截取的字符串");
+
+//获取 需要截取字符串的启始索引位置
+var index = str26.indexOf(key);
+
+//截取字符串
+str26 = str26.substr(index, key.length);
+
+console.log(str26);
+
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 
 
+//Example - 2
 //
+// 检索字符串中所有的 o 出现的索引位置
+
+
+var str27 = "hello wod odd ott fbo nhyo";
+
+//设置开始检索的位置值
+var index8 = 0;
+
+//设置检索对象
+var key3 = "o";
+
+//如果值为 -1 则说明找完了
+while ((index8 = str27.indexOf(key3, index8)) !== -1) {
+
+    console.log(index8);
+
+    //每次检索完，从下一位继续检索
+    index8 += key.length;
+}
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//Example - 3
 //
+// 检索这个字符串中每个字符出现了多少次
+
+
+var str28 = "WhatOranigawhbdwaljdwaldwahdlwahajdiwoajiod";
+
+//step - 1
 //
+// 把所有字母转换转换为 统一的大写 或者 小写
+//
+str28 = str28.toLocaleLowerCase();
 
 
+//step - 2
+//
+// 创建一个空对象，
+//
+// 目的: 把字母作为 "键", 次数作为 "值"
+//
+var obj9 = {};
+
+//step - 3
+//
+// 遍历字符串，获取每个字符
+//
+for (var i = 0; i < str28.length; i++) {
+
+    //
+    var key9 = str28[i];
+
+    //如果字符串中有 key
+    if (obj9[key9]) {
+
+        //有key， 则增加 key 出现的次数
+        obj9[key9]++;
+
+    } else {
+
+        //没key，则添加 "新 key 的 键值对"
+        obj9[key9] = 1;
+    }
+}
+
+//遍历 json 数据
+for (key9 in obj9) {
+
+    console.log(key9 + " 出现了 " + obj9[key9] + " 次");
+
+}
 
 
-
-
-
-
-
-
-
-
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 
 
 
