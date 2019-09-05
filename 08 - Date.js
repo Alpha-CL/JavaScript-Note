@@ -29,6 +29,21 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+//Math Methods
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//
+
+
+
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
 //系统自带 Math.max 语法
 var result1 = Math.max(10, 20, 30, 40);
 console.log(result1);                            //40
@@ -644,14 +659,14 @@ while ((index8 = str27.indexOf(key3, index8)) !== -1) {
 
 var str28 = "WhatOranigawhbdwaljdwaldwahdlwahajdiwoajiod";
 
-//step - 1
+//Step - 1
 //
 // 把所有字母转换转换为 统一的大写 或者 小写
 //
 str28 = str28.toLocaleLowerCase();
 
 
-//step - 2
+//Step - 2
 //
 // 创建一个空对象，
 //
@@ -659,7 +674,7 @@ str28 = str28.toLocaleLowerCase();
 //
 var obj9 = {};
 
-//step - 3
+//Step - 3
 //
 // 遍历字符串，获取每个字符
 //
@@ -689,7 +704,554 @@ for (key9 in obj9) {
 }
 
 
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//Array Methods
+
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//判断是不是数组的两种方法
+//
+// 1. instanceof
+//
+// 2. Array.isArray()
+
+
+//构造函数方法创建数据
+var arr11 = new Array();
+
+//字面量方法创建对象
+var arr12 = [];
+
+
+//Method - 1
+//
+// instanceof
+
+console.log(arr11 instanceof Array);            //true
+
+
+//Method -2
+//
+// Array.isArray()
+
+console.log(Array.isArray(arr12));              //true
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//Array.from()
+//
+// 产生一个新数组
+
+
+arr13 = ["a", "b", "c"];
+
+Array.from(arr13);
+//expected output: ["a", "b", "c"]
+
+Array.from('foo');
+//expected output: ["f", "o", "o"]
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//.concat()
+//
+//
+// 用于合并两个或多个数组
+//
+// 此方法不会更改现有数据，而是返回一个新数组
+
+
+var arr15 = [10, 20, 30];
+
+var arr16 = [40, 50, 60];
+
+console.log(arr15.concat(arr15));
+//expected output: [10, 20, 30, 40, 50, 60]
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * .every(callbackfn: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;
+ *
+ * @callback(回掉函数) 一个测试每个元素的函数，有三个参数
+ * @index(可选的) 数组中正在处理的当前元素的索引
+ * @array(可选的) 返回被调用的数组
+ * @thisArg this 执行时使用的值 callback
+ */
+
+
+var arr18 = [1000, 2000, 300];
+
+var arr19 = arr18.every(function (ele, idx, arr) {
+
+    console.log(ele + " " + idx + " " + arr);
+    /**
+     * ele arr19[0] === 1000 => 1000
+     * idx arr19[0] => 0
+     * arr arr19 = [1000 , 2000, 3000] => 1000 , 2000, 3000
+     */
+
+    //如果数据中每个元素的值都大于 2000，则返回 true
+    return ele > 2000;
+    /**
+     * 1000 ?> 2000 => 1000 !> 2000
+     * 2000 ?> 2000 => 2000 !> 2000
+     * 3000 ?> 2000 => 3000 >  2000
+     *
+     * false
+     */
+
+    /**
+     * return ele > 500; => true
+     */
+});
+
+console.log(arr19);             //false
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * filter(callbackfn: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[];
+ *
+ * @callbackfn 用来测试数据中没有个元素的函数
+ * @thisArg(可选) 执行是 callback 时所用的 数组
+ *
+ * 把满足条件数据值返回，并创建新数组返回
+ */
+
+
+var arr20 = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+var newArr20 = arr20.filter(function (ele, idx, arr) {
+
+    return ele > 50;
+    /**
+     * 10 > 50 => no return
+     * 20 > 50 => no return
+     * 30 > 50 => no return
+     * ...
+     * 60 > 50 => return 60
+     * 60 > 50 => return 70
+     * 60 > 50 => return 80
+     * 60 > 50 => return 90
+     */
+});
+
+console.log(newArr20);              //[60, 70, 80, 90]
+
+
+var arr21 = [10, 0, 20, 0, 40, 50, 60, 80];
+
+var newArr21 = arr21.filter(function (ele) {
+
+    return ele != 0;
+});
+
+console.log(newArr21);              //[10, 20, 40, 50, 60, 80]
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * push(...items: T[]): number;
+ *
+ * 增添一个值进数组
+ *
+ * 返回新数组的长度值
+ */
+
+
+var arr22 = [20, 30, 50, 32, 14];
+
+var newArr22 = arr22.push(1000, 2000, 3000);
+
+console.log(arr22);                //[20, 30, 50, 32, 14, 1000]
+
+console.log(newArr22);             //newArr.length => 6
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * pop(): T | undefined;
+ *
+ * 删除数组中的最后一位，并返回最后一位的值
+ */
+
+
+var arr23 = [24, 25, 26, 26, 28, 29];
+
+var newArr23 = arr23.pop();
+
+console.log(newArr23);              //29
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * shift
+ *
+ * 删除数组中的第一位，并返回第一位的值
+ */
+
+
+var arr24 = [24, 25, 26, 26, 28, 29];
+
+var newArr24 = arr24.shift();
+
+console.log(newArr24);              //24
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * unshift
+ *
+ * 向数组的第一个元素前插入一个新元素
+ *
+ * 返回插入元素后的数组长度
+ */
+
+var arr25 = [24, 25, 26, 26, 28, 29];
+
+var newArr25 = arr25.unshift();
+
+console.log(newArr25);              //6
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
+ *
+ * 遍历数组
+ */
+
+
+var arr26 = [24, 25, 26, 26, 28, 29];
+
+var newArr26 = arr26.forEach(function (ele, idx, arr) {
+
+    console.log("forEach: " + ele + " - " + idx);
+});
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * indexOf(searchElement: T, fromIndex?: number): number;
+ *
+ * 从左向右检索，返回对应字符值的索引
+ *
+ * 如果没有对应的字符，则返回 -1
+ */
+
+var arr27 = [24, 25, 26, 26, 28, 29];
+
+
+var newArr271 = arr27.indexOf(28);              //4
+
+var newArr272 = arr27.indexOf(300);             //-1
+
+console.log(newArr271);
+console.log(newArr272);
+
+
+/**
+ * lastIndexOf(searchElement: T, fromIndex?: number): number;
+ *
+ * 从右向左检索，返回对应字符值的索引
+ *
+ * 第二个参数: 从第几个索引值开始检索
+ *
+ * 如果没有对应的字符，则返回 -1
+ *
+ */
+
+var arr28 = [24, 25, 28, 26, 26, 28, 29];
+
+
+var newArr281 = arr28.lastIndexOf(28, 4);           //2
+
+var newArr282 = arr28.lastIndexOf(300);             //-1
+
+console.log(newArr281);
+console.log(newArr282);
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * join(separator?: string): string;
+ *
+ * @separator add string separator
+ *
+ * return: string
+ */
+
+var arr29 = ["我", "怎", "么", "那", "么", "好", "看"];
+
+
+var newStr29 = arr29.join("|");
+
+console.log(newStr29);              //我|怎|么|那|么|好|看
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ *  map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
+ *
+ * 数组中的每个元素都要执行这个函数
+ *
+ * 把执行后的结果全部放在一个新的数组中
+ */
+
+
+var arr30 = [1, 4, 9];
+
+var newArr30 = arr30.map(Math.sqrt);
+
+console.log(newArr30);
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * reverse(): T[];
+ *
+ * 反转数组
+ */
+
+
+var arr31 = [1, 2, 3, 4, 5, 6, 7];
+
+var newArr31 = arr31.reverse();
+
+console.log(newArr31);              //[7, 6, 5, 4, 3, 2, 1]
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * sort(compareFn?: (a: T, b: T) => number): this;
+ *
+ * 数组排序( 单独使用 sort 不稳定 )
+ *
+ * 需要传入函数后，稳定使用
+ */
+
+
+var arr32 = [2, 20, 14, 100, 34, 12];
+
+var newArr32 = arr32.sort(function (a, b) {
+
+    if (a > b) {
+
+        return 1;
+    } else if (a == b) {
+
+        return 0;
+    } else {
+
+        return -1;
+    }
+});
+
+console.log(newArr32);              //[2, 12, 14, 20, 34, 100]
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+/**
+ * slice(start?: number, end?: number): T[];
+ *
+ * 筛选出 第一个参数( 开始索引位置 ) 到 第二个参数( 结束索引位置: 不包括最后一位 )
+ *
+ * 返回: 创建一个新数组，存储他们
+ */
+
+var arr33 = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
+var newArr33 = arr33.slice(3, 6);
+
+console.log(newArr33);              //[40, 50, 60]
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * splice(start: number, deleteCount: number, ...items: T[]): T[];
+ *
+ * @start 从第几位开始检索
+ * @deleteCount 从检索后的第几位开始更改
+ * @item, item2 ... 增加的 新 数组
+ */
+
+var myFish1 = ["angel", "clown", "mandarin", "sturgeon"];
+var myFish2 = ["angel", "clown", "mandarin", "sturgeon"];
+
+myFish1.splice(2, 0);                //["angel", "clown", "mandarin", "sturgeon"]
+//从第二位索引开始检索，删除索引为 0 的值
+
+myFish2.splice(2, 1);                //["angel", "clown", "sturgeon"]
+//从第二位索引开始检索，删除索引为 1 的值
+
+console.log(myFish1);
+console.log(myFish2);
+
+
+var myFish3 = ["angel", "clown", "mandarin", "sturgeon"];
+var myFish4 = ["angel", "clown", "mandarin", "sturgeon"];
+
+myFish3.splice(2, 0, "alpha", "beta");
+//从第二位索引开始检索，从 index[0] 开始增加数组
+
+myFish4.splice(2, 1, "alpha", "beta");
+//从第二位索引开始检索，从 index[1] 开始增加数组( 此时回替换 index[1] 的值)
+
+console.log(myFish3);
+console.log(myFish4);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 基本包装类型
+ * 基本类型: number、string、boolean
+ *
+ * 普通变量 => 不能直接调用 "属性" 或 "方法"
+ *
+ * 对象 => 可以直接调用 "属性" 和 "方法"
+ *
+ */
+
+var str30 = "hello";            //普通变量 基本类型
+
+str30 = str30.replace('ll', 'hh');
+/**
+ * 本身 str30 是普通变量( 基本类型 )
+ * 但是在执行代码的过程中，如果这种类型的变量调用了 属性 或 方法
+ * 那么这种类型就不再是基本类型了，而是 "基本包装类型"
+ * 这个变量也不是普通的变量了
+ * 而是 "基本包装类型对象"
+ */
+
+
+console.log(str30);
+
+/**
+ * 内部转换原理:
+ *
+ * var str30 = new String('hello);
+ * str = str.replace('ll'. 'hh');
+ * console.log(str30);
+ * str = null;
+ *
+ * 只在运行的瞬间转换和使用，运行之后就释放回原来的类型
+ *
+ */
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+var flag = new Boolean(false);
+
+var result30 = flag && true;            //object && true ==> true
+
+// var result30 = true && flag;         //object && true ==> object
+
+console.log(result30);                  //true
+
+
+/**
+ * 只有 new 了才转换 基本包装类型
+ *
+ * 基本包装类型只在 number、string、boolean 中转换
+ */
+
+var num31 = 10;                         //基本数字类型
+
+var num32 = Number("10");         //转换，没有 new 类型转
+
+var num33 = new Number("10");    //基本包装类型
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//Example - 1
+//
+// 将一个字符串组输出为 "|" 分割的形式，比如 "张飞|刘备|关羽" 使用两种方式实现
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//Example - 2
+//
+// 将一个字符串数组的元素的顺序进行反转
+// ["a", "b", "c", "d"] ==> ["d", "c", "b", "a"]
+// 使用两种方式实现，提示: 第一个 i 和 第 "leanth - 1 - i" 个进行交换
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+//Example - 3
+//
+// 工资数组 [1500, 1200, 2000, 2100, 1800]，把工资超过 2000 的删除
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//Example - 4
+//
+// ["c", "a", "z", "a", "x", "a"] 找到数组中每一个 "a" 出现的位置
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
