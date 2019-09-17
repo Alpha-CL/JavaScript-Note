@@ -480,21 +480,211 @@
             
             * Methods
             
-                * 判读对象是不是不数组类型
+                * 判断对象是不是不数组类型
                 
                     * instanceof: 关键字
                     
                         * console.log(arr1 instanceof Array); ==> true
                 
-                    * Array.isArray()
+                    * Array.isArray();
                     
                         * console.log(Array.isArray(arr12)); ==> true
                 
                     * 
                 
-                *
+                * Array.from();( 创建一个类似的新数组 )
                 
-                *
+                    var arr = ["a", "b", "c"]
+                
+                    var newArr = Array.from(arr); 
+                    
+                    * Array.from('newArr'); ==> //["f", "o", "o"]
+                    
+                    * 
+                
+                * .concat(数组，数组，数组 ...);( 拼接数据 )
+                
+                    var arr1 = [10, 20, 30];
+                    var arr2 = [40, 50, 60];
+                    
+                    * console.log(arr1 concat arr2); ==> //[10, 20, 30, 40, 50, 60]
+                    
+                    * 
+                
+                * arr.every(callback [, thisArg])();( 用于筛选 )
+                
+                    callback: 回调函数
+                    
+                    回调函数中有三个参数: element，index，array
+                    
+                    返回 boolean 类型
+                    
+                    var arr = [1000, 2000, 3000];
+                    
+                    * arr.every(function (ele, idx, arr) { return ele.length > 3; }) ==> false
+                
+                    * 如果数组中的每个值都满足函数的条件，则返回 true
+                
+                * arr.filter();
+                
+                    返回的是数组中每一个元素都复合条件的元素，组成了一个新的数组
+                
+                    var arr = [10, 20, 30, 40, 50, 60, 70, 80];
+                    
+                    var newArr = arr.filter(function(ele, idx, arr) { return ele > 40; }) ==> //[50, 60, 70, 80]
+                    
+                    *
+                    
+                * 必记
+                    
+                    * arr.push();( 给数组中增加一个值 )
+                    
+                        把值 追加到 数组中
+                        
+                        返回追加后的数组长度
+                        
+                        var arr = [10, 20, 30];
+                        
+                        var newArr = arr.push(100);
+                        
+                        * console.log(newArr); ==> //4
+                        
+                        *
+                        
+                    * arr.pop(); ( 删除数组中的最后一个值 )
+                    
+                        返回删除元素的值 
+                        
+                        var arr = [10, 20, 30, 99];
+                        
+                        var newArr = arr.pop();
+                        
+                        * console.log(newArr); ==> //99
+                        
+                        * 
+                        
+                    * arr.shift(); ( 删除数组中的第一个值 )
+                    
+                        返回删除元素的值
+                        
+                        var arr = [66, 10, 20, 30];
+                        
+                        var newArr = arr.shift();
+                        
+                        * console.log(newArr); ==> //66
+                        
+                    * arr.unshift(); ( 向数组的第一个元素前面插入一个元素 )
+                    
+                        返回追加后的数组长度
+                    
+                        var arr = [10, 20, 30]
+                        
+                        var newArr = arr.unshift(99)
+                        
+                        * console.log(newArr); ==> //4
+ 
+                * arr.forEach();( 同等于 for ... in ... 循环 )
+                
+                    循环遍历 key 和 word
+                
+                    var arr = [10, 20, 30, 40];
+                    
+                    arr.forEach(function (ele, idx, arr) { console.log(ele + " : " + idx)});
+                    
+                    * 如果要在低版本浏览器使用: 需要在文件中 增加官方的兼容性代码，即可使用
+                       
+                * arr.indexOf();
+                
+                    正序检索，返回正序索引值
+                
+                    var arr = [10, 20, 30, 40];
+                    
+                    var newArr1 = arr.indexOf(30);
+                    
+                        * console.log(newArr1); ==> //2
+                    
+                    var newArr2 = arr.indeOf(100);
+                    
+                        * console.log(newArr2); ==> //-1
+                    
+                * arr.lastIndexOf();
+                
+                    倒序检索，返回正序索引值
+                
+                    var arr = [10, 20, 30, 40];
+                    
+                    var newArr1 == arr.lastIndexOf(30);
+                    
+                        * console.log(newArr1); ==> //2
+                    
+                    var newArr2 = arr.lastIndexOf(99);
+                    
+                        console.log(newArr2); ==> //1
+
+                * arr.join(); ( 增加分割器 )
+                
+                    var arr = ["刘备", "关羽", "张飞"]
+                    
+                    var str = arr.join("|");
+                    
+                    * console.log(str); ==> //"刘备|关羽|张飞"
+                
+                * arr.map(); 
+                
+                    数组中的每个元素都要执行这个函数，把执行后的结果冲洗你全部的凡在一个新数组中
+                
+                    var arr = [1, 4, 9];
+                    
+                    var newArr = arr.map(Math.sqrt);
+                    
+                    * console.log(newArr); ==> //[1, 2, 3]
+                
+                * arr.reverse(); ( 反转数组 )
+                
+                    var arr = [10, 20, 30, 40, 50, 60];
+                    
+                    arr.reverse();
+                    
+                    * console.log(arr); ==> //[60, 50, 40, 30, 20, 10]
+                
+                * arr.sort(); ( 数组排序 )
+                
+                    sort 方法本身不稳定
+                    
+                    加入 回掉函数后 稳定
+                
+                    var arr = [10, 1, 38, 351, 31, 2]
+                    
+                    arr = arr.sort(function (a, b) { if(a > b){return 1;}else if(a < b){return 0;}else(return-1)});
+                
+                    console.log(arr); ==> //[351, 38, 31, 10, 2, 1]
+                    
+                    * 
+
+                * arr.slice();( 返回索引截取的对象对象，不包括最后一位 )
+                
+                    返回索引截取的数组对象，不包括最后一个对象
+                
+                    var arr = [10, 20, 30, 40, 50, 60, 70, 80];
+                    
+                    var newArr1 = arr.slice(3, 5);
+                    
+                    * console.log(newArr); ==> //[40, 50]
+                    
+                * arr.splice(number, deleteCount: number, ...items);
+                
+                    删除或替换数组中元素的值
+                
+                    var myFish = ["abgel", "clown", "mandarin", "sturgeon"];
+                    
+                    myFish.splice(2，0, "drum"); ==> //["abgel", "clown", "drum", mandarin", "sturgeon"];
+                    
+                    myFish.splice(2, 1, "drum"); ==> //["abgel", "clown", "drum", "sturgeon"];
+                    
+                    myFish.sp;oce(2, 1, "drum", "alpha") ==> //["abgel", "clown", "drum", "alpha", "sturgeon"];
+                    
+                    *
+                
                 
                 *
     
