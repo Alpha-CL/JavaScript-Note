@@ -1411,7 +1411,7 @@ console.log(myArr.mySort(arr99));
 
 var dt22 = new Date;
 
-console.log(dt.valueOf());*
+console.log(dt.valueOf());
 
 var dt23 = new Date(dt.valueOf());              //毫秒数转 Date() 对象
 
