@@ -77,9 +77,9 @@
     
         * 声明变量: 必须声明变量的类型 
         
-            * int num = 10; 
+            * integer num = 10; 
             
-            * float num2 = 90.3;
+            * float num = 90.3;
 
     * 弱类型语言: JavaScript
     
@@ -180,7 +180,6 @@ JavaScript: 控制网页内容，增加动态交互效果
 <br/>
 <hr/>
 <br/>
-
 
 
 

@@ -291,7 +291,7 @@ JS 是一门 " 基于对象 " 的语言，JS 中已有对象( 直接调用 )
                 
             * invoking
             
-                * invoking property 
+                * invoking property
                 
                 * ==> objectName.objectProperty
                 

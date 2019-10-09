@@ -251,6 +251,7 @@ if (oddEvenNum % 2 == 0) {
 
 
 // switch (variable_expression) {
+
 //     case constant_expr1_value:
 //         //statements
 //         break;

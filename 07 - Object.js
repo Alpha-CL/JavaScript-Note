@@ -773,6 +773,7 @@ function MasterObjectInstanceof(name, age) {
     this.age = age;
 
     this.sayHi = function () {
+
         console.log("Hello, My name is " + this.name + ", " + this.age + " year old.");
     };
 }
