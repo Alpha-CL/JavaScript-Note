@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .imgExample ul {
+            background-color: red;
+        }
+
+        #imageGallery li {
+            float: left;
+            padding-right: 20px;
+            margin-left: 20px;
+            border: 4px solid white;
+        }
+
+        #imageGallery li:last-child {
+            padding-right: 0;
+        }
+
+        .imgExample ul li a img {
+
+            display: block;
+            width: 80px;
+            height: 36px;
+        }
+
+        #imgEx {
+            display: block;
+            margin-top: 20px;
+            width: 270px;
+            height: 240px;
+            background-color: cornflowerblue;
+            border: 4px solid black;
+        }
+
+
+        #ul2 li {
+            padding: 5px 10px;
+            background-color: aliceblue;
+        }
+
+
+        #ul3 li {
+            padding: 5px 10px;
+        }
+
+
+        .nodeSmall a {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: relative;
+        }
+
+        .nodeSmall {
+            position: relative;
+        }
+
+        .qrCode {
+            position: absolute;
+            top: 24px;
+            z-index: 10;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+
+        .cls1 {
+            background-color: coral;
+            color: #fff;
+        }
+
+
+        #dv2 {
+            width: 200px;
+            height: 100px;
+            border: 2px solid red;
+        }
+
+        #dv3 {
+            width: 200px;
+            height: 100px;
+            border: 2px dashed red;
+        }
+
+        #uu {
+            cursor: pointer;
+        }
+
+
+        .cls100 {
+            width: 100px;
+            height: 200px;
+            background-color: yellow;
+        }
+
+
+        .box .hd span {
+            display: block;
+            float: left;
+            padding: 10px 20px;
+            margin-right: 3px;
+            background-color: lightblue;
+        }
+
+        .box .hd .current {
+            color: white;
+            background-color: blue;
+        }
+
+        .box .hd:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .box .bd li {
+            display: none;
+            padding: 10px;
+            box-sizing: border-box;
+            width: 297px;
+            height: 150px;
+            background-color: blue;
+        }
+
+        .box .bd .current {
+            display: block;
+            color: white;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+禁用文本框-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="disableTextarea" id="btn1">
+
+<input type="text" value="文本框" id="txt1">
+
+
+<script>
+
+    function my$(id) {
+
+        return document.getElementById(id);
+    }
+
+    my$('btn1').onclick = function () {
+
+        my$('txt1').disabled = true;
+    };
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+设置列表改变背景颜色-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="setSelectBgColor" id="btn2">
+
+
+<ul id="ul1">
+    <li value="kks">卡卡西</li>
+    <li value="dsw">大蛇丸</li>
+    <li value="zz">佐助</li>
+    <li value="mr">鸣人</li>
+</ul>
+
+
+<script>
+
+    my$('btn2').onclick = function () {
+
+        my$('ul1').style.backgroundColor = "green";
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--阻止超链接的 "默认跳转"-->
+
+<!--阻止超链接默认跳转: return false;-->
+
+<!--如果只是设置 href 为空，页面还是会加载( 刷新页面，返回顶部 )-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--Method - 1
+
+HTML 和 JS 写在一起，不利于后期维护-->
+
+
+<a href="http://www.baidu.com" onclick="alert('未分离 JS 代码，呜呜～'); return false">百度1</a>
+
+
+<hr>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--Method - 2
+
+部分分离 JS 代码-->
+
+<!--注意: onclick f1()-->
+
+
+<a href="http://www.baidu.com" onclick="return f1()">百度2</a>
+
+<script>
+
+    function f1() {
+
+        alert('JS 代码部分分离，哈哈！');
+        return false;
+    }
+</script>
+
+
+<hr>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--Method - 3
+
+完全分离 JS 代码-->
+
+
+<a href="http://www.baidu.com" id="a1">百度3</a>
+
+<script>
+
+    my$('a1').onclick = function () {
+
+        alert('JS 代码完全分离，嘻嘻！');
+        return false;
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击小图
+
+显示大图-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<a href="https://www.baidu.com/img/bd_logo1.png?qua=high" id="ak" title="big">
+    <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="small">
+</a>
+
+<br>
+<img src="" alt="" id="bigImg">
+
+
+<script>
+
+    my$('ak').onclick = function () {
+
+        my$('bigImg').src = my$('ak').href;
+        return false;
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--美女相册案例-->
+
+<!--点击 a 标签，把标签中的 href 属性值 给 id 为 imgEx 的 src 属性
+
+把 a 的 title 属性值给 id 为 des 的 p 标签赋值-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<div class="imgExample">
+    <ul id="imageGallery">
+        <li><a href="https://www.baidu.com/img/bd_logo1.png?qua=high" title="beautifulGirlA">
+            <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt=""></a>
+        </li>
+        <li><a href="https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite@2x.png"
+               title="beautifulGirlB">
+            <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt=""></a>
+        </li>
+        <li><a href="https://www.baidu.com/img/bd_logo1.png?qua=high" title="beautifulGirlC">
+            <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt=""></a>
+        </li>
+        <li><a href="https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite@2x.png"
+               title="beautifulGirlD">
+            <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt=""></a>
+        </li>
+    </ul>
+
+
+    <div style="clear: both;"></div>
+
+
+    <img src="" alt="" id="imgEx">
+    <p id="des">选择一张图片</p>
+</div>
+
+
+<script>
+
+    //从 ul 标签中 获取所有的 a 标签
+    var imgObj = my$('imageGallery').getElementsByTagName('a');
+
+
+    //循环遍历所有 a 标签
+    for (var i = 0; i < imgObj.length; i++) {
+
+        //为每个 a 标签 注册点击事件
+        imgObj[i].onclick = function () {
+
+            //为 ID 为 imgEx 的标签的 src 赋值
+            my$('imgEx').src = this.href;
+
+            //为 p 标签赋值
+            my$('des').innerText = this.title;
+
+            //组织超链接默认的跳转
+            return false;
+        };//end function
+    }//end for
+
+
+    //注意: 如果元素本身没有 border 属性，但是添加了 onmouseover 和 onmouseout
+    //      会出现增加 border 后 元素变大的效果
+
+    //解决方法
+    //
+    // 1. 利用 CSS 属性 box-sizing: border-box; (元素边框 以元素大小为基准)
+    //
+    // 2. 给元素本身增加 border 属性即可
+    //
+
+    var liObj = my$('imageGallery').getElementsByTagName('li');
+
+    for (var i = 0; i < liObj.length; i++) {
+
+        //为每个 li 添加鼠标进入事件
+        liObj[i].onmouseover = function () {
+
+            this.style.border = "4px solid red";
+        };
+
+        //为每个 li 添加鼠标离开事件
+        liObj[i].onmouseout = function () {
+
+            this.style.border = "";
+        }
+
+
+    }//end for
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--列表隔行变色-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="separatorChangeColor" id="btn3">
+
+<ul id="ul2">
+    <li>红旗</li>
+    <li>五菱宏光</li>
+    <li>奔驰</li>
+    <li>兰博基尼</li>
+    <li>哈弗</li>
+    <li>奥迪</li>
+    <li>悍马</li>
+    <li>薇薇七</li>
+</ul>
+
+<!--<script>
+
+    //创建按钮事件
+    my$('btn3').onclick = function () {
+
+        //获取所有 ul2 中所有的 li 标签
+        var ul2Obj = my$('ul2').getElementsByTagName('li');
+
+        //遍历所有 li
+        for (var i = 0; i < ul2Obj.length; i++) {
+
+            //判断奇红偶黄
+            //注意: 数组从 0 位开始，对应第一行
+            if (i % 2 === 0) {
+
+                ul2Obj[i].style.backgroundColor = "red";
+
+            } else {
+
+                ul2Obj[i].style.backgroundColor = "yellow";
+
+            }//end if
+        }//end for
+    };
+
+</script>-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--简化代码-->
+
+<!--用 "三元表达式" 替换 "if语句"-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<script>
+
+
+    my$('btn3').onclick = function () {
+
+        var ul2Obj = my$('ul2').getElementsByTagName('li');
+
+        for (var i = 0; i < ul2Obj.length; i++) {
+
+            ul2Obj[i].style.backgroundColor = i % 2 === 0 ? "red" : "yellow";
+        }
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--列表中
+
+鼠标悬停 显示高亮行-->
+
+<!--onmouseover: 注册鼠标进入事件-->
+
+<!--onmouseout: 注册鼠标离开事件-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<ul id="ul3">
+    <li>清蒸榴莲</li>
+    <li>爆炒臭豆腐</li>
+    <li>红烧大蒜</li>
+    <li>油炸知了</li>
+    <li>生吃肥肠</li>
+    <li>老鼠肉夹馍</li>
+</ul>
+
+
+<script>
+
+    //获取所有 li 标签
+    var ul3Obj = my$('ul3').getElementsByTagName('li');
+
+    for (var i = 0; i < ul3Obj.length; i++) {
+
+        //为 li 注册鼠标进入事件
+        ul3Obj[i].onmouseover = function () {
+
+            this.style.backgroundColor = "red";
+            this.style.color = "#fff";
+        };
+
+        //为 li 注册鼠标离开事件
+        ul3Obj[i].onmouseout = function () {
+
+            this.style.backgroundColor = "";
+            this.style.color = "black";
+        };
+    }//end for
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--显示 和 隐藏 二维码-->
+
+<!--通过 getElementsByTagName('tagName')[0]; 选取 id 中的 a 元素-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<div class="nodeSmall" id="node_small">
+    <a href="#"></a>
+    <div class="qrCode hide" id="qr">
+        <img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="">
+    </div>
+</div>
+
+<script>
+
+    var aObj = my$('node_small').getElementsByTagName('a')[0];
+
+    aObj.onmouseover = function () {
+
+        my$('qr').className = "qrCode show";
+    };
+
+    aObj.onmouseout = function () {
+
+        my$('qr').className = "qrCode hide"
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--根据 name 属性值，获取元素-->
+
+<!--根据 getElementsByname 获取表单元素-->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="Display" id="btn4"><br>
+
+<input type="text" value="Hello" name="name1"><br>
+<input type="text" value="Hello" name="name2"><br>
+<input type="text" value="Hello" name="name1"><br>
+<input type="text" value="Hello" name="name3"><br>
+<input type="text" value="Hello" name="name1"><br>
+<input type="text" value="Hello" name="name3"><br>
+<input type="text" value="Hello" name="name4"><br>
+<input type="text" value="Hello" name="name1"><br>
+<input type="text" value="Hello" name="name1"><br>
+
+
+<script>
+
+    my$('btn4').onclick = function () {
+
+        var inputs = document.getElementsByName('name1');
+
+        for (var i = 0; i < inputs.length; i++) {
+
+            inputs[i].value = "I am fine";
+        }
+    }
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--根据 "类样式的名字" 获取元素-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<p>这是一个段落</p>
+<p class="cls1">这是另一个段落</p>
+
+<br>
+
+<span class="cls1">这是一个 span</span>
+<span>这是另一个 span</span>
+
+<br>
+
+<div class="cls1" id="selector1">这是一个 div</div>
+<div>这是另一个 div</div>
+
+<br>
+
+<input type="button" value="getElementsByClassName" id="btn5">
+
+<input type="button" value="getSelector" id="btn10">
+
+<input type="button" value="getSelectorAll" id="btn11">
+
+
+<script>
+
+    var clsObj = document.getElementsByClassName('cls1');
+
+    my$('btn5').onclick = function () {
+
+        for (var i = 0; i < clsObj.length; i++) {
+
+            clsObj[i].style.backgroundColor = "red";
+        }
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--根据选择器( querySelector & querySelectorAll )
+
+选择元素-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<script>
+
+    var slctObj = document.querySelector('#selector1');
+
+    my$('btn10').onclick = function () {
+
+        slctObj.style.backgroundColor = "yellow";
+    };
+
+
+</script>
+
+
+<script>
+
+    var slctAllObj = document.querySelectorAll('.cls1');
+
+    my$('btn11').onclick = function () {
+
+        for (var i = 0; i < slctAllObj.length; i++) {
+
+            slctAllObj[i].style.backgroundColor = "blue";
+        }
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--模拟搜索框-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="text" value="请输入搜索内容" style="color: gray;" id="txt">
+
+<input type="button" value="search" id="srh1">
+
+<script>
+
+    //注册获取聚焦事件
+    my$('txt').onfocus = function () {
+
+        if (this.value == "请输入搜索内容") {
+
+            this.value = "";
+            this.style.color = "black";
+
+            my$('srh1').style.backgroundColor = "black";
+            my$('srh1').style.color = "white";
+        }
+    };
+
+    //注册失去焦点事件
+    my$('txt').onblur = function () {
+
+        if (this.value == "") {             //this.value.length == 0; ( 建议使用 )
+
+            this.value = "请输入搜索内容";
+            this.style.color = "gray";
+
+            my$('srh1').style.backgroundColor = "white";
+            my$('srh1').style.color = "black";
+        }
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--验证文本框密码长度-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="password" name="" id="pwd1">
+
+<script>
+
+    my$('pwd1').onblur = function () {
+
+        //判断密码长度
+        if (this.value.length > 7 && this.value.length < 10) {
+
+            this.style.backgroundColor = "red";
+        } else {
+            this.style.backgroundColor = "green";
+        }
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--获取标签 属性 和 内容-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="text" value="文本值" id="gainInput">
+
+<input type="button" value="按钮值" id="btn12">
+
+<p>段落值</p>
+
+
+<script>
+
+    my$('gainInput').onblur = function () {
+
+        //获取 value 属性
+        console.log(this.value);
+
+        //获取 type 属性
+        console.log(this.type);
+    };
+
+
+    my$('btn12').onclick = function () {
+
+        console.log(this.value);
+        console.log(this.type);
+
+        console.log(document.getElementsByTagName('p')[0].innerText);
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--innerText & textContent 兼容问题-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="设置值" id="btn13">
+
+<div id="dv2"></div>
+
+<script>
+
+    //设置标签中的文本内容，应该使用 textContent 属性，谷歌、火狐支持，IE8(6 ~ age，IE8 中存在的问题最多) 不支持
+    //
+    //textContent 属于 火狐，谷歌支持 火狐 和 IE，但是 IE 不支持
+    //
+    //如果这个属性在浏览器中不支持，那么这个属性的类型是: undefined !!!
+    //
+    //设置标签中的文本内容，应该使用 innerText 属性，谷歌、火狐、IE8 都支持( 如果使用火狐浏览器低版本，则不支持 innerText 属性 )
+    //
+    //
+
+    //点击按钮设置 div 中的文本内容
+    my$('btn13').onclick = function () {
+
+        //设置标签中间的文本内容，应该使用 textContent
+        my$('dv2').textContent = "this is dv2 tag";
+    };
+
+
+    //设置任何的标签中间的文本内容
+    function setInnerText(element, text) {
+
+        //判断浏览器是否支持这个属性( 判断这个属性的类型，是否是 undefined，如果是则不支持，如果不是则支持 )
+        if (typeof element.textContent == "undefined") {
+
+            element.innerText = text;
+
+        } else {
+
+            element.textContent = text;
+        }
+    }
+
+
+    //获取任意标签的中间的文本内容
+    function getInnerText(element) {
+
+        if (typeof element.textContent == "undefined") {
+
+            return element.innerText;
+
+        } else {
+
+            return element.textContent;
+        }
+    }
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--innerText innerHTML 的区别-->
+
+
+<!--设置内容-->
+
+<!--innerText 主要设置标签内容，设置标签代码，符号会自动被浏览器转换成内容-->
+
+<!--innerHTML 主要在标签中设置新的 html 标签内容，有标签效果-->
+
+<!--想要设置标签内容，使用 innerHTTML，
+
+想要设置文本内容，innerText 或 textContent，或者 innerHTTML，推荐使用 innerHTTML-->
+
+
+<!--获取内容-->
+
+<!--使用 innerText 获取，浏览器会自动转译 文本符号(标签左右 )-->
+
+<!--使用 innerHTTML 获取内容，会保留所有字段-->
+
+
+<!--总结-->
+
+<!--设置标签: 使用 innerHTML-->
+
+<!--获取标签及内容: 使用 innerHTML-->
+
+<!--设置文本: 使用 innerText & innerHTML & textContent-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="innerText" id="btn14">
+
+<input type="button" value="innerHTML" id="btn15">
+
+<input type="button" value="innerText获取" id="btn16">
+
+<input type="button" value="innerHTML获取" id="btn17">
+
+<div id="dv3"></div>
+
+<div id="dv4">
+    我是dv中的内容
+    <p>我是p中的内容</p>
+</div>
+
+<!--设置文本内容-->
+<script>
+
+
+    // Method - 1
+
+    my$('btn14').onclick = function () {
+
+        my$('dv3').innerText = "可以设置文本内容";
+        my$('dv3').innerText = "<p>innerText 不能设置 html 标签</p>";
+    };
+
+
+    // Method - 2
+
+    my$('btn15').onclick = function () {
+
+        my$('dv3').innerHTML = "<p>innerHTML 可以设置 html 标签</p>";
+    };
+
+</script>
+
+
+<!--获取标签文本内容-->
+<script>
+
+
+    my$('btn16').onclick = function () {
+
+        //获取标签中的所有内容，会把 符号转译
+        console.log(my$('dv4').innerText);
+    };
+
+
+    my$('btn17').onclick = function () {
+
+        //获取标签中的所有内容，但是标签不会转译，建议使用这个
+        console.log(my$('dv4').innerHTML);
+    };
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--获取自定义属性值-->
+
+<!--setAttribute-->
+
+<!--html 标签中没有用来存储数据的标签，需要自己创建-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<ul id="uu">
+    <li score="10">路飞的成绩</li>
+    <li score="20">乔巴的成绩</li>
+    <li score="30">索隆的成绩</li>
+    <li score="40">艾斯的成绩</li>
+    <li score="50">娜美的成绩</li>
+</ul>
+
+<script>
+
+
+    //获取所有 li 标签
+    var list = document.getElementById('uu').getElementsByTagName('li');
+
+    for (var i = 0; i < list.length; i++) {
+
+        list[i].onclick = function () {
+
+            // alert(this.score);          //undefined
+            //
+            // this.score: 此时请求的是 当前对象新增的 score 的属性，新增属性未赋值( 并不是请求 html 标签的属性 )
+            //
+            // 此时请求的是 DOM 对象中的属性
+
+
+            //在 html 中添加的 "自定义属性"，使用 getAttribute 获取
+            alert(this.getAttribute('score'));
+
+        }
+    }
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--获取自定义属性值-->
+
+<!--getAttribute-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<ul id="uu1">
+    <li>路飞的成绩</li>
+    <li>乔巴的成绩</li>
+    <li>索隆的成绩</li>
+    <li>艾斯的成绩</li>
+    <li>娜美的成绩</li>
+</ul>
+
+
+<script>
+
+    var list1 = document.getElementById('uu1').getElementsByTagName('li');
+
+    for (i = 0; i < list1.length; i++) {
+
+
+        // list1[i].score(1 + 1) * 19;
+
+        list1[i].setAttribute('score', (i + 1) * 10);
+
+        list1[i].onclick = function () {
+
+            alert(this.getAttribute('score'));
+        };
+    }
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--移除 html 自定义属性-->
+
+<!--removeAttribute 移除自定义属性 和 html 自带属性-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="removeAttribute" id="btn18">
+
+<div score="100" class="cls100" id="uu2"></div>
+
+
+<script>
+
+    my$('btn18').onclick = function () {
+
+        my$('uu2').removeAttribute('score');
+
+        my$('uu2').removeAttribute('class');
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--tab 切换功能-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<div class="box" id="box">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li>我是体育模块</li>
+            <li>我是娱乐模块</li>
+            <li class="current">我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+
+    //获取最外层的div
+    var box = my$('box');
+
+    //获取里面第一个div.hd
+    var hd = box.getElementsByTagName('div')[0];
+
+    //获取里面第二个div.bd
+    var bd = box.getElementsByTagName('div')[1];
+
+    //获取所有 li 标签
+    var list = box.getElementsByTagName('li');
+
+    //获取所有 span 标签
+    var spans = hd.getElementsByTagName('span');
+
+
+    for (var i = 0; i < spans.length; i++) {
+
+        spans[i].setAttribute('index', i);
+
+        spans[i].onclick = function () {
+
+            //第一件事，所有 span 的类样式全部移除，设置当前标签的 class 属性
+            for (var j = 0; j < spans.length; j++) {
+
+                spans[j].removeAttribute('class');
+            }
+            this.className = 'current';
+
+            //span 标签被点击的时候获取存储的索引值
+            var num = this.getAttribute('index');
+
+            //获取所有的 li 标签，每个 li 标签隐藏
+            for (var k = 0; k < list.length; k++) {
+                list[k].removeAttribute('class');
+            }
+
+            //当前被点击的 span 对应的 li 标签显示
+            list[num].className = 'current';
+        };
+    }
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+</body>
+</html>

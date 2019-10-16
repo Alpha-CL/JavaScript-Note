@@ -4,9 +4,9 @@
  * @param element
  * @returns {HTMLElement}
  */
-function my$(element) {
+function my$(id) {
 
-    return document.getElementById(element);
+    return document.getElementById(id);
 }
 
 
@@ -212,18 +212,19 @@ function userBrowser() {
     }
 }
 
+
 /**
  * 获取任意元素饿任意一个属性的当前的值
  *
  * @param element
  * @param attr
  * @returns {string}
+ *
  */
-function getStyle(element, attr) {
+function getAttrValue(element, attr) {
 
-    return window.getComputedStyle ? window.getComputedStyle(element, null)[attr] : element.currencyStyle[attr || 0];
+    return element.currentStyle ? element.currentStyle[attr] : window.getComputedStyle(element, null)[attr] || 0;
 }
-
 
 
 /**
@@ -239,66 +240,62 @@ function animate(element, json, fn) {
 
     element.timeId = setInterval(function () {
 
-        var flag = true;
+        var flag = true;//假设都达到了目标
 
         for (var attr in json) {
 
-            if (attr == "opacity") {
+            if (attr == "opacity") {//判断属性是不是opacity
 
-                var current = getStyle(element, attr) * 100;
+                var current = getAttrValue(element, attr) * 100;
 
-                var target = json[attr] * 100;
+                //每次移动多少步
+                var target = json[attr] * 100;//直接赋值给一个变量,后面的代码都不用改
 
-                var step = (target - current) / 10;
+                var step = (target - current) / 10;//(目标-当前)/10
 
                 step = step > 0 ? Math.ceil(step) : Math.floor(step);
 
-                current += step;
+                current = current + step;
 
                 element.style[attr] = current / 100;
 
-            } else if (attr = 'zIndex') {
+            } else if (attr == "zIndex") {//判断属性是不是zIndex
 
                 element.style[attr] = json[attr];
 
-            } else {
+            } else {//普通的属性
 
-                var current = parseInt(getStyle(element, attr)) || 0;
+                //获取当前的位置----getAttrValue(element,attr)获取的是字符串类型
+                var current = parseInt(getAttrValue(element, attr)) || 0;
 
-                var target = json[attr];
+                //每次移动多少步
+                var target = json[attr];//直接赋值给一个变量,后面的代码都不用改
 
-                var step = (target - current) / 10;
+                var step = (target - current) / 10;//(目标-当前)/10
 
                 step = step > 0 ? Math.ceil(step) : Math.floor(step);
 
-                current += step;
+                current = current + step;
 
                 element.style[attr] = current + "px";
-
-            }//end if
-
+            }
             if (current != target) {
 
-                flag = false;
+                flag = false;//如果没到目标结果就为false
             }
+        }
+        if (flag) {//结果为true
 
-        }//end for
+            clearInterval(element.timeId);
 
-        if (flag) {
+            if (fn) {//如果用户传入了回调的函数
 
-            clearInterval(timeId);
-
-            if (fn) {
-
-                fn();
-            }//end if
-
-        }//end if
-
+                fn(); //就直接的调用,
+            }
+        }
         console.log("target:" + target + "current:" + current + "step:" + step);
 
-    }, 10)
-
+    }, 10);
 }
 
 

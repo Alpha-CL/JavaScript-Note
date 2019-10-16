@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        body {
+
+            background-color: gray;
+        }
+
+        .top {
+            width: 100%;
+            height: 120px;
+            background-color: #0099cc;
+        }
+
+        .nav {
+            margin-bottom: 10px;
+            width: 100%;
+            height: 60px;
+            color: white;
+            font-size: 40px;
+            line-height: 60px;
+            background-color: #DB192A;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 70%;
+            height: 2000px;
+            background-color: white;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<div class="top" id="topPart"></div>
+
+<div class="nav" id="navBar">nav bar</div>
+
+<div class="main" id="mainPart"></div>
+
+
+<script>
+
+
+    function my$(ele) {
+
+        return document.getElementById(ele);
+    }
+
+    function getScroll() {
+
+        return {
+            top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        };
+    }
+
+    window.onscroll = function () {
+
+        //向上卷曲出去的距离和最上面的 div 的高度对比
+        if (getScroll().top >= my$('topPart').offsetHeight) {
+
+            // my$('navBar').style.position = 'fixed';
+            // my$('navBar').style.top = 0;
+
+            my$('navBar').className = 'nav fixed';
+            my$('mainPart').style.marginTop = my$('navBar').offsetHeight + 'px';
+
+        } else {
+
+            my$('navBar').className = 'nav';
+            my$('mainPart').style.marginTop = 10 + 'px';
+
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1016 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="09 - DOM.js"></script>
+
+
+    <style>
+
+        .cls {
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            border: 6px solid black;
+        }
+
+        .cls1 {
+            background-color: black;
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--显示弹窗
+
+点击按钮，获取 id 属性，显示弹窗-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--DOM Example - 1.1-->
+
+<!--html 代码嵌入了 JS 代码，不方便后期维护-->
+<!--应该吧 js 和 html 分离-->
+
+<input type="button" value="Display1" onclick="alert('行内 JS 事件，点击后才执行')">
+
+
+<hr>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--DOM Example - 1.2-->
+
+<!--最终弹出对话框代码-->
+
+<input type="button" value="Display2" id="btn1">
+
+<script>
+
+    //点击操作 ==> 事件: 一件事有 "触发" 和 "响应"，还有 "事件源"
+    //按钮被点击，弹出对话框
+    //按钮 ==> 事件源
+    //点击 ==> 事件名字
+    //点击 ==> 触发事件
+    //弹窗 ==> 响应
+
+    document.getElementById('btn1').onclick = function () {
+
+        alert('分离 JS 代码');
+    };
+</script>
+
+
+<hr>
+<!--  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   -  -  -  - -->
+
+
+<!--DOM Example - 1.2.1-->
+
+<!--Step - 1-->
+
+<input type="button" value="Display3" id="btn2" onclick="f2()">
+
+<script>
+
+    //利用函数封装多行代码，进行调用
+    function f2() {
+
+        alert('利用函数封装很多代码，通过 onclick 调用，html 和 js 并没有完全分离');
+    }
+</script>
+
+
+<hr>
+<!--  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   -  -  -  - -->
+
+
+<!--DOM Example - 1.2.2-->
+
+<!--Step - 2-->
+
+<input type="button" value="Display4" id="btn3">
+
+<!--html 标签中 id 属性存储的值是唯一的( id 属性不能重复，是页面中唯一的标识 )-->
+
+<script>
+
+    //从文档中找到 ID 值为 btn3 的这个标签
+    //document,getElementById( 'IDValue' ); ==> return 一个元素对象
+    var btn3Obj = document.getElementById('btn3');
+
+    //注册点击事件
+    btn3Obj.onclick = function () {
+
+        alert('利用元素 ID 调用事件的匿名函数');
+    };
+
+</script>
+
+
+<hr>
+<!--  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -   -  -  -  - -->
+
+
+<!--DOM Finally Example-->
+
+<input type="button" value="Display-finally" id="btn4">
+
+<script>
+
+    document.getElementById('btn4').onclick = function () {
+
+        alert('最终调用方式');
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--显示图片
+
+点击按钮显示图片: 点击按钮的时候设置 img 标签的 src 属性有一个图片的路径-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="DisplayImg" id="btnImg1">
+
+<img src="" alt="img" id="img1">
+
+<script>
+
+    //根据 ID  获取按钮
+    var btnImgObj1 = document.getElementById('btnImg1');
+
+    //为按钮注册点击事件，添加是假案处理函数
+    btnImgObj1.onclick = function () {
+
+        //根据 ID 获取图片标签，设置 src 属性
+        var img1Obj = document.getElementById('img1');
+        img1Obj.src = "https://www.baidu.com/img/bd_logo1.png?where=super";
+
+        img1Obj.width = "200";          //没有 "px" 因为这个单位属于 html
+        img1Obj.height = "200";         //没有 "px" 因为这个单位属于 html
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+修改 p 标签的显示内容( 对标签设置其中内容，都使用 innerText )-->
+
+<!--凡事成对标签中修改内容，都可以使用 "innerText"-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="Set paragraph content" id="btnP1">
+
+<p id="btnP11"></p>
+
+
+<script>
+
+    //根据 ID 获取按钮
+    var btnP = document.getElementById('btnP1');
+
+    //为按钮添注册点击事件
+    btnP.onclick = function () {
+
+        //添加事件处理函数
+        //凡事成对标签中修改内容，都可以使用 "innerText"
+        document.getElementById('btnP11').innerText = "This is a paragraph";
+    };
+
+    //根据 ID 获取按钮                   //为按钮注册点击事件
+    // document.getElementById('btnP1').onclick = function () {
+    //
+    //     //添加事件处理函数
+    //     document.getElementById('btnP11').innerText = "This is a paragraph";
+    // }
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+修改 a 标签地址，及热点文字-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="Set anchor property" id="btnAnchor1">
+
+<a href="" id="btnAh1"></a>
+
+<script>
+
+    //根据 ID 获取按钮，注册点击事件，创建事件处理函数
+    document.getElementById('btnAnchor1').onclick = function () {
+
+        var aObj1 = document.getElementById('btnAh1');
+
+        //根据 ID 设置 href 和 文字内容
+        aObj1.innerText = "This is a anchor";
+        aObj1.href = "http://wwww.baidu.com";
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+修改多个 p 标签的内容-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="Change the content of the paragraph" id="btnChangeP">
+
+<p>This is another paragraph.</p>
+<p>This is another paragraph.</p>
+<p>This is another paragraph.</p>
+<p>This is another paragraph.</p>
+<p>This is another paragraph.</p>
+
+
+<script>
+
+    //根据 ID 获取按钮，注册点击事件，添加事件处理函数
+    document.getElementById('btnChangeP').onclick = function () {
+
+        //document.getElementsByTagName('tagName'); => return: "伪数组"
+        //
+        // 无论获取的是一个标签，还是多个标签，最终都是在数组中存储的，这行代码的返回值都是一个 "数组"
+        //
+        var pObjs = document.getElementsByTagName('p');
+
+        for (var i = 0; i < pObjs.length; i++) {
+
+            pObjs[i].innerText = "we are paragraph.";
+        }
+    };
+
+</script>
+
+
+<hr>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="In div select p" id="btnSelectP">
+
+<div id="dv1">
+    <p>This is a div1</p>
+    <p>This is a div1</p>
+    <p>This is a div1</p>
+    <p>This is a div1</p>
+    <p>This is a div1</p>
+</div>
+
+
+<div id="dv2">
+    <p>This is a div2</p>
+    <p>This is a div2</p>
+    <p>This is a div2</p>
+    <p>This is a div2</p>
+    <p>This is a div2</p>
+</div>
+
+
+<script>
+
+    //根据 ID 获取按钮，注册点击事件，创建事件处理函数
+    document.getElementById('btnSelectP').onclick = function () {
+
+        //根据 ID 选中 div1 中的 p 元素进行 数组遍历修改所有 dv1 中 p 元素的内容
+        var dv1P = document.getElementById('dv1').getElementsByTagName('p');
+
+        //修改 dv1 中 p 的内容
+        for (var i = 0; i < dv1P.length; i++) {
+
+            dv1P[i].innerText = "I have changed";
+        }
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+修改图片的 alt 和 title 属性-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="changeImgProperty" id="btnChangeImg">
+
+<img src="" alt="哈哈" title="嘎嘎">
+
+
+<script>
+
+    document.getElementById('btnChangeImg').onclick = function () {
+
+        var imgObj = document.getElementsByTagName('img');
+
+        // 原本是 第 0 位置，因练习中 上面的 代码已有 1 张图片，所以是 1
+        // imgObj[0].alt = "改变了";
+        // imgObj[0].title = "实现了";
+
+        imgObj[1].alt = "改变了";
+        imgObj[1].title = "实现了";
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+修改所有文本框的值-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="changeTextValue" id="btnChangeText"><br>
+
+
+<input type="text" value=""><br>
+<input type="text" value=""><br>
+<input type="text" value=""><br>
+<input type="text" value=""><br>
+<input type="text" value=""><br>
+<input type="text" value=""><br>
+
+
+<script>
+
+    //根据 ID 获取按钮
+    document.getElementById('btnChangeText').onclick = function () {
+
+        //添加点击事件
+        var iptObj = document.getElementsByTagName('input');
+
+        //循环遍历 返回的 伪数组
+        for (var i = 0; i < iptObj.length; i++) {
+
+            //判断是否是文本框
+            if (iptObj[i].type !== "button") {
+
+                iptObj[i].value = "I am changed";
+            }
+        }
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击每个图片
+
+弹出对话框-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="displayAlert" id="chooseAlert">
+
+<img src="https://img10.360buyimg.com/img/jfs/t1/50663/2/9680/61478/5d6dd218E6a706cba/27548bf029abdc15.png" alt="1"
+     id="im1">
+<img src="https://img10.360buyimg.com/img/jfs/t1/50663/2/9680/61478/5d6dd218E6a706cba/27548bf029abdc15.png" alt="2"
+     id="im2">
+<img src="https://img10.360buyimg.com/img/jfs/t1/50663/2/9680/61478/5d6dd218E6a706cba/27548bf029abdc15.png" alt="3"
+     id="im3">
+
+
+<script>
+
+    var imgObjs = document.getElementsByTagName('img');
+
+    for (var i = 0; i < imgObjs.length; i++) {
+
+        imgObjs[i].onclick = function () {
+
+            alert('被点了');
+        }
+    }
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+修改 type= input; 属性 为 type= text;-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="Button" id="btnChangeType">
+
+
+<script>
+
+    document.getElementById('btnChangeType').onclick = function () {
+
+        this.value = "This is a input text";
+        this.type = "text";
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击图片
+
+更改图片宽高大小-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<img src="https://www.baidu.com/img/bd_logo1.png?where=super" alt="" id="btnChangeProperty">
+
+<script>
+
+    document.getElementById('btnChangeProperty').onclick = function () {
+
+        this.width = "50";
+        this.height = "80";
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--排他功能
+
+点谁谁怀孕-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="没怀孕">
+<input type="button" value="没怀孕">
+<input type="button" value="没怀孕">
+<input type="button" value="没怀孕">
+<input type="button" value="没怀孕">
+
+
+<script>
+
+    //原理分析
+    //
+    //当用于点击按钮时
+    //
+    // 1. 重制所有按钮的 value 值为 "没怀孕"
+    //
+    // 2. 设置被点击按钮的 value 值为 "怀孕了"
+
+    //获取所有的按钮，分别注册点击事件
+    var btnChangeValu = document.getElementsByTagName('input');
+
+    //循环遍历所有按钮
+    for (var i = 0; i < btnChangeValu.length; i++) {
+
+        //为每个按钮注册点击事件
+        btnChangeValu[i].onclick = function () {
+
+            //把所有value值都设置为: "没怀孕"
+            for (var j = 0; j < btnChangeValu.length; j++) {
+
+                btnChangeValu[j].value = "没怀孕";
+            }
+            //当前被点击的按钮设置为: "怀孕了"
+            this.value = "怀孕了";
+        };
+    }
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击图片
+
+切换图片-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<a href="https://www.baidu.com/img/bd_logo1.png?qua=high" id="ak11">
+    <img src="https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite@2x.png" alt="" id="im11">
+</a>
+
+
+<script>
+
+    //点击图片标签，设置图片标签的 src 路径为 超链接中大图的路径
+    document.getElementById('ak11').onclick = function () {
+
+        this.src = document.getElementById('ak').href;
+        return false;
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+把小图变成大图-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="DisplayBigImg" id="btn30">
+
+<img src="https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite@2x.png" alt="" id="im33">
+
+
+<script>
+
+    document.getElementById('btn30').onclick = function () {
+
+        document.getElementById('im33').src = "https://www.baidu.com/img/bd_logo1.png?qua=high";
+    };
+</script>
+
+
+<hr>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--代码升华
+
+减少耦合代码-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="DisplayBigImg" id="btn31">
+
+<img src="https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite@2x.png" alt="" id="im34">
+
+<script>
+
+    //封装 document.getElementById(id) 减少代码耦合
+    function my$1(id) {
+
+        return document.getElementById(id);
+    }
+
+    //调用封装代码
+    my$1('btn31').onclick = function () {
+
+        //调用封装代码
+        my$1('im34').src = "https://www.baidu.com/img/bd_logo1.png?qua=high";
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!--点击按钮
+
+修改 性别 -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="changeSex" id="btn32">
+
+<form action="">
+    <input type="radio" name="sex" value="1">male<br>
+    <input type="radio" name="sex" value="2" id="default">female<br>
+    <input type="radio" name="sex" value="3">transvestite<br>
+</form>
+
+
+<script>
+
+    function my$2(id) {
+
+        return document.getElementById(id);
+    }
+
+    //规律: 在表单标签中，如果 "属性" 和 "值" 只有一个，并且值是这个属性本身
+    //      那么在写 JS 代码，DOM 操作的时候，这个属性值为 "布尔类型" 即可
+
+    my$2('btn32').onclick = function () {
+
+        //my$2('default').checked = checked; === my$2('default').checked = true;
+        //
+        my$2('default').checked = true;
+    };
+
+
+</script>
+
+
+<hr>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--点击按钮
+
+修改 兴趣 -->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="changeInterest" id="changeInterest"><br>
+
+<input type="checkbox" name="interest" value="1">吃饭<br>
+<input type="checkbox" name="interest" value="2">睡觉<br>
+<input type="checkbox" name="interest" value="3" id="ck1">打豆豆<br>
+<input type="checkbox" name="interest" value="4">打篮球<br>
+<input type="checkbox" name="interest" value="5">打足球<br>
+<input type="checkbox" name="interest" value="6" id="ck2">打铅球<br>
+
+
+<script>
+
+    function my$3(id) {
+
+        return document.getElementById(id);
+    }
+
+    my$3('changeInterest').onclick = function () {
+
+        my$3('ck1').checked = true;
+        my$3('ck2').checked = true;
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+选择菜单-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="点菜" id="chooseFood">
+
+<select name="" id="ss">
+
+    <option value="1">油炸榴莲</option>
+    <option value="2">爆炒臭豆腐</option>
+    <option value="3">清蒸鲫鱼</option>
+    <option value="4" id="op1">凉拌苦瓜</option>
+    <option value="5">红烧狮子头</option>
+</select>
+
+
+<script>
+
+
+    function my$4(id) {
+
+        return document.getElementById(id);
+    }
+
+    my$4('chooseFood').onclick = function () {
+
+        my$4('op1').selected = true;
+    };
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+重制文本域中的 用户协议( 防止用户修改 )-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--disabled = "disabled"; ==> 失效、禁用-->
+
+<!--readonly = "readonly"; ==> 只读-->
+
+<textarea name="" id="tt" cols="30" rows="10">
+用户注册协议：
+
+
+某人问智者，大师：您觉得怎么做才是最快乐的？
+大师回答：不要和愚者辩论！
+某人说：我不这么认为！！
+大师说：你说的对～
+</textarea>
+
+<input type="button" value="注册" id="btn36">
+
+
+<script>
+
+    function my$5(id) {
+
+        return document.getElementById(id);
+    }
+
+    my$5('btn36').onclick = function () {
+
+        //根据情况使用
+        //
+        // my$5('tt').innerText = "html 和 页面中文本域的值 同时修改";
+        my$5('tt').value = "只改变 页面中文本域的值";
+    }
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+设置 div 的 宽、高 和 背景颜色-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="setDvWidth..." id="btn37">
+
+<div id="dv"></div>
+
+
+<script>
+
+    function my$6(id) {
+
+        return document.getElementById(id);
+    }
+
+    my$6('btn37').onclick = function () {
+
+        my$6('dv').style.width = "200px";
+        my$6('dv').style.height = "100px";
+        my$6('dv').style.backgroundColor = "hotpink";
+    };
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--点击按钮
+
+显示 和 隐藏 div-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="Hide" id="btn38">
+
+<div id="dv3" style="width: 100px; height: 100px; background-color: aquamarine;"></div>
+
+
+<script>
+
+    my$6('btn38').onclick = function () {
+
+        if (dv3.style.display === "" || dv3.style.display === "block") {
+
+            my$6('dv3').style.display = "none";
+            this.value = "Display";
+
+        } else if (dv3.style.display === "none") {
+
+            my$6('dv3').style.display = "block";
+            this.value = "Hide";
+        }
+    };
+</script>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--思想转变 - 1-->
+
+<!--根据 按钮 value 值 判断，设置 display 属性值-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="Hide" id="btn39">
+
+<div id="dv4" style="width: 100px; height: 100px; background-color: cornflowerblue;"></div>
+
+
+<script>
+
+    my$6('btn39').onclick = function () {
+
+        if (this.value === "Hide") {
+
+            my$6('dv4').style.display = "none";
+            this.value = "Display";
+
+        } else if (this.value === "Display") {
+
+            my$6('dv4').style.display = "block";
+            this.value = "Hide";
+        }//end if
+    };
+</script>
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--思想转变 - 2-->
+
+<!--根据 按钮 className 返回值值 判断，设置 display 属性值-->
+
+<!--判断 div 是否应用了 类样式( className )-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="Hide" id="btn41">
+
+<div id="dv6"></div>
+
+
+<script>
+
+    //规律
+    //
+    // className 返回值为 空时，代表不显示
+    //
+    // className 返回值为 指定 class名时，代表元素显示
+
+    my$6('btn41').onclick = function () {
+
+        if (my$6('dv6').className !== "cls") {
+
+            my$6('dv6').className = "cls";
+            this.value = "Hide";
+
+        } else {
+
+            my$6('dv6').className = "";
+            this.value = "Display";
+        }
+    }
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!--点击按钮
+
+设置 div 的样式-->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="setCssStyles" id="btn40">
+
+<div id="dv5"></div>
+
+
+<!--
+<script>
+
+    my$5('btn40').onclick = function () {
+
+        my$5('dv5').style.width = "200px";
+        my$5('dv5').style.height = "100px";
+        my$5('dv5').style.backgroundColor = "yellow";
+        my$5('dv5').style.border = "10px solid red";
+    };
+
+</script>
+-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<!--调整思路-->
+
+<!--超过三个属性值以上 建议使用 className-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<script>
+
+    my$5('btn40').onclick = function () {
+
+        my$5('dv5').className = "cls";
+    }
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--网页开关灯效果-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<input type="button" value="setBodyBgc" id="btn49">
+
+<script>
+
+    my$6('btn49').onclick = function () {
+
+        document.body.className = document.body.className !== "cls1" ? "cls1" : "";
+    };
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+</body>
+</html>

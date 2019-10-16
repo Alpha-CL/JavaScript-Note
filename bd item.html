@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+        p, input {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #wrap #txt,
+        #btn {
+            vertical-align: middle;
+        }
+
+        #wrap #txt {
+            width: 300px;
+            height: 30px;
+            border: 1px solid gray;
+            font-size: 18px;
+            text-indent: .3em;
+        }
+
+        #btn {
+            width: 80px;
+            height: 32px;
+            background-color: aliceblue;
+            text-align: center;
+            line-height: 30px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+
+<div id="wrap">
+    <input type="text" id="txt">
+    <input type="button" value="search" id="btn">
+</div>
+
+
+<script>
+
+
+    function my$(ele) {
+        return document.getElementById(ele);
+    }
+
+    function setInnerText(element, text) {
+
+        if (typeof element.textContent == 'undefined') {
+
+            element.innerText = text;
+
+        }  else {
+
+            element.textContent = text;
+        }
+    }
+
+    function f1() {
+
+        this.style.backgroundColor = 'yellow';
+    }
+
+    function f2() {
+
+        this.style.backgroundColor = 'green';
+    }
+
+
+
+    var keyword = [
+        '三分钟可以吃三分之一个苹果',
+        '三分钟可以喝二分之一杯咖啡',
+        '三个苹果',
+        '三分钟可以眯一会',
+        '我一定会称为一名优秀的程序猿',
+        '苹果好吃'
+    ];
+
+
+    my$('txt').onkeyup = function () {
+
+        //坑=============================
+
+        //获取文本框输入的内容
+        var text = this.value;
+
+        //临时数组( 空数组 )，存放检索输入的关键字对应的数据
+        var tempArr = [];
+
+        //把文本框输入的内容和数组中的每个数据对比
+        for (var i = 0; i < keyword.length; i++) {
+
+            //判断关键字与数据中字符串 "开头的字符是否相同( 及索引为 0 )"
+            if (keyword[i].indexOf(text) == 0) {
+
+                //追加数据进临时数组
+                tempArr.push(keyword[i]);
+            }
+        }
+        // console.log(tempArr);                //测试临时数组中检索的数据
+
+
+        //坑=============================
+        //如果文本框为空，临时数组为空，则不用创建 div
+        if (this.value.length == 0 || tempArr.length == 0) {
+
+            if (my$('dv')) {
+
+                my$('wrap').removeChild(my$('dv'));
+            }
+            return;
+        }
+
+
+        //遍历临时数据创建下拉 div，并把 div 追加到 wrap 中
+        var dvObj = document.createElement('div');
+
+        dvObj.id = 'dv';
+        dvObj.style.width = '300px';
+        dvObj.style.height = '200px';
+        dvObj.style.border = '1px solid gray';
+
+
+        //坑=============================
+        //每次键盘抬起，都判断页面中有没有这个 div
+        if (my$('dv')) {
+            my$('wrap').removeChild('dv');
+        }
+
+
+        //追加父级
+        my$('wrap').appendChild(dvObj);
+
+
+        //循环遍历临时数组，创建对应的 p 标签
+        for (var i = 0; i < tempArr.length; i++) {
+
+            var pObj = document.createElement('p');
+
+            dvObj.appendChild(pObj);
+
+            setInnerText(pObj, tempArr[i]);
+
+            pObj.style.margin = 0;
+            pObj.style.padding = 0;
+            pObj.style.cursor = 'pointer';
+            pObj.style.margin = '5px';
+            pObj.style.padding = '10px';
+
+            pObj.onmouseover = f1;
+            pObj.onmouseout = f2;
+        }
+
+
+
+    };
+
+
+</script>
+
+
+</body>
+</html>

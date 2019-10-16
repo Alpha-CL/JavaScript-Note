@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul id="ul3">
+    <li>第一个</li>
+    <li>第二个</li>
+    <li>第三个</li>
+    <li id="four">第四个</li>
+    <li>第五个</li>
+    <li>最后一个</li>
+</ul>
+
+
+<script>
+
+    function my$(element) {
+
+        return document.getElementById(element);
+    }
+
+    function getPreviousElement(element) {
+
+        if (element.previousElementSibling) {
+
+            return element.previousElementSibling;
+
+        } else {
+
+            var node = element.previousSibling;
+
+            while (node & node.nodeType != 1) {
+
+                node = node.previousSibling;
+            }
+        }
+
+        return node;
+    }
+
+    console.log(getPreviousElement(my$('ul3')));
+
+</script>
+
+
+</body>
+</html>

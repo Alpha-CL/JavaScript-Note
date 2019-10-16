@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #dv1 {
+            width: 200px;
+            height: 100px;
+            background-color: #404059;
+
+        }
+
+        #dv2 {
+            width: 120px;
+            height: 50px;
+            background-color: hotpink;
+
+        }
+
+
+        #father1 {
+            width: 200px;
+            height: 100px;
+            background-color: #0099cc;
+
+            margin-left: 30px;
+            padding-left: 30px;
+            border: 10px solid #DB192A;
+        }
+
+        #son1 {
+            width: 120px;
+            height: 50px;
+            background-color: pink;
+
+            margin-left: 30px;
+            padding-left: 30px;
+            border: 10px solid green;
+        }
+
+
+        #father2 {
+            width: 200px;
+            height: 100px;
+            background-color: #0099cc;
+
+            margin-left: 30px;
+            padding-left: 30px;
+            border: 10px solid #DB192A;
+        }
+
+        #son2 {
+            width: 120px;
+            height: 50px;
+            background-color: pink;
+
+            position: absolute;
+
+            margin-left: 30px;
+            padding-left: 30px;
+            border: 10px solid green;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--在 head 中设置的 style 属性通过 . 是获取不到的-->
+
+<!--在行内设置的 style 样式，可以通过 . 获取到-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<br>
+
+
+<div id="dv1">
+    <div id="dv2"></div>
+</div>
+
+
+<br>
+<br>
+<input type="button" value="显示效果" id="btn1">
+
+
+<script>
+
+    function my$(ele) {
+
+        return document.getElementById(ele);
+    }
+
+
+    /**
+     *
+     * offsetWidth: 获取元素的宽
+     * offsetHeight: 获取元素的高
+     *
+     * offsetTop:
+     * offsetLeft:
+     *
+     */
+
+
+    /**
+     *
+     * 只能获取 行内 样式
+     *
+     * 无法获取 head 中 style 的样式
+     * 无法获取 外部 style 文件样式
+     *
+     */
+
+    // my$('btn1').onclick = function () {
+    //
+    //     console.log(my$('dv1').style.width);
+    //     console.log(my$('dv1').style.height);
+    // }
+
+
+    my$('btn1').onclick = function () {
+
+
+        /**
+         *
+         * offsetWidth 有自身的 border
+         *
+         */
+
+        console.log(my$('dv1').offsetWidth);
+        console.log(my$('dv2').offsetHeight);
+    }
+
+
+</script>
+
+
+<hr>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<br>
+
+
+<div id="father1">
+    <div id="son1"></div>
+</div>
+
+<br>
+<br>
+
+<div id="father2">
+    <div id="son2"></div>
+</div>
+
+<br>
+<br>
+<input type="button" value="显示效果1" id="btn2">
+<input type="button" value="显示效果2" id="btn3">
+
+
+<script>
+
+
+    /**
+     * 没有脱离文档流
+     *
+     * my$('son').offsetLeft =  fth.marginLeft + fth.paddingLeft + fth.border + son.margin;
+     *
+     */
+
+    my$('btn2').onclick = function () {
+
+        console.log(my$('son1').offsetLeft);
+        console.log(my$('son1').offsetTop);
+    };
+
+
+    /**
+     * 脱离文档流
+     *
+     * 相对于当前父级定位的距离
+     *
+     * 主要是自己 left 和 margin
+     *
+     */
+
+    my$('btn3').onclick = function () {
+
+        console.log(my$('son2').offsetLeft);
+        console.log(my$('son2').offsetTop);
+    };
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--直接通过 document 获取元素-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<script>
+
+
+    //获取 body
+    console.log(document.body);
+
+    //获取 title
+    console.log(document.title);
+    //修改 title
+    document.title = "嘎嘎";
+
+    //获取 html
+    console.log(document.documentElement);
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--图片跟随鼠标飞-->
+
+<!--残留 BUG-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<img style="position: absolute; width: 60px;"
+     src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2664062476,1247329289&fm=26&gp=0.jpg" alt="img"
+     id="im">
+
+<script>
+
+
+    document.onmouseover = function (e) {
+
+        //测试
+        // console.log('嘎嘎');
+
+        /**
+         *
+         * e.clientX: 可视区域的 横坐标
+         * e.clientY: 可视区域的 纵坐标
+         *
+         */
+        my$('im').style.left = e.clientX + 'px';
+        my$('im').style.top = e.clientY + 'px';
+
+    };
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--scroll-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<div id="dv3" style="width: 300px; height: 200px; border: 2px solid red; overflow: auto;">
+    我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人我喜欢男人
+</div>
+
+<br>
+<br>
+<input type="button" value="显示效果" id="btn">
+
+
+<script>
+
+
+    console.log(my$('dv3').offsetHeight);               //元素的宽，有边框
+    console.log(my$('dv3').offsetHeight);               //元素的高，有边框
+
+    console.log(my$('dv3').scrollHeight);                //元素中内容实际的高度
+    console.log(my$('dv3').scrollWidth);                //元素中内容实际的宽度度
+
+    console.log(my$('dv3').scrollTop);                  //向上卷曲出去的距离
+    console.log(my$('dv3').scrollLeft);                 //向左卷曲出去的距离
+
+    //测试
+    my$('dv3').onscroll = function () {
+
+        console.log(this.scrollTop);
+    };
+
+
+</script>
+
+
+<hr>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<script>
+
+    function getScroll() {
+
+        //Method 1.0
+        //
+        //
+        // var obj1 = {};
+        //
+        // var top1 = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        // var left1 = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+        //
+        // obj1.top = top1;
+        // obj1.left = left1;
+        //
+        // return obj1;
+
+        //Method 1.1
+        //
+        //
+        // var obj2 = {};
+        //
+        // obj2.top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        // obj2.left = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+        //
+        // return obj2;
+
+
+        //Method 1.2
+        //
+        //
+        // var obj3 = {
+        //
+        //     top3: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+        //     left3: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        // };
+
+
+        //Method 1.3
+
+        //
+        //
+        return {
+            top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        };
+    }
+
+
+    //测试
+    //
+    //
+    window.onscroll = function () {
+
+        console.log(getScroll().top);
+    }
+
+
+
+
+
+</script>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+</body>
+</html>
