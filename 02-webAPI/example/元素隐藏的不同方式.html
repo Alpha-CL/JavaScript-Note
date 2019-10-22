@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        div {
+
+            width: 300px;
+            height: 200px;
+            border: 1px solid red;
+        }
+
+
+    </style>
+
+
+    <script src="common.js"></script>
+
+</head>
+<body>
+
+
+<input type="button" value="display 显示效果" id="btn1">
+
+<input type="button" value="visibility 显示效果" id="btn2">
+
+<input type="button" value="opacity 显示效果" id="btn3">
+
+<input type="button" value="height: 0; border: 0px solid red;显示效果" id="btn4">
+
+
+<div id="dv"></div>占位符占位符
+
+
+<script>
+
+
+    my$('btn1').onclick = function () {
+
+        //不占位置
+        my$('dv').style.display = 'none';
+    };
+
+
+    my$('btn2').onclick = function () {
+
+        //占位置
+        my$('dv').style.visibility = 'hidden';
+    };
+
+
+    my$('btn3').onclick = function () {
+
+        //占位置
+        my$('dv').style.opacity = 0;
+    };
+
+    my$('btn4').onclick = function () {
+
+        //占位置
+        my$('dv').style.height = 0;
+        my$('dv').style.border = '0 solid red';
+
+    };
+
+
+</script>
+
+
+</body>
+</html>
