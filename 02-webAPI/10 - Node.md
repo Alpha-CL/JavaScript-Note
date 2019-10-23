@@ -168,6 +168,16 @@
     
 * 元素的创建三种方式
 
+    * 性能问题
+    
+        * innerHTML方法由于会对字符串进行解析，需要避免在循环内多次使用
+        
+        * 可以借助字符串或数组的方式进行替换，再设置给innerHTML
+        
+        * 优化后与document.createElement性能相近
+        
+        *
+        
     * document.write
     
         * 缺陷: 如果是在页面加载完毕后，此时通过这种方式创建元素，那么页面上存在的所有的内容全部都会被干掉( 会重新加载跳转到新页面 )
@@ -289,20 +299,90 @@
                 * 兼容性: IE8 支持，谷歌、火狐 不支持
                 
                 * 
+
+    * 事件对象的 属性 和 方法
+    
+        * event.type 
+        
+            * 获取事件类型
+            
+            * 
+        
+        * clientX/clientY 
+        
+            * 所有浏览器都支持，窗口位置
+            
+            * 
+        
+        * pageX/pageY 
+        
+            * IE8以前不支持，页面位置
+            
+            * 
+        
+        * event.target || event.srcElement 
+        
+            * 用于获取触发事件的元素
+            
+            * 
+        
+        * event.preventDefault() 
+        
+            * 取消默认行为
+            
+            * 
+            
+    * 常用鼠标 和 键盘事件
+    
+        * onmouseup 
+        
+            * 鼠标按键放开时触发
+        
+            * 
+        
+        * onmousedown 
+        
+            * 鼠标按键按下触发
+        
+            * 
+        
+        * onmousemove 
+        
+            * 鼠标移动触发
+        
+            * 
+        
+        * onkeyup 
+        
+            * 键盘按键按下触发
+        
+            * 
+        
+        * onkeydown 
+        
+            * 键盘按键抬起触发
+        
+            * 
+        
+
 * 事件冒泡
     
     * 多个元素嵌套，有层次关系
-
+    
     * 这些元素都注册了相同的事件
     
     * 如果里面元素的事件触发了，外面元素的该事件也会自动触发
-
+    
     *
 
 * 阻止事件冒泡
     
     * event( 事件处理参数对象 )
 
+    * 标准方式 event.stopPropagation();
+    
+    * IE低版本 event.cancelBubble = true; 标准中已废弃
+    
     * 
     
 * 事件总结

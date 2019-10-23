@@ -40,9 +40,13 @@ window: 浏览器中顶级对象
                 
                     * 页面关闭之后触发的事件
                     
+                    * 
+                    
                 * .onbeforeunload
                 
                     * 页面关闭之前触发的事件
+                    
+                    * 
                     
     * location
     
