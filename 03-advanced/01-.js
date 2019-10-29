@@ -115,7 +115,7 @@ var per2 = new Person('beta', 18);
 // 不是同一个方法
 // 此时调用方法，会增加重复的
 //  不断占用内存，不合理
-console.log(per1.eat == per2.eat);                  // false
+console.log(per1.eat === per2.eat);                  // false
 
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
@@ -144,7 +144,7 @@ var per4 = new Person2('beta', 18);
 
 
 //此时属于调用同一个外部的函数( 又为内部函数方法 )
-console.log(per3.eat == per4.eat);                  //true
+console.log(per3.eat === per4.eat);                  //true
 
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
@@ -173,15 +173,15 @@ var p5 = new Person5('小红', 16);
 var p6 = new Person5('小明', 18);
 
 
-console.log(p5 == p6);                              //false
-console.log(p5.eat == p6.eat);                      //true
+console.log(p5 === p6);                              //false
+console.log(p5.eat === p6.eat);                      //true
 
 
 //-------------------------------------------------------------------------------------------------------------------//
 
 
 //通过构造函数实例对象，并初始化
-var arr = new Array(10, 20, 30, 40);
+var arr = [10, 20, 30, 40];
 
 //join 是方法，实例对象调用的方法
 arr.join("|");
@@ -189,7 +189,7 @@ arr.join("|");
 console.dir(arr);                                   //Array
 
 //join方法 在实例对象 __proto__ 中
-console.log(arr.__proto__ == Array.prototype);      //true
+console.log(arr.__proto__ === Array.prototype);      //true
 
 
 //-------------------------------------------------------------------------------------------------------------------//
@@ -557,21 +557,200 @@ f1();
 // console.log(num);       //error
 
 
-(function (win) {
-
-    var num1 = 10;          //局部变量
-
-    //JS 是一门动态类型的语言
-    //对象没有属性，点了就有了
-    win.num1 = num1;
-
-})(window);
-
-console.log(num1);
+// (function (win) {
+//
+//     var num1 = 10;          //局部变量
+//
+//     //JS 是一门动态类型的语言
+//     //对象没有属性，点了就有了
+//     win.num1 = num1;
+//
+// })(window);
+//
+// console.log(num1);
 
 
 //如何把局部变量变成全局变量
 //把局部变量给 window 就可以了
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+// 通过自调用函数产生一个随机数对象，在自调用函数外面。调用该随机数对象方法产生随机数
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+(function (window) {
+
+    //产生随机数的构造函数
+    function Random() {
+
+    }
+
+    //在原型对象中添加方法
+    Random.prototype.getRandom = function (min, max) {
+
+        return Math.floor(Math.random() * (max - min) + min);
+    };
+
+    // var rm = new Random();
+    // var num9 = rm.getRandom();
+    // console.log(num9);
+
+    window.Random = Random;
+
+})(window);
+
+
+var rm = new Random();
+
+console.log(rm.getRandom());
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//构造函数中的 this 是 实例对象
+//原型对象方法中的 this 是 实力对象
+function Person9(age) {
+
+    this.age = age;
+    console.log(age);
+}
+
+Person9.prototype.eat = function () {
+
+    console.log(this);
+    console.log("您吃了没 ，走着 ，吃点臭豆腐");
+};
+
+var per9 = new Person9(10);
+per9.eat();
+console.log(per9);
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function Student1() {
+
+}
+
+Student1.prototype.study = function () {
+
+    console.log("好好学习，天天向上");
+};
+
+Student1.prototype = {
+
+    eat: function () {
+
+        console.log("油炸臭豆腐");
+    }
+};
+
+var stu9 = new Student1();
+
+// stu.study();                 // study is not function
+stu9.eat();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//人的构造函数
+function Person10(age) {
+
+    this.age = age;
+}
+
+//人的原型对象方法
+Person10.prototype.eat = function () {
+
+    console.log("人的吃");
+};
+
+
+//学生的构造函数
+function Student10() {
+
+}
+
+//学生的原型方法
+Student10.prototype.sayHi = function () {
+
+    console.log("萨瓦迪卡");
+};
+
+Student10.prototype = new Person10(10);
+
+//学生的原型，指向了人的实例对象
+// var stu10 = new Student10();
+// stu10.eat();
+
+// stu10.sayHi();
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//原型最终指向了那里
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//构造函数
+function Person20() {
+
+}
+
+//原型方法
+Person20.prototype.eat = function () {
+
+    console.log("人吃东西");
+};
+//实例对象
+var per20 = new Person20();
+
+console.dir(per20);                 // __proto__
+console.dir(Person20);              // prototype
+
+Person20.prototype.__proto__ = undefined;
+
+/**
+ *
+ * 实例对象中有 __proto__( 原型 )
+ * 构造函数中有 prototype( 原型 )
+ *
+ * prototype 是对象
+ *
+ *
+ * 所以，prototype( 对象 ) 中也有 __proto__( 原型 )
+ *
+ * 实例对象中的 __proto__ 指向的是构造函数的 prototype
+ *
+ * 那么 prototype 这个对象中 __proto__ 指向某个构造函数的 prototype( 原型 )
+ *
+ */
+
+//Person20(构造函数) 的 prototype( 原型对象 ) 的 __proto__( 原型 ) 指向 Object
+console.log(Person20.prototype.__proto__);      //Object
+
+console.log(per20.__proto__ === Person20.prototype);                            //true
+console.log(per20.__proto__.__proto__ === Person20.prototype.__proto__);        //true
+console.log(Person20.prototype.__proto__ === Object.prototype);                 //true
+
+console.log(Object.prototype.__proto__);
+//expend output: null
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
