@@ -751,6 +751,540 @@ console.log(Object.prototype.__proto__);
 //expend output: null
 
 
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//原型指向改变如何添加方法和访问
+
+/**
+ *
+ * 如果原型指向改变了，那么就应该在原型改变指向之后添加方法
+ *
+ * 原理: 原型改变指向之前添加方法，此时原型及方法都存储在 栈 中，
+ * 再次调用时，访问不到 栈 中的原指向地址，所以无法访问之前添加的方法
+ *
+ * 原型改变之后添加方法，此时 已经和 新的 栈 形成了连接
+ * 再次调用时，添加的方法会直接存储在 新指向的堆地址所对应的栈中
+ *
+ */
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//人的构造函数
+function Person21(age) {
+
+    this.age = age;
+}
+
+//人的实例对象方法
+Person21.prototype.eat = function () {
+
+    console.log("i like noodles");
+};
+
+//学生的构造函数
+function Student21(sex) {
+
+    this.sex = sex;
+}
+
+//学生的实例对象方法
+Student21.prototype.sayHi = function () {
+
+    console.log("hello every body");
+};
+
+//改变原型对象的指向
+Student21.prototype = new Person21(10);
+
+
+var stu21 = new Student21();
+stu21.eat();
+// stu21.sayHi();
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function Person22(age) {
+
+    this.age = age;
+}
+
+//先添加原型方法
+Person22.prototype.sayHi = function () {
+
+    console.log("excuse me");
+};
+
+//改变原型指向
+Person22.prototype = {
+
+    eat: function () {
+
+        console.log("drink water");
+    }
+};
+
+var per22 = new Person22(10);
+//先添加原型方法，改变原想指向新的对象，所以访问不到
+// per.sayHi();
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//实例对象的属性和原型对象中的属性重名问题
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function Person23(age, sex) {
+
+    this.age = age;
+    this.sex = sex;
+}
+
+//此时并没有改变原型对象的指向，只改变了构造函数的 参数值
+Person23.prototype.sex = "女";
+
+//改变了构造函数中 prototype( 原型对象 )的指向 实例对象( __proto__ )
+var per23 = new Person23(10, "男");
+
+console.log(per23.sex);             //男
+console.dir(per23);                 //Person23
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ *
+ * 通过实例对象能否改变原型中的属性值 ?     不能
+ *
+ * 原理: 实例对象中 __proto__( 存储的是地址 ) 仅仅指向 构造函数中的 prototype( 原型对象 )
+ *
+ *
+ * 改变原型对象中属性的值，直接通过: 构造函数.原型对象.属性 = 值; 就可以改变
+ *
+ */
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+//此时修改了原型对象中属性的值
+Person23.prototype.sex = "哦买噶";
+
+//仅仅修改实例对象中的属性
+per23.sex = "人";
+console.log(per23.sex);
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ *
+ * 因为 JS 是一门动态语言
+ * 对象没有什么就 点什么，只要点了，对象就有了这个属性
+ *
+ * 但只添加了该属性，并没有赋值
+ * 所以结果是: undefined
+ *
+ */
+
+//点属性，未赋值
+console.log(per23.newProperty);                 //undefined
+
+// console.log(newProperty);                    //newProperty is not defined
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//原型链: 实例对象和原型对象之间的关系，通过 __proto__ 联系
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ *
+ * <div id = "dv"></div>
+ *
+ */
+
+var divObj = document.getElementById('dv');
+
+console.dir(divObj);            //div#dv
+
+
+/**
+ *
+ *
+ * ==>: 指向
+ * ->: 的
+ *
+ *
+ * __proto__( 原型对象地址 ) 总是指向 prototype( 原型对象 )
+ *
+ *
+ *
+ * divObj.__proto__ ==> HTMLDivElement.prototype -> __proto__ ==>
+ *
+ * ==> HTMLElement.prototype -> __proto__ ==> Element.prototype -> __proto__ ==>
+ *
+ * ==> Element.prototype ->  __proto__ ==> Node.prototype -> __proto__ ==>
+ *
+ * ==> EventTarget.prototype -> __proto__ ==> Object.prototype !==> __proto__
+ *
+ *
+ * Object.prototype 中没有 __Proto__
+ * 所以 Object.prototype.__proto__ == null;
+ *
+ */
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//JS 中通过原型模拟继承
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function Father(name, age, sex) {
+
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+
+}
+
+Father.prototype.eat = function () {
+
+    console.log("I am hungry")
+};
+Father.prototype.sleep = function () {
+
+    console.log("I am so sleepy");
+};
+Father.prototype.play = function () {
+
+    console.log("I like play basketball");
+};
+
+
+// 代码冗余( 重复代码太多 )
+//
+// function Son(name, age, sex) {
+//
+//     this.name = name;
+//     this.age = age;
+//     this.play = sex;
+// }
+// Son.prototype.eat = function () {
+//
+//     console.log("I am hungry")
+// };
+// Son.prototype.sleep = function () {
+//
+//     console.log("I am so sleepy");
+// };
+// Son.prototype.play = function () {
+//
+//     console.log("I like play basketball");
+// };
+
+
+function Son(score) {
+
+    this.score = score;
+}
+
+
+//改变 son 原型指向
+Son.prototype = new Father('alpha', 10, "male");
+
+Son.prototype.study = function () {
+
+    console.log("It takes a lot if time to learn English");
+};
+
+var son = new Son(100);
+
+console.log(son.name);
+console.log(son.age);
+console.log(son.sex);
+
+son.eat();
+son.play();
+son.sleep();
+
+
+console.log("下面是 Son 对象自己有的");
+
+console.log(son.score);
+son.study();
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//继承案例
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ *
+ * 动物有名字、体重，会吃东西
+ *
+ * 小狗有名字、体重、毛色，会吃东西、咬人
+ *
+ * 哈士奇有名字、体重、毛色、性别，会吃东西、咬人、逗主人开心
+ *
+ */
+
+//动物的构造函数
+function Animals(name, weight) {
+
+    this.name = name;
+    this.weight = weight;
+}
+
+//动物的原型方法
+Animals.prototype.eat = function () {
+
+    console.log("I like to eat big bones");
+};
+
+
+//狗的构造函数
+function Dog(color) {
+
+    this.color = color;
+}
+
+//改变构造器的指向
+Dog.prototype = new Animals("beta", "80kg");
+//狗的原型方法
+Dog.prototype.Biting = function () {
+
+    console.log("wang wang");
+};
+
+
+//哈士奇的构造韩式
+function Husky(sex) {
+
+    this.sex = sex;
+}
+
+//改变构造起的指向
+Husky.prototype = new Dog("pink");
+//哈士奇的原型方法
+Husky.prototype.playHost = function () {
+
+    console.log("haha xixi gaga");
+};
+
+var husky = new Husky();
+
+console.log(husky.name, husky.weight, husky.color);
+
+husky.eat();
+husky.Biting();
+husky.playHost();
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//借用构造函数
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+function Person24(name, age, sex, weight) {
+
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+    this.weight = weight;
+}
+
+Person24.prototype.sayHi = function () {
+
+    console.log("Hello");
+};
+
+
+function Student24(name, age, sex, weight, score) {
+
+    //重点: 借用构造函数
+    //解决了属性继承，并且值不重复的问题
+    //缺陷: 父级类别中的 "方法" 不能继承
+    Person24.call(this, name, age, sex, weight);
+    this.score = score;
+}
+
+
+//学生继承了 人的类别中的数据
+// Student24.prototype = new Person24("alpha", 18, "male", "80kg");
+
+
+// var stu24 = new Student24(110);
+// console.log(stu24.name, stu24.age, stu24.sex, stu24.score);
+
+//借用构造函数.call 后，可以直接在实例中传入新的参数值
+var stu24 = new Student24("alpha", 18, "male", "80kg", 80);
+console.log(stu24.name, stu24.age, stu24.sex, stu24.score);
+
+// stu24.name = "beta";
+// stu24.age = 20;
+// stu24.sex = "female";
+
+var stu25 = new Student24("beta", 18, "male", "90kg", 90);
+console.log(stu25.name, stu25.age, stu25.sex, stu25.score);
+
+var stu26 = new Student24("omega", 18, "male", "100kg", 100);
+console.log(stu26.name, stu26.age, stu26.sex, stu26.score);
+
+
+//为了数据共享，改变原型指向，做到了继承( 通过改变原型指向实现的继承 )
+//缺陷: 因为改变原型指向的同时实现了继承，直接初始化了属性，继承过来的属性值都是一样的，所以这是问题
+
+
+//解决方案: 继承的时候，不用改变原型的指向，直接调用父级的构造函数的方式垃圾 为属性赋值
+//借用构造函数: 把要继承的父级的构造函数是拿过来，使用一下就可以了
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+/**
+ *
+ * 组合继承
+ *
+ * 原型继承
+ * 借用构造函数继承
+ *
+ */
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function Person26(name, age, sex) {
+
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+}
+
+Person26.prototype.sayHi = function () {
+
+    console.log("阿尼哈瑟有");
+};
+
+function Student26(name, age, sex, score) {
+
+    Person26.call(this, name, age, sex);
+    this.score = score;
+}
+
+//改变原型指向
+Student26.prototype = new Person26();
+Student26.prototype.eat = function () {
+
+    console.log("真香");
+};
+
+
+var stu30 = new Student26("alpha", 18, "male", "80kg");
+console.log(stu30.name, stu30.age, stu30.sex, stu30.score);
+
+stu30.sayHi();
+stu30.eat();
+
+
+//-------------------------------------------------------------------------------------------------------------------//
+
+
+//拷贝继承
+
+//把一个对象中的属性或者方法直接复制到另一个对象中
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+var obj1 = {
+
+    name: "小糊涂",
+    age: 20,
+    sleep: function () {
+
+        console.log("go bed，right now");
+    }
+};
+
+
+//改变地址的指向
+//
+//仅仅改变 栈中的地址( 假拷贝 )，指向改变
+//
+var obj2 = obj1;
+console.log(obj2.name, obj2.age);
+
+obj2.sleep();
+
+
+var obj3 = {};
+for (var key in obj1) {
+
+    obj3[key] = obj1[key];
+}
+console.log(obj3.name);
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+function Person27() {
+
+}
+
+Person27.prototype.age = 10;
+Person27.prototype.sex = "male";
+Person27.prototype.height = 100;
+Person27.prototype.play = function () {
+
+    console.log("so happy")
+};
+
+var obj4 = {};
+
+
+//Person27( 构造函数 )中 prototype 就是一个对象，
+//age,sex,height,play 就是属性或方法
+//
+//浅拷贝
+
+for (var key1 in Person27.prototype) {
+
+    obj4[key1] = Person27.prototype[key1];
+}
+
+console.dir(obj4);
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
