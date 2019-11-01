@@ -3,6 +3,46 @@
 
 <h2 id="#">Function</h2>
 
+* 所有函数都是 Function( 系统构造函数 ) 创建出来的实例对象，函数也是对象
+
+    * Function(prototype) -> __proto__ ==> Object -> __proto__ : null
+    
+        * Function( 系统构造函数 )指向 Object 中的 __proto__( 原型 ): null;
+        
+        * 
+
+    * eg: 
+    
+        * ex2  > ex1 ( 解析效率 )
+        
+        * 
+    
+        * example 1:
+        
+            * var f1 = mew Function('num1', 'num2', 'return num1 + num2');
+            
+            * 
+            
+        * example 2:
+             
+            * Function f1(num1, num2) {
+            
+                * return num1 + num2;
+             
+            * }
+             
+            * 
+            
+        * example 3:
+        
+            * var f2 = function(num1, num2) {
+            
+                * return num1 + num2;
+            
+            * };
+        
+            *  
+
 封装重复代码，用于后续调用
 
 函数声明时，函数体并不会执行，只要当函数被调用时才会执行，函数一般都用来干一件事，需要使用 动词 + 名次 ( 表示做一件事 tellStory、sayHello 等 )
@@ -33,7 +73,7 @@
 
     * function newFunctionName(param1, param2, ... paramN) {statements}
 
-    * 
+    * 函数表达式: var fn = function(){};
     
     * 函数的另一种定义方式
     
@@ -64,25 +104,283 @@
                     * 赋值函数调用: newFunctionName ();
                     
                     * 
-                
-            * 调用
-            
-                * 函数自调用: 声明时直接调用，**但是只能用一次**
-                
-                    * (function() {[statments]} ();
                     
-                    * 
+    * if ... else ... 中函数声明，如果在 IE8 中会出问题 => 使用函数表达式避免函数声明( 调用时函数预解析 )在IE8中所产生的问题
+    
+        * eg: 
+        
+            * 函数声明，会有预解析( 产生解析提前: 在 IE8 中会有错误产生 )
+        
+            * if(true) {
+            
+                * function() {
                 
-                * 匿名函数不可以直接调用
+                    * console.log('Chrome、Firefox export);
                 
-                    *             
+            * } else {
+            
+                * function() {
+                
+                    * console.log('IE8 export');
+                
+                * }
+            
+            * }
+            
+            * 函数声明如果放在 if ... else .. 中，IE8 中会有问题
+
+                * 返回: else 的语句值 
+                
+                * 
+                
+                *
+                
+            * 函数表达式( 不会有预解析 )
+            
+            * var fn;
+            
+            * if(true) {
+            
+                * fn = function(){
+                
+                    * console.log('Chrome、Firefox、IE8 export');
+                
+                * }
+            
+            * } else {
+            
+                * fn = function(){
+                
+                    * console.log('it's ok');
+                
+                * }
+            
+            * }
+            
+            * fn();
+            
+            * 宁愿用函数表达式，避免 IE8 中函数声明时预解析所产生的问题
+            
+            *
+                
+        * 调用
+        
+            * 函数自调用: 声明时直接调用，**但是只能用一次**
+            
+                * (function() {[statuments]} ();
+                
+                * 
+            
+            * 匿名函数不可以直接调用
+            
+                *             
 
 * 调用函数
 
     * functionName(realParam1, realParam2, ... realParamN);
 
-    * 
+    * 不同的调用方式
+    
+        * 普通函数: 通过函数名直接调用
+        
+            * eg:
+            
+                * function f1(){
+                
+                    * console.log();
+                
+                * }
+                
+                * f1();
+                
+                * 
+        
+        * 构造函数: 通过 new 创建实例对象调用
+        
+            * eg:
+            
+                * function F1(){
+                
+                    * console.log(')
+                
+                * }
+                
+                * var fn = new F1();
+                
+                * 通过 new 创建实例函数调用
 
+                *
+        
+        * 对象的方法: 通过实例对象 '点' 方法调用
+        
+            * eg: 
+            
+                * function Person(){
+                
+                    * this.play = function(){
+                
+                        * console.log('play game');
+                    
+                    *  };
+                
+                * }
+                
+                * var per = new Person();
+                
+                * per.play();
+                
+                * 
+                
+        * 数组中的函数调用
+        
+            * eg: 
+            
+                * var arr = [
+                
+                    * function(){
+                    
+                        *  console.log('box1');
+                    
+                    * },  
+                    
+                    * var arr = [
+                    
+                        * function(){
+                        
+                            *  console.log('box2');
+                        
+                        * }, 
+                         
+                    * var arr = [
+                    
+                        * function(){
+                        
+                            *  console.log('box3');
+                        
+                        * },     
+                
+                * ];
+                
+                * 
+                
+                * 回调函数: 函数作为参数使用
+                
+                * arr.forEach(function(ele){
+                
+                    * ele();
+                
+                * );
+                
+                * 
+                
+                * 
+            
+* 函数中 this 的指向
+
+    * 普通函数中 this 指向 window 
+    
+        * eg:
+        
+            * function f1() {
+            
+                * console.log(this); ==> window
+            
+            * }
+            
+            * window.f1();
+            
+            * 
+            
+            * BOM: 浏览器的顶级对象是 window，浏览器中所有的东西都是 window 的
+            
+            * 
+    
+    * 定时器中的 this 指向 window
+    
+        * eg:
+        
+            * window.setInterval(function(){
+            
+                * console.log(this); ==> window
+                
+            * } ,1000)
+            
+            * 
+    
+    * 构造函数中的 this 指向 实例对象
+    
+        * eg: 
+    
+            * function Person(){
+            
+                * console.log(this); ==> Person
+                
+                * this.sayHi = function() {
+                
+                    *
+                
+                    * 对象方法中的 this 指向 当前的实例对象 
+                    
+                    * console.log(this); ==> Person
+                
+                * }
+            
+            * } 
+            
+            * 
+            
+            * var per = new Person();
+            
+            * console.log(per); ==> Person
+            
+            * 
+    
+    * 原型方法中的 this 指向 实例对象
+    
+        * eg: 
+        
+            * Person.prototype.eat = function(){
+            
+                * console.log(this);
+                
+                * this.sayHi = function() {
+                                
+                    * console.log(this); ==> Person
+                
+                * }
+
+            * };
+            
+            * var per = new Person();
+            
+            * console.log(per);
+            
+            * per.sayHi();
+            
+            *
+            
+* 函数是对象，对象不一定是函数
+
+    * 函数
+    
+        * prototype
+        
+        *
+        
+    * 对象
+    
+        * __proto__
+        
+        * 
+        
+    * 函数 && 对象
+    
+        * prototype
+        
+        * __proto__
+        
+        * 
+            
 * 参数
 
     * 形参 param
@@ -258,7 +556,7 @@
     * function myFunction (newFunction) {};
     
     * 
-   
+    
    
 
 <br/>

@@ -36,7 +36,7 @@
         
         * 构造函数增加方法
         
-            * fn.prototype.property = value;
+            * fn.prototype.method = function(){};
             
             * 
         
@@ -225,20 +225,104 @@
             
     * 不同的继承
     
-        * 如何实现继承
-        
-        * 原型的方式继承
-        
-        * 借用构造函数继承
-        
-        * 组合继承
-        
-        * 
+        * 继承的属性值( 就近原则 )
     
-    * this 的当前指向是谁，原型的指向是否可以改变
+        * 组合继承 ==> 原型方式继承 + 构造函数继承
     
-    * 
+            * 原型的方式继承: 改变原型的指向
+            
+                * 缺陷: 属性在初始化时就已经固定了，如果多个实例对象的属性值在初始化的时候都是一样的
+                
+                * 
+            
+            * 借用构造函数继承: 解决属性继承
+            
+                * 可以解决 原型继承的缺陷，但是不能继承 方法
+                
+                * 
+                
+        * eg: 
+        
+            * function GrandFa(name, money){
+                
+                * this.name = name;
+                
+                * this.money = money;
+                
+            * }
+            
+            * GrandFa.prototype.sayHi = function(){
+            
+                * console.log('hello world');
+                
+            * };
+            
+            * 
 
+            * 
+            
+            * function Father(name, money, sex){
+            
+                * 通过构造函数继承 GrandFa 的属性
+            
+                * GrandFa.call(this, name, money);
+            
+                * this.sex = sex;
+            
+            * }
+            
+            * 
+
+            * 
+            
+            * function Son(name, money, sex, age){
+            
+                * 通过构造函数继承 Father 的属性
+            
+                * Father.call(this, name, money);
+                
+                * this.age = age;
+                
+            * }
+            
+            * Son.prototype.play = function(){
+            
+                * console.log('i like play game');
+            
+            * };
+            
+            * 
+            
+            * 
+            
+            * var son = new Son(alpha, '100W', 'male', 18);
+            
+            * 
+            
+            * 此时仅可以调用 Son 自己的方法；Son.play();
+            
+            * 如果想要调用 GrandFa 和 Father 中的方法，需使 更改 GrandFa 和 Father 实例对象中 __proto__ 原型的指向
+            
+            * 
+        
+        * 拷贝继承: 把对象中需要共享的 "属性" 或 "方法"，利用循环遍历复制到另一个对象中
+        
+            * 浅拷贝
+            
+                * eg: 
+                
+                    * 
+                    
+                    * 
+                    
+                    * 
+                    
+                    * 
+            
+            * 深拷贝 
+            
+            * 
+    
 * 构造函数、实例对象、原型对象
 
     * 函数也是对象，对象不一定是函数
@@ -269,7 +353,7 @@
         
             * 也可以称为: 构造函数中的 prototype 共享给了 事例对象的 __proto__
             
-            * 所以 事例对象 可以访问 构造函数中的 prototype 存储的 属性 或 方法 等 
+            * 所以 事例对象的 __proto__ 可以访问 构造函数中的 prototype 存储的 属性 或 方法 等 
             
             * 仅单方面共享，事例函数中的 属性 和 方法 并不会 共享给 构造函数
             
@@ -293,7 +377,13 @@
         
             * prototype
             
-            * 
+                * __proto__
+                
+                    * name 属性
+            
+                    * age 属性
+                    
+                    * 
         
         * 实例对象: per;
         
@@ -332,7 +422,9 @@
 
     * 面向过程
     
-        * 凡事都要亲力亲为，所有的代码都要自己写，每一步都要很清楚，注重的是过程，
+        * 凡事都要亲力亲为，所有的代码都要自己写，每一步都要很清楚，注重的是过程
+        
+        *
     
     * 面向对象
     

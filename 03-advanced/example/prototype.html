@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+
+    function GrandFa(name, money) {
+
+        this.name = name;
+        this.money = money;
+    }
+
+    GrandFa.prototype.sayHi = function () {
+
+        console.log('hi baby');
+    };
+
+
+    function Father(name, money, sex) {
+
+        GrandFa.call(this, name, money);
+        this.sex = sex;
+    }
+
+    //更改原型指向 GrandFa，为了继承方法
+    Father.prototype = new GrandFa();
+
+    Father.prototype.eat = function () {
+
+        console.log('l like fish');
+    };
+
+    function Son(name, money, sex, age) {
+
+        Father.call(this, name, money, sex);
+        this.age = age;
+    }
+
+    //更改原型指向 Father，为了继承方法
+    Son.prototype = new Father();
+
+
+    Son.prototype.play = function () {
+
+        console.log('play basketball')
+    };
+
+
+    var son = new Son('alpha', '100w', 'male', 18);
+
+    console.log(son);
+
+
+    //GrandFa
+    son.sayHi();
+    //Father
+    son.eat();
+    //Son
+    son.play();
+
+
+</script>
+
+
+</body>
+</html>

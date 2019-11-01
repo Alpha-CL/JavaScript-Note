@@ -1,8 +1,15 @@
 
 
+function my$(ele) {
+
+    return document.getElementById(ele);
+}
+
+
 function RootWord() {
 
-    document.getElementById('wrap');
+    var wp = my$('wrap');
+
 
 
 }
