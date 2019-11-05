@@ -1,3 +1,7 @@
+function my$(ele) {
+
+    return document.getElementById(ele);
+}
 
 
 function setInnerText(element, text) {

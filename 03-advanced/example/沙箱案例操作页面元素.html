@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div>This is div</div>
+<div>This is div</div>
+<div>This is div</div>
+
+<p>This is a paragraph</p>
+<p>This is a paragraph</p>
+<p>This is a paragraph</p>
+
+
+<script>
+
+    //全局变量和函数名重名
+    //
+    //此时可以用沙箱解决
+    //
+    var getTag = 10;
+    var dvObjs = 20;
+    var pObjs = 30;
+
+
+    //沙箱解决了 重名 无法运行 函数的问题
+    (function () {
+
+        //根据标签名字获取 div 元素
+        function getTag(tagName) {
+
+            return document.getElementsByTagName(tagName);
+        }
+
+        //获取所有 div
+        var dvObjs = getTag('div');
+
+        for (var i = 0; i < dvObjs.length; i++) {
+
+            dvObjs[i].style.border = ' 2px solid red';
+        }
+
+        //根据标签名字获取 p 元素
+        var pObjs = getTag('p');
+
+        for (var j = 0; j < pObjs.length; j++) {
+
+            pObjs[j].style.border = '2px solid red';
+        }
+
+    }());
+
+
+    //此时 全局变量可以正常输出
+    console.log(getTag);
+    console.log(dvObjs);
+    console.log(pObjs);
+
+
+</script>
+
+
+</body>
+</html>
