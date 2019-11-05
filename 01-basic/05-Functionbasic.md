@@ -57,7 +57,7 @@
         
         * 
     
-    * 自定义构造函数: 遵循大驼峰命名 
+    * 自定义构造函数: 遵循大驼峰命名
     
         * variable name ==> VariableName
         
@@ -71,7 +71,7 @@
 
 * 声明函数
 
-    * function newFunctionName(param1, param2, ... paramN) {statements}
+    * function newFunctionName(param1, param2, ... paramN) {statements};
 
     * 函数表达式: var fn = function(){};
     
@@ -503,6 +503,60 @@
         
             * 因为函数就跟那些可以分配给变量的数据一样，可以 定义、删除、拷贝，所以也可以饿作为参数传递给函数
             
+            * 函数作为参数的时候，如果是命名函数，那么只用传入命名函数的名字( 没有括号 )
+            
+                * eg: 
+                
+                    * 回调用命名函数
+                    
+                    * function invokeFn(callBackFn) {
+                    
+                        * console.log( 'This is invokeFn' );
+                        
+                        * callBackFn();
+                    
+                    * }
+                    
+                    * 
+                    ”
+                    * 回调匿名函数
+                    
+                    * invokeFn( function() {
+                    
+                        * console.log('This is callBackFn');
+                    
+                    * });
+                    
+                    *
+                    
+                    * 计时器中回调函数
+                    
+                    * function f1(fn) {
+                    
+                        * setInterval( function() {
+                        
+                            * console.log('Interval start');
+                            
+                            * fn();
+
+                            * console.log('Interval end');
+                    
+                        * }, 1000)
+                    
+                    * }
+                    
+                    * 
+                    
+                    * f1( function() {
+                    
+                        * console.log('just do it'); 
+                    
+                    * });
+                    
+                    * 
+                    
+                    * 
+            
         * eg: 
         
             * function fn1() { return 1; };
@@ -516,6 +570,8 @@
             * 函数作为参
             
                 * function sum( fn1, fn2 );
+                
+                * 
             
             * 匿名函数作为参数
             

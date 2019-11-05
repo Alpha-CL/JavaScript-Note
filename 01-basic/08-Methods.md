@@ -178,9 +178,9 @@ JavaScript 提供了多个内置对象: Math、Array、Number、String、Boolean
                         
                         *（ 并 Date.parse() 以相同的方式工作 ）
                     
-                        * 对RFC 2822格式字符串的支持仅限于惯例
+                        * 对 RFC 2822 格式字符串的支持仅限于惯例
                         
-                        * 对ISO 8601格式的支持不同之处在于仅日期字符串（例如“1970-01-01”）被视为UTC，而不是本地
+                        * 对 ISO 8601 格式的支持不同之处在于仅日期字符串（ 例如 “1970-01-01” ）被视为 UTC，而不是本地
                    
                         *
                 
@@ -790,7 +790,6 @@ JavaScript 提供了多个内置对象: Math、Array、Number、String、Boolean
                     myFish.sp;oce(2, 1, "drum", "alpha") ==> //["abgel", "clown", "drum", "alpha", "sturgeon"];
                     
                     *
-                
                 
                 *
     
