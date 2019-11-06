@@ -458,10 +458,43 @@
         
         * 
 
+* 反身代词( 宾 / 同位语 )
 
-
-
-
+    * myself
+    
+    * yourself11
+    
+    * herself
+    
+    * himself
+    
+    * itself
+    
+    * yourselves
+    
+    * ourselves
+     
+    * themselves
+     
+    * 
+    
+    * eg: 
+    
+        * Please help yourself to some fish.
+        
+        * We enjoyed ourselves last night.
+        
+        * The thing itself is not important.
+        
+        * 
+        
+    * ex: 
+    
+        * Take  good care of yourself.
+        
+        * She gained control of herself.
+        
+        * 
 
 
 
