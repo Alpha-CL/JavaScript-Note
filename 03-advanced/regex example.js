@@ -79,6 +79,7 @@
 
 /**
  *
+ *
  * 座机号正则表达式
  *
  *
@@ -218,47 +219,148 @@ console.log(/[a-zA-Z]+/.test('hello'));
 
 
 /**
- *
- *
+ * 任意一个除 '\n' 以外的 字符
  *
  */
-console.log(/./.test("除 '/n' 以外的任意字符"));
+console.log("/./: 任意一个除 回车 以外的 字符 ==> " + /./.test("除回车以外的任意字符"));//true
 
 
-//
-console.log(/.*/.test("0个到多个"));
+/**
+ * 任意一个除 '\n' 以外的字符，出现了 0次 或 n次
+ *
+ */
+console.log("/.*/: 任意一个除 '\\n' 以外的字符，出现了 0次 或 n次 ==> " + /.*/.test("0个到多个"));                   //true
 
 
-console.log(/.+/.test("1个到多个"));
+/**
+ * 任意一个除了 '\n' 以外的字符，出现了 1次 或 n次
+ *
+ */
+console.log(/.+/.test("1个到多个"));                   //true
 
 
-console.log(/.?/.test("哈哈"));
+/**
+ * 任意一个除 '\n' 以外的字符，出现了 0次 或 1次
+ *
+ */
+console.log(/.?/.test("哈哈"));                       //true
 
 
-console.log(/[0-9]/.test("9527"));
+/**
+ * 0 - 9 之间任意一个数字
+ *
+ */
+console.log(/[0-9]/.test("9527"));                   //true
 
 
-console.log(/[a-z]/.test("what"));
+/**
+ * a - z 之间任意一个字母
+ *
+ */
+console.log(/[a-z]/.test("what"));                   //true
 
 
-console.log(/[A-Z]/.test("Are"));
+/**
+ * A - Z 之间任意一个大写字母
+ *
+ */
+console.log(/[A-Z]/.test("Are"));                   //true
 
 
-console.log(/[a-zA-Z]/.test("干啥子"));
+/**
+ * 所有大小写字母中任意一个字母
+ *
+ */
+console.log(/[a-zA-Z]/.test("干啥子"));              //false
 
 
-console.log(/[0-9a-zA-Z]/.test("9ebg"));
+/**
+ * 0 到 9 和 所有 大小写字母中任意一个
+ *
+ */
+console.log(/[0-9a-zA-Z]/.test("9ebg"));            //true
 
 
-console.log(/b|(ara)/.test("abra"));
+/**
+ * b 或者 ara 中任意一个
+ *
+ */
+console.log(/b|(ara)/.test("abra"));                //true
 
 
-console.log(/[a-z]{2,3}/.test("arfsf"));
-
-
+/**
+ * a - z 字母中出现了 2次 到 3次
+ *
+ */
+console.log(/[a-z]{2,3}/.test("arfsf"));            //true
 
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * 任意一个数字
+ *
+ */
+console.log(/\d/.test("998"));              //true
+
+/**
+ * 任意一个数字出现 0次 到 n次
+ *
+ */
+console.log(/\d*/.test("998"));             //true
+
+/**
+ * 任意一个数字出现 1次 到 n次
+ *
+ */
+console.log(/\d+/.test("998"));             //true
+
+/**
+ * 任意一个数字出现 0次 到 n次 == *
+ *
+ */
+console.log(/\d{0,}/.test("998"));          //true
+
+/**
+ * 任意一个数字出现 2次 到 3次
+ *
+ */
+console.log(/\d{2,3}/.test("998"));         //true
+
+/**
+ * 任意一个非数字
+ *
+ */
+console.log(/\D/.test("eat"));              //true
+
+/**
+ * 空白符
+ *
+ */
+console.log(/\s/.test("before   after"));       //true
+
+/**
+ * 非空白符
+ *
+ */
+console.log(/\S/.test("嘎嘎 "));                  //true
+
+/**
+ * 非特殊符号
+ *
+ */
+console.log(/\w/.test("_"));                    //true
+
+/**
+ * 特殊符号
+ *
+ */
+console.log(/\W/.test("_"));        //false
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
 
 
 
