@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../javascript/common.js"></script>
+
+    <style type="text/css">
+        #dv {
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            left: 300px;
+            top: 100px;
+        }
+
+        .strengthLv0 {
+            height: 6px;
+            width: 120px;
+            border: 1px solid #ccc;
+            padding: 2px;
+        }
+
+        .strengthLv1 {
+            background: red;
+            height: 6px;
+            width: 40px;
+            border: 1px solid #ccc;
+            padding: 2px;
+        }
+
+        .strengthLv2 {
+            background: orange;
+            height: 6px;
+            width: 80px;
+            border: 1px solid #ccc;
+            padding: 2px;
+        }
+
+        .strengthLv3 {
+            background: green;
+            height: 6px;
+            width: 120px;
+            border: 1px solid #ccc;
+            padding: 2px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="dv">
+    <label for="pwd">密码</label>
+    <input type="text" id="pwd" maxlength="16"><!--课外话题-->
+    <div>
+        <em>密码强度：</em>
+        <em id="strength"></em>
+        <div id="strengthLevel" class="strengthLv0"></div>
+    </div>
+</div>
+
+
+<script>
+
+
+    /**
+     *
+     * 密码: 数字( number )、字母( letter )、特殊符号( special symbol )
+     *
+     * num ==> [0-9]
+     * letter ==> [a-zA-Z]
+     * special symobl ==> [^0-9a-zA-Z_]
+     *
+     *
+     * 一级: num || let || spsy
+     *
+     * 二级: num + let || num + spsy || let + spsy
+     *
+     * 三级: num + let + spsy
+     *
+     */
+
+
+    //获取文本框注册键盘抬起事件
+    my$('pwd').onkeyup = function () {
+
+        my$('strengthLevel').className = 'strengthLv' + (this.value.length >= 6 ? getvl(this.value) : 0);
+
+        // //获取提示密码强度的 dv 色块
+        // var target = my$('strengthLevel');
+        // if (this.value.length >= 6) {
+        //
+        //     //每次键盘抬起都要获取文本框中的内容，验证文本框中有什么东西，得到一个级别
+        //     var lvl = getvl(this.value);
+        //
+        //     target.className = 'strengthLv' + lvl;
+        //
+        // } else {
+        //
+        //     target.className = 'strengthLv0';
+        // }
+
+
+        // if (this.value.length >= 6) {
+        //
+        //     //判断密码级别
+        //     if (lvl === 1) {
+        //
+        //         target.className = 'strengthLv1';
+        //
+        //     } else if (lvl === 2) {
+        //
+        //         target.className = 'strengthLv2';
+        //
+        //     } else if (lvl === 3) {
+        //
+        //         target.className = 'strengthLv3';
+        //
+        //     } else {
+        //
+        //         target.className = 'strengthLv0';
+        //
+        //     }
+        //
+        // } else {
+        //
+        //     target.className = 'strengthLv0';
+        // }
+    };
+
+
+    //获取密码，但会级别
+    function getvl(pwd) {
+
+        //默认级别 0
+        var lvl = 0;
+
+        //判断 pwd 是否有数字
+        if (/[0-9]/.test(pwd)) {
+
+            lvl++;
+        }
+        //判断 pwd 是否有字母
+        if (/[a-zA-Z]/.test(pwd)) {
+
+            lvl++;
+        }
+        //判断 pwd 是否有特殊符号
+        if (/[^0-9a-zA-Z_]/.test(pwd)) {
+
+            lvl++;
+        }
+        return lvl;
+    }
+
+
+</script>
+
+</body>
+</html>
