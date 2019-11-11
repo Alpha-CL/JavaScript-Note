@@ -527,6 +527,8 @@ JavaScript 提供了多个内置对象: Math、Array、Number、String、Boolean
                     * parameter1: 字符串原本的 值( 不可更改 )，用于检索
                     
                     * parameter2: 如果检索出字符串包含 parameter1，则用 parameter2 替换 parameter1
+                    
+                    * 
                 
                 * .slice(index1, index2);( 返回: 新建 index1 到 index2 的字符串)
                 
