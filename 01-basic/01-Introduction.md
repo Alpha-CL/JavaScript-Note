@@ -24,13 +24,13 @@
     
     * 
     
-* DOM --- Document object Model 
+* DOM --- Document object Model
     
     * 文档对象模式
     
     * 
 
-* BOM --- Browser object Model
+* BOM --- Browser object Model€
 
     * 浏览器对象模式
     
