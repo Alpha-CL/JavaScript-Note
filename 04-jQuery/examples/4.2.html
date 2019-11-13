@@ -6,6 +6,17 @@
 
     <script src="../jQuery%20version/jquery-1.12.4.js"></script>
 
+    <link rel="stylesheet" href="../../styles/normalize.css">
+
+    <style>
+
+        li {
+            padding: 10px;
+        }
+
+    </style>
+
+
 </head>
 <body>
 
@@ -45,25 +56,34 @@
     // });
 
 
+    // $(function () {
+    //
+    //     //$liObjs 是 jQ 对象
+    //     //增加 $ 为了区分是 jQ 对象
+    //     var $liObjs = $('li');
+    //
+    //     for (var i = 0; i < $liObjs.length; i++) {
+    //
+    //         if (i % 2 === 0) {
+    //
+    //             //$liObj[i] 属于 jQ 对象所包含的 JS 对
+    //             //所以可以调用 JS 的方法
+    //             $liObjs[i].style.backgroundColor = 'pink';
+    //
+    //         } else {
+    //
+    //             $liObjs[i].style.backgroundColor = 'green';
+    //         }
+    //     }
+    // });
+
+
     $(function () {
 
-        //$liObjs 是 jQ 对象
-        //增加 $ 为了区分是 jQ 对象
-        var $liObjs = $('li');
+        $('li:even').css('backgroundColor', 'pink');
 
-        for (var i = 0; i < $liObjs.length; i++) {
+        $('li:odd').css('backgroundColor', 'green');
 
-            if (i % 2 === 0) {
-
-                //$liObj[i] 属于 jQ 对象所包含的 JS 对
-                //所以可以调用 JS 的方法
-                $liObjs[i].style.backgroundColor = 'pink';
-
-            } else {
-
-                $liObjs[i].style.backgroundColor = 'green';
-            }
-        }
     });
 
 

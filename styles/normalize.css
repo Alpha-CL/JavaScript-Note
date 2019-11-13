@@ -131,7 +131,7 @@ a {
 
 
 /*clear floating flow*/
-.clearfix::after {
+.clearFix::after {
     content: "";
     clear: both;
     display: block;
