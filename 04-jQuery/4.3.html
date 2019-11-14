@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../styles/normalize.css">
+    <script src="jQuery version/jquery-1.12.4.min.js"></script>
+
+
+</head>
+<body>
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<!--css 修改单个样式-->
+<!--css 一次性修改多个样式-->
+<!--css 获取样式的值-->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+<ul id="ex1">
+    <li>高圆圆</li>
+    <li>周二珂</li>
+    <li>冯提木</li>
+    <li>郑爽</li>
+</ul>
+
+
+<script>
+
+
+    /**
+     *
+     * .css(name, value);
+     * @name: 样式名;
+     * @value: 样式值;
+     *
+     */
+
+    $(function () {
+
+
+        // 设置单个样式
+        //
+        // $('#ex1 > li')
+        //     .css('backgroundColor', 'pink')
+        //     .css('color', '#333')
+        //     .css('padding', '10px');
+
+
+        // 一次性设置多个样式
+        //
+        //利用 json 数据类型，简化代码
+        $('#ex1 > li').css({
+
+            backgroundColor: 'pink',
+            color: '#333',
+            fontSize: '16px',
+            padding: '10px'
+        });
+
+
+        // 获取单个样式值
+        //
+        var ex1Li = $('#ex1 li');
+
+        ex1Li.eq(0).css('fontSize', '12px');
+        ex1Li.eq(1).css('fontSize', '26px');
+        ex1Li.eq(2).css('fontSize', '18px');
+        ex1Li.eq(3).css('fontSize', '32px');
+
+        console.log(ex1Li.css('fontSize'));             //12px
+
+    });
+
+</script>
+
+
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+</body>
+</html>
