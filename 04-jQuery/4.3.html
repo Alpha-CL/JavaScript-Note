@@ -133,6 +133,7 @@
 
 <input type="button" value="切换类" id="btn5">
 
+
 <div id="box1" class="aa bb cc dd"></div>
 
 <ul id="ul1">
@@ -181,6 +182,34 @@
 
             //判断是否有这个类
             console.log($('#ul1 li').hasClass('bigger'));
+
+        });
+
+        console.log('hah');
+
+
+        /**
+         *
+         * 判断li中是否有 basic 这个类，有则删除，无则创建
+         *
+         * toggleClass(className);
+         *
+         */
+
+        $('#btn5').click(function () {
+
+            // var liObjs = $('#ul1 li');
+            //
+            // if (liObjs.hasClass('basic')) {
+            //
+            //     liObjs.removeClass('basic');
+            //
+            // } else {
+            //
+            //     liObjs.addClass('basic');
+            // }
+
+            $('#ul1 li').toggleClass('basic');
         });
 
     });
