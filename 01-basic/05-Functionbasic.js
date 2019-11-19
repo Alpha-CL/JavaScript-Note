@@ -400,7 +400,7 @@ console.log(getFactorial(3));
 function getFib(num) {
 
     var num1 = 1;
-    var num2 = 1
+    var num2 = 1;
     var sum = 0;
 
     for (var i = 3; i <= num; i++) {

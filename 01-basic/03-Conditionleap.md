@@ -72,7 +72,7 @@
         
         * 
         
-    * 三元表达式    
+    * 三元表达式( ternary expression )    
     
         * var demo = condition statements ? expression1 : expression2;
         

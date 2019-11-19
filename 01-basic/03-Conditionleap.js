@@ -78,7 +78,7 @@ if (9 > 6) {
 }
 
 if (6 > 9) {
-    console.log("Hellow World");                 //no output, because condition is false
+    console.log("Hello World");                 //no output, because condition is false
 }
 
 

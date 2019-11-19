@@ -69,24 +69,19 @@
 
         $(function () {
 
-            $(function () {
+            $('.tab-item').mouseenter(function () {
 
-                console.log('good job !');
+                $(this).addClass('active').siblings().removeClass('active');
+
+                var idx = $(this).index();
+                $('.main').eq(idx).addClass('selected').siblings().removeClass('selected');
 
             });
-        });
-
-
-        $(function () {
-
-
 
         });
-
 
 
     </script>
-
 
 
 </head>
