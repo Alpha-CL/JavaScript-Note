@@ -55,30 +55,44 @@ window: 浏览器中顶级对象
             * location.hash
             
                 * 获取 '#' 后跟 URL 的片段标识符
+                
+                * 
 
             * location.host
             
                 * 获取 主机名 和 端口
+                
+                * 
 
             * location.hostname
             
                 * 获取主机名
                 
+                * 
+                
             * location.pathname
             
                 * 获取文件路径
+                
+                * 
                 
             * location.port
             
                 * 获取端口号
                 
+                * 
+                
             * location.protocol
             
                 * 获取 URL 协议
                 
+                * 
+                
             * location.search
             
                 * 获取查询的字符串
+                
+                * 
             
         * Method
         
@@ -109,16 +123,22 @@ window: 浏览器中顶级对象
         * history.forward();
         
             * 页面前进
+            
+            * 
         
         * history.back();
         
             * 页面返回
+            
+            * 
         
         * history.go();
         
             * history.go(正数);
             
                 * 页面前进
+                
+                * 
             
             * history.go(负数);
             
@@ -247,32 +267,6 @@ window: 浏览器中顶级对象
                     * 停止计时器必须要 事件计时器的 " 返回值( 及事件计时器的 ID ) "
                     
                     * 
-                
-        * offset
-        
-            * offsetWidth
-            
-                * 获取元素的宽
-                
-                * 
-            
-            * offsetHeight
-            
-                * 获取元素的高
-                
-                * 
-            
-            * offsetTop
-            
-                * 获取元素距离当前父级的顶部距离
-                
-                * 
-    
-            * offsetLeft
-            
-                * 获取元素距离当前父级的左侧距离
-                
-                * 
                     
     * 直接获取元素属性
     

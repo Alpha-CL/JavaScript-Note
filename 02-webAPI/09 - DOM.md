@@ -36,7 +36,7 @@
         
 * DOM
 
-    window是浏览器的顶级对象，当调用window下的属性和方法时，可以省略window 注意：window下一个特殊的属性 window.name
+    window 是浏览器的顶级对象，当调用 window 下的属性和方法时，可以省略 window 注意：window 下一个特殊的属性 window.name
 
     * 概念
     
@@ -56,23 +56,33 @@
             
             * html 页面中都有一个根标签 < html > ，里面有很多的元素( 有很多的 "标签"，有很多的 "对象" )
             
+            * 
+            
         * 文档( document )
         
             * 页面中的顶级对象: document
         
             * 一个页面就是一个文档
             
+            * 
+            
         * 根( root )
         
             * 页面中的根标签 html标签
+            
+            * 
             
         * 节点( node )
                 
             * 页面中 "所有的内容" 都是 "节点"
             
+            * 
+            
         * 元素( element )
             
             * 页面中的所有的标签都是元素，"元素" 可以看成是 "对象"
+            
+            * 
                
         * 属性( property )
             
@@ -117,6 +127,8 @@
                     * meta
                     
                     * title
+                    
+                    * 
                 
                 * body( ele )
                 
@@ -231,7 +243,7 @@
         
         *    
     
-    * innerText 和 innerHTTML 的区别
+    * innerText 和 innerHTML 的区别
     
         * 都可以设置标签的文本内容
         

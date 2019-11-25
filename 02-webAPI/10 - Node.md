@@ -1,6 +1,6 @@
 * 节点操作(理解)
 
-    * 节点操作的 相关属性 & 作用
+    * 节点操作的 相关属性作用
     
     * 12 行代码( 熟练 )
     
@@ -170,11 +170,11 @@
 
     * 性能问题
     
-        * innerHTML方法由于会对字符串进行解析，需要避免在循环内多次使用
+        * innerHTML 方法由于会对字符串进行解析，需要避免在循环内多次使用
         
-        * 可以借助字符串或数组的方式进行替换，再设置给innerHTML
+        * 可以借助字符串或数组的方式进行替换，再设置给 innerHTML
         
-        * 优化后与document.createElement性能相近
+        * 优化后与 document.createElement 性能相近
         
         *
         
@@ -188,7 +188,7 @@
     
     * obj.innerHTML( 大量嵌套时使用 )
     
-        * 如果直接卸载 body 标签中，和 document.write; 的缺陷相同
+        * 如果直接在 body 标签中，和 document.write; 的缺陷相同
         
         * 只能用于 写在其他元素之中
         
