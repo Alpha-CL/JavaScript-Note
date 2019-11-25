@@ -99,7 +99,7 @@ table {
 }
 
 th {
-    font-weight: normal;/* clear font weight about table head text */
+    font-weight: normal; /* clear font weight about table head text */
 }
 
 
@@ -139,8 +139,29 @@ a {
 
 
 
-
 a,
-button {
+button,
+input[type = button] {
     padding: 12px 24px;
+    border: 1px solid #eee;
 }
+
+a:visited,
+button:visited,
+input[type = button]:visited {
+    background-color: #404060;
+}
+
+a:hover,
+button:hover,
+input[type = button]:hover {
+    color: #FFFFFF;
+    background-color: #666666;
+}
+
+a:active,
+button:active,
+input[type = button]:active {
+    background-color: #999999;
+}
+
