@@ -74,6 +74,55 @@
 
             });
 
+            /**
+             *
+             * 节流阀
+             *
+             */
+
+            var flag = true;
+
+            $(document).on('keydown', function (e) {
+
+                if (flag) {
+
+                    flag = false;
+
+                    var code = e.keyCode;
+
+                    if (code >= 49 && code <= 57) {
+
+                        $('.nav li').eq(code - 49).mouseenter();
+
+                    }
+                    var code = e.keyCode;
+
+                    if (code >= 49 && code <= 57) {
+
+                        $('.nav li').eq(code - 49).mouseenter();
+
+                    }
+                }
+            });
+
+            $(document).on('keyup', function (e) {
+
+                flag = true;
+
+                var code = e.keyCode;
+
+                if (code >= 49 && code <= 57) {
+
+                    $('.nav li').eq(code - 49).mouseleave();
+
+                }
+
+            });
+
+
+
+
+
 
         });
 
