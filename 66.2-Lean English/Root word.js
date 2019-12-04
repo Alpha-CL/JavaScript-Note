@@ -3,12 +3,14 @@ function my$(ele) {
     return document.getElementById(ele);
 }
 
+
 var arr = [
 
     {word: 'Root', mean: 'Meaning in English', example: 'English examples'},
     {word: 'a', mean: 'b', example: 'c'},
     {word: 'a', mean: ' ', example: ' '}
 ];
+
 
 //创建 table 加入 div
 var tableObj = document.createElement('table');
