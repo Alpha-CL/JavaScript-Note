@@ -53,6 +53,8 @@ var foods1 = new Array(6);
 //expected output: undefined * 6
 
 
+
+
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
 
 
