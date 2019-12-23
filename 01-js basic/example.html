@@ -9,150 +9,18 @@
 <script>
 
 
+var str = "Please locate where 'locate' occurs!";
 
+var po = str.indexOf("locate");
 
-    // function f1() {
-    //
-    //     return 1;
-    // }
-    //
-    // var body = f1();
-    //
-    // console.log(body);
+var pos = str.lastIndexOf("locate");
 
+console.log('in: ' + po);
 
-
-    function fn1 () {
-
-        return 1;
-    }
-
-    function fn2 () {
-
-        return 2;
-    }
-
-    function sum(a, b) {
-
-        return a() + b();
-    }
-
-
-    var sm = new sum(fn1, fn2);
-
-    console.log(sm);
-
-
-    //
-    console.log(sum(fn1, fn2));
-
-
-
-
-    //匿名函数作为参数
-    // function 2sum(fn1, function () { return 1; });
-
-
-    // function invokeFn (callBackFn) {
-    //
-    //     console.log( 'This is invokeFn' );
-    //
-    //     callBackFn();}
-    //
-
-
-
-
-    // function f1(fn) {
-    //
-    //     setInterval( function() {
-    //
-    //         console.log('Interval start');
-    //
-    //         fn();
-    //
-    //         console.log('Interval end');
-    //
-    //     }, 1000)
-    //
-    // }
-    //
-    //
-    // f1(function() {
-    //
-    //     console.log('just do it');
-    // });
-
-
-
-    //
-    // //函数作为参
-    // function sum(fn1, fn2);
-    //
-    //
-    // //匿名函数作为参数
-    // function sum(fn1, function () { return 1; });
-
-
-
-    // function f1() {
-    //
-    //      alert('hello world');
-    // }
-    //
-    // f1();
-
-
-
-    // function f1() {
-    //
-    //
-    //     return 'a';
-    // }
-    //
-    // var myFn = new f1(1,2);
-    //
-    // console.log(myFn);
-
-    // f1();
-
-
-    // function f2() {
-    //
-    //     return 2;
-    // }
-    //
-    // f2();
-    //
-    // function sum1(a, b) {
-    //
-    //     return a() + b();
-    // }
-
-
-
-
-    // var result = new sum1(f1, f2);
-    //
-    // function sum2(f1, ) {
-    //
-    // }
-
-    //
-    // function f1(fn){
-    //     fn();//函数调用----说明fn这个变量中存储的是一个函数
-    // }
-    // function f2(){
-    //     console.log("函数可以作为参数使用");
-    // }
-    // f1(f2);//调用f1,将f2作为参数传进去
-
-
-
+console.log('la: ' + pos);
 
 
 </script>
-
 
 </body>
 </html>
