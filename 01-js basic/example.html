@@ -9,18 +9,20 @@
 <script>
 
 
-var str = "Please locate where 'locate' occurs!";
+    function employee(name, jobtitle, born) {
+        this.name = name;
+        this.jobtitle = jobtitle;
+        this.born = born;
+    }
+    employee.prototype.salary = 2000;
 
-var po = str.indexOf("locate");
+    var fred = new employee("Fred Flintstone", "Caveman", 1970);
 
-var pos = str.lastIndexOf("locate");
-
-console.log('in: ' + po);
-
-console.log('la: ' + pos);
 
 
 </script>
 
 </body>
 </html>
+
+
