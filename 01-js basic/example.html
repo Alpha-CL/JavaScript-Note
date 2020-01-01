@@ -8,10 +8,24 @@
 
 <script>
 
- var a = '10';
 
- console.log(typeof undefined);
+    function a() {
 
+        function b() {
+
+            var b = 234;
+        }
+
+        var a = 123;
+
+
+        b();
+    }
+
+
+    var global = 100;
+
+    a();
 
 
 
