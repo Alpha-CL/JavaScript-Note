@@ -9,25 +9,30 @@
 <script>
 
 
-    function a() {
+    var f = (
+        function f() {
 
-        function b() {
+            return '1';
 
-            var b = 234;
-        }
+        },
 
-        var a = 123;
+            function c() {
 
+                return 2;
+            }
+    )();
 
-        b();
-    }
-
-
-    var global = 100;
-
-    a();
+    console.log(typeof a);
 
 
+    // var x  = 1;
+    //
+    // if (function f() {}) {
+    //
+    //     x += typeof f;
+    // }
+    //
+    // console.log(x);
 
 
 </script>
