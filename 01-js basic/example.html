@@ -9,30 +9,30 @@
 <script>
 
 
-    var f = (
-        function f() {
+    var str2 = new String('abc');       // 对象类型的字符串
 
-            return '1';
-
-        },
-
-            function c() {
-
-                return 2;
-            }
-    )();
-
-    console.log(typeof a);
+    // =>   String
+    //      0 = "a"
+    //      1 = "b"
+    //      2 = "c"
+    //      length = 3
+    //      [[PrimitiveValue]] = "abc"
+    //      __proto__ = String {[[PrimitiveValue]]: "", constructor: , anchor: , big: , blink: , ...}
 
 
-    // var x  = 1;
-    //
-    // if (function f() {}) {
-    //
-    //     x += typeof f;
-    // }
-    //
-    // console.log(x);
+    console.log(typeof str2);           // object
+
+    str2.name = 'beta';
+    str2.say = function () {
+
+        console.log('hello world');
+    };
+
+    str2.length = 12;
+
+
+    console.log(str2);
+    console.log(str2.length);
 
 
 </script>
