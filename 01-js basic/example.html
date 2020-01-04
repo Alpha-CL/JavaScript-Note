@@ -9,30 +9,47 @@
 <script>
 
 
-    var str2 = new String('abc');       // 对象类型的字符串
+    Object.create();
 
-    // =>   String
-    //      0 = "a"
-    //      1 = "b"
-    //      2 = "c"
-    //      length = 3
-    //      [[PrimitiveValue]] = "abc"
-    //      __proto__ = String {[[PrimitiveValue]]: "", constructor: , anchor: , big: , blink: , ...}
+</script>
 
 
-    console.log(typeof str2);           // object
-
-    str2.name = 'beta';
-    str2.say = function () {
-
-        console.log('hello world');
-    };
-
-    str2.length = 12;
 
 
-    console.log(str2);
-    console.log(str2.length);
+
+
+<script>
+
+
+    // function getType(target) {
+    //
+    //     var tar = String(typeof target);
+    //
+    //     if (tar === 'number') {
+    //
+    //         return 'number';
+    //
+    //     } else if (tar === 'string') {
+    //
+    //         return 'string';
+    //
+    //     } else if (tar === 'true' || tar === 'false') {
+    //
+    //         return 'boolean';
+    //
+    //     } else if (tar === 'undefined') {
+    //
+    //         return 'undefined';
+    //
+    //     } else {
+    //
+    //         return 'object';
+    //     }
+    // }
+    //
+    // var a;
+    //
+    // console.log(getType(a));
 
 
 </script>
