@@ -10,35 +10,7 @@
 
 
 
-    function Alpha(name, wife) {
-
-        var prepareWife = 'beta';
-
-        this.name = name;
-        this.wife = wife;
-
-        this.divorce = function () {
-
-            this.wife = prepareWife;
-        };
-
-        this.changePrepareWife = function (target) {
-
-            prepareWife = target;
-        };
-
-        this.sayPrepareWife = function () {
-
-            console.log(prepareWife);
-        };
-    }
-
-    var alpha = new Alpha('alpha', 'omega');
-
-
-    console.log(alpha.prepareWife);                     // undefined
-
-    console.log(alpha.sayPrepareWife());                // beta
+console.log(Object.prototype.toString.call([]));
 
 
 
