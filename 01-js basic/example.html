@@ -7,30 +7,68 @@
 </head>
 <body>
 
+<script>
+
+
+    fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+    fruits.forEach(function (item, index, arr) {
+
+        console.log(item);
+
+        // =>   Banana
+        //      Orange
+        //      Apple
+        //      Mango
+
+        console.log(index);
+
+        // =>   0
+        //      1
+        //      2
+        //      3
+
+
+        console.log(arr);
+
+        // =>   Array(4)
+        //      0 = "Banana"
+        //      1 = "Orange"
+        //      2 = "Apple"
+        //      3 = "Mango"
+        //      length = 4
+        //      __proto__ = Array(0)
+
+
+    })
+
+
+</script>
+
 
 <script>
 
 
-    //TODO: 1. 封装 type
-
-
-    function getType(target) {
-
-        // 原始值 number, string, boolean
-
-        // 包装类 new Number(); new String(); new Boolean()
-
-        // 对象 objcet [array, function, data, null]
-
-        return;
-    }
-
-
-    //TODO: 2. 数组去重，要求在原型链上编程
-
-    Array.prototype.unique = function () {
-
-    }
+    // //TODO: 1. 封装 type
+    //
+    //
+    // function getType(target) {
+    //
+    //     // 原始值 number, string, boolean
+    //
+    //     // 包装类 new Number(); new String(); new Boolean()
+    //
+    //     // 对象 objcet [array, function, data, null]
+    //
+    //     return;
+    // }
+    //
+    //
+    // //TODO: 2. 数组去重，要求在原型链上编程
+    //
+    // Array.prototype.unique = function () {
+    //
+    // }
 
 
 
