@@ -272,14 +272,24 @@ alert (x);
 ```
 
 
-#### 不允许使用未声明的变量
+#### 不允许使用未声明的
 
 ``` javascript
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 "use strict";
 
+
+// 未声明的变量
+
 x = 3.14;                
+
+
+//- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -//
+
+
+// 未声明的对象
 
 x = {
 
@@ -288,8 +298,8 @@ x = {
 };
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ```
-
 
 #### delete
 
@@ -376,7 +386,7 @@ var x = "\010";
 var obj = {};
 Object.defineProperty(obj, "x", {value:0, writable:false});
 
-obj.x = 3.14;            // This will cause an error
+obj.x = 3.14;                   // This will cause an error
 
 
 
@@ -387,7 +397,7 @@ obj.x = 3.14;            // This will cause an error
 
 var obj = {get x() {return 0} };
 
-obj.x = 3.14;            // This will cause an error
+obj.x = 3.14;                   // This will cause an error
 
 
 //- -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - -//
@@ -396,7 +406,7 @@ obj.x = 3.14;            // This will cause an error
 // 删除不可删除的属性是不允许的
 
 
-delete Object.prototype; // This will cause an error
+delete Object.prototype;        // This will cause an error
 
 
 
@@ -406,7 +416,7 @@ delete Object.prototype; // This will cause an error
 
 #### arguments
 
-> arguments不能被用作变量
+> arguments 不能被用作变量
 
 ``` javascript
 
