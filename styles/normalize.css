@@ -5,14 +5,11 @@
 
 
 i, /* defined text-icon */
-em, /* denfined */
+em, /* defined */
 span { /* defined text */
     font-style: normal;
     font-weight: 400;
 }
-
-
-/**********************************************************************************************************************/
 
 
 /* defined global font-styles start */
@@ -167,4 +164,6 @@ button:active,
 input[type = button]:active {
     background-color: #999999;
 }
+
+
 
