@@ -15,20 +15,29 @@
 <script>
 
 
-    var date = Date.parse('2020-01-11T13:00:00-06:30');
+    var arr = [1, 2, 3];
+
+    // max(...values: number[]): number;
 
 
 
-    // var dd = new Date('1999/10/14');
+    // var res = Math.max(arr);                    // NaN
 
-    // var dd = new Date(date, '1999年10月14日')
-
-    // var ndd = new Date(date);
+    // var res1 = Math.max(1, 2, 3);               // 3
 
 
+    // console.log(res1);
 
 
-    console.log(date);
+
+    var res = Math.max.apply(null, arr);              // 3
+    // var res = Math.max.apply(Math, [1, 2, 3]);              // 3
+    // var res = Math.max.apply(" ", [1, 2, 3]);               // 3
+    // var res = Math.max.apply(0, [1, 2, 3]);                 // 3
+
+    console.log(res);
+
+
 
 
 
