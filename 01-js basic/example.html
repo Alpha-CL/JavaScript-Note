@@ -15,11 +15,22 @@
     <div class="con">
         <div class="side"></div>
     </div>
+    <span></span>
+    <ul>
+        <li></li>
+    </ul>
 </div>
 
 <script>
 
-    var divObj = document.getElementsByTagName("div");
+
+
+
+    var divObj = document.hasChildNodes('wrap')[0];
+
+    console.log(divObj.children);
+
+    console.log(getElementChild(divObj));
 
 
 </script>
