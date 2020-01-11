@@ -3,69 +3,6 @@
 
 //NO.01_01.1: if syntax
 
-//NO.01_01.2: if ... else ... syntax
-
-//NO.01_01.3: if ... if else ... syntax
-
-//NO.01_01.4: if ... if else ... else ... syntax
-
-//NO.01_02: 三元表达式
-
-//NO.01_03: 短路语句
-
-//NO.01_Epl_01: 判断两个数字中最大的并输出
-
-//NO.01_Epl_02: 判断输入的数字是奇数还是偶数
-
-
-//NO.02.1: switch ... case syntax
-
-//NO.02.2: switch ... case ... default syntax
-
-//NO.02_Epl_01: 获取日行星期几
-
-//NO.02_Epl_02: 等级选择
-
-//NO.02_Epl_03: 判断 平年 或 闰年
-
-//NO.02_Epl_04: 根据月份显示天数
-
-
-//NO.03: while
-
-//NO.03: do ... while ...
-
-
-//NO.04: for
-
-//NO.04: for ... in ...
-
-
-//NO.05: break
-
-//NO.05: continue
-
-
-//NO.06:
-
-//NO.07:
-
-//NO.08:
-
-//NO.09:
-
-//NO.10:
-
-//NO.11:
-
-//NO.12:
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//NO.01_01.1: if syntax
-
 // if (condition) {
 //     // block of code to be executed if the condition is true
 // }
@@ -173,7 +110,7 @@ if (6 > 9) {                                   //condition is false，judge next
 
 // 三元 语句
 
-// var damo = condition ? expression1 : expression2;
+// var demo = condition ? expression1 : expression2;
 
 // 如果 condition 为 true，则执行 expression1，然后将 expression1 赋给变量 demo
 // 如果 condition 为 false，则执行 expression2，然后将 expression2 赋给变量 demo
