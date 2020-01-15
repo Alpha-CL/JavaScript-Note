@@ -6,11 +6,6 @@
 
     <style>
 
-        div {
-            width: 100px;
-            height: 100px;
-        }
-
 
 
     </style>
@@ -19,17 +14,25 @@
 </head>
 <body>
 
-
-<div style="background-color: red"></div>
-
+<div style="width: 100px; height: 100px; background-color: red;"></div>
 
 <script>
 
 
-    var a = document.getElementsByTagName('div')[0];
+
+    var div = document.getElementsByTagName('div')[0];
 
 
-    document.offsetLeft;
+    div.onclick = function (e) {
+
+        console.log(e);
+
+    };
+
+
+
+
+
 
 
 
