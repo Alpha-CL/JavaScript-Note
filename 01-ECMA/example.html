@@ -3,67 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-    <style>
-
-
-        .btn {
-            width: 140px;
-            height: 60px;
-            background-color: green;
-            color: white;
-            text-align: center;
-            line-height: 60px;
-            border-radius: 12px;
-        }
-
-        .active  {
-            height: 60px;
-            color: white;
-            text-align: center;
-            line-height: 60px;
-            border-radius: 12px;
-            background-color: red;
-            width: 220px;
-        }
-
-
-    </style>
-
-
 </head>
 <body>
 
 
-<div class="btn default">button</div>
-
-
 <script>
 
-    var btn = document.getElementsByTagName('div')[0];
 
+    var obj = {
 
-    btn.onclick = function () {
+        name: 'alpha',
+        age: 18,
 
-        this.className = "active";
-        window.scroll()
+        card: [
+
+            'visa',
+            'master'
+        ],
+
+        wife: {
+
+            name: 'beta',
+
+            son: {
+
+                name: 'omega'
+            }
+        }
     };
 
-
-    JSON.par
-    se();
+    var son = {};
 
 
+    // /**
+    //  * Deep clone all properties and methods
+    //  * deepClone(origin: object, target: object): object;
+    //  */
+    //
+    // function deepClone(origin, target) {
+    //
+    //     var tar = target || {},
+    //         toStr = Object.prototype.toString(),
+    //         arrStr = '[object Array]';
+    //
+    //     for (var prop in origin) {
+    //
+    //         if (origin.hasOwnProperty(prop)) {
+    //
+    //             if (typeof origin[prop] == 'object' && origin[prop] !== 'null') {
+    //
+    //                 console.log(toStr);
+    //
+    //                 tar[prop] = (toStr.call(origin[prop]) === arrStr) ? [] : {};
+    //
+    //                 deepClone(origin[prop], tar[prop]);
+    //
+    //             } else {
+    //
+    //                 tar[prop] = origin[prop];
+    //             }
+    //         }
+    //     }
+    //
+    //     return target;
+    // }
 
 
+function deepClone(origin, target) {
 
+    var target = target || {},
+        toStr = Object.prototype.toString(),
+        arrStr = '[objcet Array]';
+
+    for (var prop in origin) {
+
+        if (origin.hasOwnProperty(prop)) {
+
+            if (typeof origin[prop] == 'objcet' && origin[prop] !== 'null') {
+
+                target[prop] = (toStr.call(originp[prop]) == arrStr) ? [] : {};
+
+                deepClone(origin[prop], target[prop]);
+
+            } else {
+
+                target[prop] = origin[prop];
+            }
+        }
+    }
+    return target;
+};
+
+
+    deepClone(obj, son);
+
+    console.log(son);
 
 
 </script>
 
 
-
-
 </body>
 </html>
-
