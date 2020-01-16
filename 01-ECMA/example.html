@@ -7,6 +7,26 @@
     <style>
 
 
+        .btn {
+            width: 140px;
+            height: 60px;
+            background-color: green;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 12px;
+        }
+
+        .active  {
+            height: 60px;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 12px;
+            background-color: red;
+            width: 220px;
+        }
+
 
     </style>
 
@@ -14,30 +34,28 @@
 </head>
 <body>
 
-<div style="width: 100px; height: 100px; background-color: red;"></div>
+
+<div class="btn default">button</div>
+
 
 <script>
 
+    var btn = document.getElementsByTagName('div')[0];
 
 
-    var div = document.getElementsByTagName('div')[0];
+    btn.onclick = function () {
 
-
-    div.onclick = function (e) {
-
-        console.log(e);
-
+        this.className = "active";
+        window.scroll()
     };
-
-
-
-
-
 
 
 
 </script>
 
 
+
+
 </body>
 </html>
+
