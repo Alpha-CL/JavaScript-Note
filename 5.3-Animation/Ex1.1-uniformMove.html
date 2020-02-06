@@ -11,7 +11,6 @@
             padding: 0;
         }
 
-
         div {
             width: 100px;
             height: 100px;
@@ -37,46 +36,50 @@
 
     </style>
 
-
 </head>
 <body>
 
 
 <div></div>
+
 <span></span>
+
 <button id="btn">run</button>
 
 
 <script>
 
 
-    var oDIv = document.getElementsByTagName('div')[0],
-        oBtn = document.getElementById('btn'),
-        timer = null;
+    var oDiv = document.getElementsByTagName('div')[0],
+        oBtn = document.getElementById('btn');
 
     oBtn.onclick = function () {
 
-        uniformMove(oDIv, '300');
+        uniformMove(oDiv, 300);
     };
 
 
-    function uniformMove(ele, target) {
+    var timer = null;
+
+    function uniformMove(element, target) {
+
+        let iSpeed = null;
 
         clearInterval(timer);
 
-        let iSpeed = target - ele.offsetLeft > 0 ? 7 : -7;
+        iSpeed = target - element.offsetLeft > 0 ? 7 : -7;
 
         timer = setInterval(function () {
 
-            if (Math.abs(target - ele.offsetLeft) < Math.abs(iSpeed)) {
+            if (Math.abs(target - element.offsetLeft) < Math.abs(iSpeed)) {
 
                 clearInterval(timer);
 
-                ele.style.left = target + 'px';
+                element.style.left = target + 'px';
 
             } else {
 
-                ele.style.left = ele.offsetLeft + iSpeed + 'px';
+                element.style.left = element.offsetLeft + iSpeed + 'px';
             }
 
         }, 30)
@@ -84,31 +87,6 @@
 
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>

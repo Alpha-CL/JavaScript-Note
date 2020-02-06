@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+<script>
+
+
+    var personArr = [
+        {name: 'alpha', scr: './src/img.1.png', des: 'hello world', sex: 'm'},
+        {name: 'beta', scr: './src/img.2.png', des: 'hello world', sex: 'f'},
+        {name: 'omega', scr: './src/img.3.png', des: 'hello world', sex: 'm'},
+        {name: 'game', scr: './src/img.4.png', des: 'hello world', sex: 'm'},
+    ];
+
+
+    personArr.forEach(function (value, index, array) {
+
+        this[index].className = value.name;
+
+    }, document.getElementsByTagName('li'));
+
+
+
+    Array.prototype.myForEach = function (fn) {
+
+        let _arr = this,
+            len = _arr.length,
+            param2 = arguments[1] || window;
+
+        for (let i = o; i < len; i++) {
+
+            fn.apply(param2, [_arr[i], i, _arr]);
+        }
+    };
+
+
+</script>
+
+
+</body>
+</html>
