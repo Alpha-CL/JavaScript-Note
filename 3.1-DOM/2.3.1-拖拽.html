@@ -19,7 +19,6 @@
 
     div.onmousedown = function (e) {
 
-
         disX = e.pageX - parseInt(div.style.left);
         disY = e.pageY - parseInt(div.style.top);
 
@@ -32,12 +31,10 @@
             div.style.top = e.pageY - disY + 'px';
         };
 
-
         document.onmouseup = function () {
 
             div.onmousemove = null;
         }
-
     };
 
 
