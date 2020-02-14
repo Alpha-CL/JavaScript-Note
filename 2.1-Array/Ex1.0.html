@@ -81,7 +81,7 @@
 
         for (let i = 0; i < len; i++) {
 
-            newArr.push(deepClone({}, _arr.apply(param2, [_arr[i], i, _arr])));
+            newArr.push(deepClone(), _arr.apply(param2, [_arr[i], i, _arr]));
         }
     };
 
