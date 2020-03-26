@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        .a {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #0099cc;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="a" draggable="true"></div>
+
+
+<script>
+
+
+    let oDragDiv = document.getElementsByClassName('a')[0],
+        beginX = 0,
+        beginY = 0;
+
+    oDragDiv.ondragstart = function (e) {
+
+        beginX = e.clientX;
+        beginY = e.clientY;
+
+    };
+
+    oDragDiv.ondragend = function (e) {
+
+        let x = e.clientX - beginX,
+            y = e.clientY - beginY;
+
+
+        oDragDiv.style.left = oDragDiv.offsetLeft + x + 'px';
+        oDragDiv.style.top = oDragDiv.offsetTop + y + 'px';
+    };
+
+
+</script>
+
+
+</body>
+</html>

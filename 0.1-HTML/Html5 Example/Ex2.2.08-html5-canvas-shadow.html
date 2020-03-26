@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="500px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d");                      // 获取 canvas 内容事件
+
+    /**
+     * shadowColor: string;
+     *
+     * 设置阴影颜色
+     */
+
+    /**
+     * shadowBlur: number;
+     *
+     * 设置阴影模糊大小
+     */
+
+    /**
+     * shadowOffsetX & shadowOffsetY
+     *
+     * 设置阴影偏移量              // 阴影默认初始位置基于元素位置
+     */
+
+    ctx.beginPath();
+    ctx.shadowColor = 'black';                              // 设置阴影颜色
+    ctx.shadowBlur = 30;                                    // 设置阴影模糊大小
+
+    ctx.shadowOffsetX = 8;                                  // 设置阴影基于 X轴 偏移量
+    ctx.shadowOffsetY = 8;                                  // 设置阴影基于 Y轴 偏移量
+
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(100, 100, 100, 100);
+
+
+</script>
+
+
+</body>
+</html>

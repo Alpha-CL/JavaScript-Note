@@ -1,0 +1,5 @@
+<svg width="100px" height="100px" style="fill: transparent; stroke: #fff; stroke-width:
+             3px; stroke-linejoin: round;">
+    <circle r="40" cx="50" cy="50"/>
+    <polygon points="38 30, 70 50, 38 70"/><!-- auto link start and end of point -->
+</svg>

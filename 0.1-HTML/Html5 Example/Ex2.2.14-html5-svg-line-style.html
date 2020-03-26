@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        .line1 {
+            stroke: #0099cc;
+            stroke-width: 3px;
+            fill-opacity: .3;
+        }
+
+        .line2 {
+            stroke: #333333;
+            stroke-width: 5px;
+            stroke-opacity: .3;
+        }
+
+        .line3 {
+            stroke: #333333;
+            stroke-width: 5px;
+            stroke-linecap: butt;                           /* 线端样式 */
+        }
+
+        .line4 {
+            stroke: #333333;
+            stroke-width: 5px;
+            stroke-linecap: round;
+        }
+
+        .line5 {
+            stroke: #333333;
+            stroke-width: 5px;
+            stroke-linecap: square;
+        }
+
+        polyline {
+            fill: transparent;
+            stroke: black;
+            stroke-width: 4px;
+            stroke-linejoin: round;                         /* 切点样式 */
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!-- svg: 矢量图( 放大缩小不会失真 )，需要 css 和 svg 才能绘制 -->
+<!-- svg 中所有闭合的图形 默认绘制( 不用 stroke ) 并填充-->
+<!-- svg: 适用于动画较小( 较简单 ); canvas: 适用于小面积绘图，适合动画;-->
+
+
+<!-- <svg>元素的width和height属性定义SVG图像的宽度和高度 -->
+
+
+<svg width="500" height="300" style="border: 1px solid black">
+
+
+    <line x1="100" y1="100" x2="200" y2="100" class="line1"/>
+
+    <line x1="100" y1="120" x2="200" y2="120" class="line2"/>
+
+    <line x1="100" y1="140" x2="200" y2="140" class="line3"/>
+
+    <line x1="100" y1="160" x2="200" y2="160" class="line4"/>
+
+    <line x1="100" y1="180" x2="200" y2="180" class="line5"/>
+
+    <polyline points="200 200, 240 240, 280 240, 280 200"/>
+
+
+</svg>
+
+
+<script>
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="500px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d");                      // 获取 canvas 内容事件
+
+
+    // ctx.moveTo(100, 100);                                // 使用路径连接创建矩形
+    // ctx.lineWidth = 4;
+    // ctx.lineTo(300, 100);
+    // ctx.lineTo(300, 200);
+    // ctx.lineTo(100, 200);
+    // ctx.closePath();
+    // ctx.stroke();
+
+
+    // ctx.rect(100, 100, 200, 100);                        // 先创建矩形路径，再连接路径并绘制
+    // ctx.stroke();
+
+
+    // ctx.strokeRect(100, 100, 200, 100);                  // 创建矩形路径并闭合路径
+
+
+    ctx.fillRect(100, 100, 200, 100);                       // 创建填充矩形
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            position: absolute;
+            top: 24px;
+            width: 160px;
+            height: auto;
+            border: 1px solid black;
+            padding: 12px;
+        }
+
+        .box1 {
+            left: 24px;
+        }
+
+        li {
+            padding: 6px;
+            border-radius: 2px;
+            color: #fff;
+            background-color: #3c8dff;
+            text-align: center;
+        }
+
+        li:not(:last-of-type) {
+            margin-bottom: 6px;
+        }
+
+        .box2 {
+            left: 260px;
+            min-height: 30px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<ul class="box box1">
+    <ul>
+        <li>item-1</li>
+        <li>item-2</li>
+        <li>item-3</li>
+    </ul>
+</ul>
+<div class="box box2"></div>
+
+
+<script>
+
+    let oLiList = document.getElementsByTagName('li'),
+        currentArea = document.getElementsByClassName('box1')[0],
+        targetArea = document.getElementsByClassName('box2')[0],
+        curDragDom;
+
+    for (let i = 0; i < oLiList.length; i++) {
+
+        oLiList[i].setAttribute('draggable', true);
+
+        oLiList[i].ondragstart = function (e) {
+
+            curDragDom = e.target;
+        };
+    }
+
+    targetArea.ondragover = function (e) {
+
+        e.preventDefault();
+    };
+
+    currentArea.ondragover = function (e) {
+
+        e.preventDefault();
+    };
+
+    targetArea.ondrop = function (e) {
+
+        this.appendChild(curDragDom);
+
+        curDragDom = null;
+    };
+
+    currentArea.ondrop = function (e) {
+
+        this.appendChild(curDragDom);
+
+        curDragDom = null;
+    };
+
+
+</script>
+
+
+</body>
+</html>

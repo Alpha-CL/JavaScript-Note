@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="500px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d");                      // 获取 canvas 内容事件
+
+    /**
+     * moveTo(startX, startY)
+     *
+     * arcTo( CutPointX, CutPointY, endX, endY, r )
+     *
+     * @startX: 第一条切线的x坐标
+     * @startY: 第一条切线的y坐标
+     *
+     * @CutPointX: 切点 X坐标
+     * @CutPointY: 切点 Y坐标
+     *
+     * @endX: 第二切线的x坐标
+     * @endY: 第二切线的y坐标
+     *
+     * @r: 圆弧半径
+     */
+
+    ctx.moveTo(100, 110);
+    ctx.arcTo(100, 200, 200, 200, 10);
+    ctx.arcTo(200, 200, 200, 100, 10);
+    ctx.arcTo(200, 100, 100, 100, 10);
+    ctx.arcTo(100, 100, 100, 200, 10);
+    ctx.stroke();
+
+
+</script>
+
+
+</body>
+</html>

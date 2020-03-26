@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="800px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d");                      // 获取 canvas 内容事件
+
+    ctx.save();
+
+    ctx.beginPath();
+    ctx.rect(30, 100, 100, 100);
+    ctx.fill();                                             // 默认填充黑色
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.fillRect(150, 100, 100, 100);                       // 自动默认绘制填充矩形
+
+
+    ctx.beginPath();
+    ctx.fillStyle = "blue";                                 // 自定义填充颜色
+    ctx.fillRect(270, 100, 100, 100);
+    ctx.stroke();
+
+
+    /**
+     * fillStyle = imgDom;
+     *
+     * 图片基于坐标系原点载入和移动
+     */
+
+    /**
+     * createPattern(image: CanvasImageSource, repetition: string): CanvasPattern | null;
+     *
+     * @image: 图片路径
+     *
+     * @repetition: 设置图片是否重复展示
+     *
+     */
+
+
+    let ctxImg = new Image();
+    ctxImg.src = "../../0.2-CSS/Css3 Example/img/steps-eg2-clock.png";
+
+    ctx.beginPath();
+    ctxImg.onload = function () {                                   // 图片载入为异步加载( 确保图片已载入 )
+
+        let ctxBg = ctx.createPattern(ctxImg, "no-repeat");         // 设置图片引入路径及展示方式
+
+        ctx.beginPath();
+        ctx.scale(.2, .2);
+        ctx.translate(2000, 500);
+        ctx.fillStyle = ctxBg;                                      // 设置背景填充为图片
+        ctx.fillRect(0, 0, 1000, 1000);
+    };
+
+
+    ctx.beginPath();
+    ctx.restore();                                          // 偏移坐标轴后必须重新载入，否则会影响后续绘制
+
+
+
+
+</script>
+
+
+</body>
+</html>

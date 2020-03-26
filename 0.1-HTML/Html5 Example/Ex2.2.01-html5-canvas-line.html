@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        canvas {                            /* canvas 的样式只能被其标签的行内样式作用 */
+            width: 500px;                   /* style 中的样式对 canvas 的描绘会引发问题 */
+            height: 300px;
+            border: 1px solid black;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="500px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d");                      // 获取 canvas 内容事件
+
+    // path start
+    ctx.moveTo(100, 100);                                   // 设置路径起点
+
+    /**
+     * lineWidth();                                         // 无论写在何处都相当于 moveTo 的后面
+     *
+     * onePath { moveTo -> lineTo ... lineTo -> stroke }
+     *
+     * 只要是一条路径，则 lineWidth 是相同的
+     */
+
+
+    // path style
+    // path width
+    ctx.lineWidth = 10;
+    // path color
+    ctx.fill();
+
+
+    // Connection path
+    ctx.lineTo(200, 100);                                   // 设置路径下一个节点
+
+
+    // path end
+    ctx.lineTo(100,100);                    // 闭合路径方法1: 设置路径下一节点为起点
+    ctx.closePath();                        // 闭合路径方法2: 自动闭合当前路径
+
+
+    // path paint
+    ctx.stroke();                                           // 设置当前路径结束，并绘制
+
+
+    // another path start                   // 设置创建另一条路径        // 建议在任何绘制路径前都添加( 防止后续有循环时的风险 )
+    ctx.beginPath();
+
+    ctx.moveTo(200, 100);
+    ctx.lineTo(200, 200);
+    ctx.lineTo(150, 200);
+
+    ctx.closePath();                        // 闭合路径方法2: 自动闭合当前路径
+
+    ctx.stroke();                                           // 设置当前路径结束，并绘制
+
+    ctx.fill();                             // 填充路径
+
+
+</script>
+
+
+</body>
+</html>

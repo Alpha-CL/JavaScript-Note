@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        polyline {
+            fill: transparent;                      /* 设置填充为透明 */
+            stroke: black;                          /* 设置绘制路径的颜色 */
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!-- svg: 矢量图( 放大缩小不会失真 )，需要 css 和 svg 才能绘制 -->
+<!-- svg 中所有闭合的图形 默认绘制( 不用 stroke ) 并填充-->
+<!-- svg: 适用于动画较小( 较简单 ); canvas: 适用于小面积绘图，适合动画;-->
+
+
+<!-- <svg>元素的width和height属性定义SVG图像的宽度和高度 -->
+
+
+<svg width="500" height="300" style="border: 1px solid black">
+
+
+    <circle r="50" cx="100" cy="250"/>                              <!-- 圆 -->
+
+    <ellipse rx="100" ry="30" cx="300" cy="250"/>                   <!-- 椭圆 -->
+
+    <polyline points="0 0, 50 50, 100 100, 100 50"/>                <!-- 折线 -->
+
+
+</svg>
+
+
+<script>
+
+
+    /**
+     *
+     *
+     *
+     */
+
+</script>
+
+
+</body>
+</html>

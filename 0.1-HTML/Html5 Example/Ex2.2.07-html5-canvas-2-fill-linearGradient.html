@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="800px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d");                      // 获取 canvas 内容事件
+
+
+    /**
+     * createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
+     *
+     * 线性渐变的坐标是 基于 canvas 坐标轴
+     */
+
+
+    ctx.beginPath();
+
+    let linearGradient = ctx.createLinearGradient(0, 0, 200, 0);
+
+    linearGradient.addColorStop(.2, '#f00');
+    linearGradient.addColorStop(.5, '#0f0');
+    linearGradient.addColorStop(.8, '#00f');
+
+    ctx.fillStyle = linearGradient;
+
+    ctx.translate(200, 100);                        // 线性渐变的坐标是 基于 canvas 坐标轴
+    ctx.fillRect(0, 0, 200, 100);
+
+
+</script>
+
+
+</body>
+</html>

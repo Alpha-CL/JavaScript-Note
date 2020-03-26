@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        .ellipse1 {
+            fill: transparent;
+            stroke: black;
+        }
+
+
+        .arc1 {
+            fill: transparent;
+            stroke: red;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!-- <svg>元素的width和height属性定义SVG图像的宽度和高度 -->
+
+
+<svg width="500" height="300" style="border: 1px solid black">
+
+
+
+    <ellipse rx="100" ry="50" cx="200" cy="100" class="ellipse1"/>
+
+
+    <path d="M 200 50 A 100 50 0 0 1 300 100" class="arc1"/>
+
+</svg>
+
+
+<script>
+
+    /**
+     * <path d="<path d="M start-x1 start-y1 A radius-x radius-y angle(0 ~ 360) arc(0: large | 1: small) direction(0:
+     * positive | 1: reverse) end-x2 end-y2">"/>
+     *
+     * 大写字母为绝对位置，小写字母为相对位置
+     *
+     *
+     * M = moveto
+     * L = lineto
+     *
+     * H = horizontal lineto
+     * V = vertical lineto
+     *
+     * Z = closepath                        // 闭合属性不区分大小写
+     */
+
+
+</script>
+
+
+<!--
+
+<path d=""/>
+
+Capital letters means absolutely positioned, lower cases means relatively positioned.
+
+M = moveto
+L = lineto
+H = horizontal lineto
+V = vertical lineto
+C = curveto
+S = smooth curveto
+Q = quadratic Bézier curve
+T = smooth quadratic Bézier curveto
+A = elliptical Arc
+Z = closepath
+
+-->
+
+
+</body>
+</html>

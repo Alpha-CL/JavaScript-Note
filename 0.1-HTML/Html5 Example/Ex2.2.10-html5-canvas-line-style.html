@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="800px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d");                      // 获取 canvas 内容事件
+
+
+    // 线端样式( 两线交汇点的样式 )
+
+
+    ctx.save();
+
+    ctx.beginPath();
+    ctx.moveTo(100, 40);
+    ctx.lineTo(200, 40);
+    ctx.lineWidth = 15;
+
+    ctx.lineCap = "butt";                       // 默认样式，线段不变
+
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.moveTo(100, 80);
+    ctx.lineTo(200, 80);
+    ctx.lineWidth = 15;
+
+    ctx.lineCap = "square";                      // 线段两端仅增加一部分长度
+
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.moveTo(100, 120);
+    ctx.lineTo(200, 120);
+    ctx.lineWidth = 15;
+
+    ctx.lineCap = "round";                      // 线段两端不仅增长 并变为圆形
+
+    ctx.stroke();
+
+
+
+    ctx.beginPath();
+    ctx.restore();
+    ctx.moveTo(300, 40);
+    ctx.lineTo(400, 40);
+    ctx.lineTo(300, 80);
+    ctx.lineWidth = 15;
+
+    ctx.lineJoin = "round";                     // 线端样式: 圆角
+
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.moveTo(300, 120);
+    ctx.lineTo(400, 120);
+    ctx.lineTo(300, 160);
+    ctx.lineWidth = 15;
+
+    ctx.lineJoin = "bevel";                     // 线端样式: 横截
+
+    ctx.stroke();
+
+
+    ctx.beginPath();
+    ctx.moveTo(300, 200);
+    ctx.lineTo(400, 200);
+    ctx.lineTo(300, 240);
+    ctx.lineWidth = 15;
+
+    ctx.lineJoin = "miter";                     // 线端样式: 默认尖刺
+
+    ctx.stroke();
+
+
+
+    ctx.beginPath();
+    ctx.moveTo(500, 120);
+    ctx.lineTo(600, 120);
+    ctx.lineTo(500, 160);
+    ctx.lineWidth = 15;
+
+    ctx.lineJoin = "miter";                     // 线端样式: 默认尖刺
+    ctx.miterLimit = 5;                         // 设置线端截取程度
+
+    ctx.stroke();
+
+
+</script>
+
+
+</body>
+</html>

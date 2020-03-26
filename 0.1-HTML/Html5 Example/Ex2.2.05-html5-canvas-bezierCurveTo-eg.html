@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="500px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d"),                      // 获取 canvas 内容事件
+        ctxWidth = 500,
+        ctxHeight = 300,
+        num = 0,
+        offset = 0;
+
+
+    setInterval(function () {
+
+        ctx.clearRect(0, 0, 500, 300);
+        ctx.beginPath();
+
+        ctx.moveTo(0 + offset - 500, ctxHeight / 2);
+        ctx.quadraticCurveTo(ctxWidth / 4 + offset - 500, ctxHeight / 2 + Math.sin(num) * 120, ctxWidth / 2 + offset -
+            500,
+            ctxHeight /
+            2);
+        ctx.quadraticCurveTo(ctxWidth / 4 * 3 + offset - 500, ctxHeight / 2 - Math.sin(num) * 120, ctxWidth + offset
+            - 500, ctxHeight /
+            2);
+
+        ctx.moveTo(0 + offset, ctxHeight / 2);
+        ctx.quadraticCurveTo(ctxWidth / 4 + offset, ctxHeight / 2 + Math.sin(num) * 120, ctxWidth / 2 + offset, ctxHeight / 2);
+        ctx.quadraticCurveTo(ctxWidth / 4 * 3 + offset, ctxHeight / 2 - Math.sin(num) * 120, ctxWidth + offset, ctxHeight / 2);
+
+        ctx.stroke();
+
+        offset += 5;
+        offset %= 500;
+        num += 0.02;
+
+    }, 1000 / 30);
+
+
+</script>
+
+
+</body>
+</html>

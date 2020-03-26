@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="500px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d"),                      // 获取 canvas 内容事件
+        rectHeight = 100;
+
+
+    let timer = setInterval(function () {
+
+        /**
+         * clearRect(x, y, width, height);
+         *
+         * 清除指定区域
+         */
+
+        ctx.clearRect(0, 0, 500, 300);                      // 清除指定矩形区域
+
+        ctx.strokeRect(100, rectHeight, 60, 60);                       // 创建闭合的矩形路径
+
+        rectHeight += 2;
+
+    }, 1000 / 30);
+
+
+</script>
+
+
+</body>
+</html>

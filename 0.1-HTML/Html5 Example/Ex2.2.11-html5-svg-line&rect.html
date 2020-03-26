@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        .line1 {
+            stroke: #0099cc;
+            stroke-width: 3px;
+        }
+
+        .line2{
+            stroke: #333333;
+            stroke-width: 5px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!-- svg: 矢量图( 放大缩小不会失真 )，需要 css 和 svg 才能绘制 -->
+<!-- svg 中所有闭合的图形 默认绘制( 不用 stroke ) 并填充-->
+<!-- svg: 适用于动画较小( 较简单 ); canvas: 适用于小面积绘图，适合动画;-->
+
+
+
+<!-- <svg>元素的width和height属性定义SVG图像的宽度和高度 -->
+
+
+<svg width="500" height="300" style="border: 1px solid black">
+
+
+    <line x1="100" y1="100" x2="200" y2="100" class="line1"/>
+
+    <line x1="200" y1="100" x2="200" y2="200" class="line2"/>
+
+    <rect height="50" width="100" x="10" y="10" rx="10" ry="20"/>
+
+
+</svg>
+
+
+<script>
+
+    /**
+     * <line x1="100" y1="100" x2="200" y2="100" class="line1"/>
+     *
+     * X1 的属性定义在x轴的线的开始
+     * Y1 属性定义在y轴的线的开始
+     * X2 属性定义了线在x轴上的端
+     * Y2 属性定义在y轴的线的端部
+     *
+     */
+
+    /**
+     * <rect height="50" width="100" x="10" y="10" rx="10" ry="20"/>
+     *
+     * 在x属性定义了矩形的左侧位置（例如，x =“50”的地方从左边距矩形50像素）
+     * 在y属性定义了矩形的顶部位置（例如，Y =“20”的地方从顶缘矩形20像素）
+     * CSS的填充不透明度属性定义的填充颜色的不透明度（范围：0到1）
+     * CSS的行程不透明度属性定义笔划颜色的不透明度（范围：0到1）
+     */
+
+
+</script>
+
+
+
+</body>
+</html>

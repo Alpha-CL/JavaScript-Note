@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .video_player {
+            position: relative;
+            margin: 100px auto 0;
+            width: 890px;
+            height: 500px;
+        }
+
+        .video,
+        .video_player .menu,
+        .time,
+        .progress_bar,
+        .progress-schedule,
+        .progress-point,
+        .quick {
+            position: absolute;
+        }
+
+        .video {
+            width: 890px;
+            height: 500px;
+            left: 0;
+            top: 0;
+        }
+
+        .video_player .menu {
+            position: absolute;
+            bottom: 0;
+            /*display: none;*/
+            width: 100%;
+            height: 70px;
+            background-color: rgba(0, 0, 0, .5);
+            z-index: 10;
+        }
+
+        .play {
+            margin-left: 12px;
+            width: 200px;
+            color: #fff;
+            line-height: 70px;
+            cursor: pointer;
+        }
+
+        .icon-play,
+        .icon-pause {
+            display: none;
+        }
+
+        .icon-play {
+            float: left;
+            width: 70px;
+            height: 70px;
+        }
+
+        .play-active {
+            display: block;
+        }
+
+        .icon-play:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .play svg {
+            float: left;
+        }
+
+        .time {
+            top: 20px;
+            margin-left: 160px;
+            width: 100px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            color: rgba(255, 255, 255, .8);
+            border: 1px solid rgba(255, 255, 255, .3);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .progress_bar {
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: gray;
+        }
+
+        .progress-schedule {
+            width: 120px;
+            height: 2px;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+
+        .progress-point {
+            display: block;
+            top: -2px;
+            left: 120px;
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .quick,
+        .quick-list {
+            position: absolute;
+            height: 32px;
+            padding: 0 24px;
+            line-height: 32px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .quick {
+            top: 20px;
+            right: 100px;
+            color: rgba(255, 255, 255, .8);
+            border: 1px solid rgba(255, 255, 255, .3);
+            border-radius: 4px;
+        }
+
+        .quick-list {
+            top: -100px;
+            right: 120px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<div class="video_player">
+
+
+    <div class="menu">
+        <div class="play">
+            <div class="icon-play play-active">
+                <svg width="70px" height="70px" viewBox="-30,-30,160,160" style="fill: transparent; stroke: #fff;
+            stroke-width: 3px; stroke-linejoin: round;">
+                    <circle r="40" cx="50" cy="50"/>
+                    <polygon points="38 30, 70 50, 38 70"/> <!-- auto link start and end of point -->
+                </svg>
+            </div>
+            <div class="icon-pause">
+                <svg width="70px" height="70px" viewBox="-30,-30,160,160" style="fill: transparent; stroke: #fff;
+            stroke-width: 3px; stroke-linejoin: round;">
+                    <circle r="40" cx="50" cy="50"/>
+                    <line x1="40" y1="30" x2="40" y2="70" style="stroke-linejoin: arcs"/>
+                    <line x1="60" y1="30" x2="60" y2="70" style="stroke-linejoin: arcs"/>
+                </svg>
+            </div>
+            <span>播放</span>
+        </div>
+        <div class="time"></div>
+        <div class="progress_bar">
+            <div class="progress-schedule"></div>
+            <i class="progress-point"></i>
+        </div>
+        <div class="quick">倍速 x 1.0</div>
+        <ul class="quick-list">
+            <li>倍速 x 1.25</li>
+            <li>倍速 x 1.5</li>
+            <li>倍速 x 2.0</li>
+        </ul>
+    </div>
+
+    <video class="video" src="video/demo.mp4"/>
+
+
+</div>
+
+
+<script>
+
+
+    let videoPlayer = document.getElementsByClassName("video_player")[0],
+        videoPlay = videoPlayer.getElementsByClassName("play")[0],
+        playText = videoPlay.getElementsByTagName("span")[0],
+        iconPlay = videoPlay.getElementsByClassName("icon-play")[0],
+        iconPause = videoPlay.getElementsByClassName("icon-pause")[0],
+        video = document.getElementsByClassName("video")[0],
+        videoMenu = document.getElementsByClassName("menu")[0],
+        time = document.getElementsByClassName("time")[0];
+
+    videoPlayer.onmouseenter = function () {
+
+        videoMenu.style.display = "block";
+    };
+
+    videoPlayer.onmouseleave = function () {
+
+        videoMenu.style.display = "none";
+    };
+
+    videoPlay.onclick = function () {
+
+
+        if (video.paused) {
+
+            video.play();
+
+            playText.innerHTML = "暂停";
+
+            iconPlay.style.className = "icon-play";
+
+            iconPlay.setAttribute("class", "icon-play");
+            iconPause.setAttribute("class", "icon-pause play-active");
+
+        } else {
+
+            video.pause();
+
+            playText.innerHTML = "播放";
+
+            iconPause.setAttribute("class", "icon-pause");
+            iconPlay.setAttribute("class", "icon-play play-active");
+        }
+    };
+
+    let progressBar = document.getElementsByClassName("progress_bar")[0],
+        progressSchedule = document.getElementsByClassName('progress-schedule')[0],
+        progressPoint = document.getElementsByClassName('progress-point')[0];
+
+    progressBar.onmouseenter = function () {
+
+        progressBar.style.height = "6px";
+        progressBar.style.top = '-3px';
+        progressSchedule.style.height = '6px';
+        progressPoint.style.height = "10px";
+    };
+
+    progressBar.onmouseleave = function () {
+
+        progressBar.style.height = "2px";
+        progressBar.style.top = '-2px';
+        progressSchedule.style.height = '2px';
+        progressPoint.style.height = "6px";
+    };
+
+    progressBar.onclick = function (e) {
+
+        let location = e.layerX,
+            progressWidth = video.currentTime,
+            targetTime = location / progressWidth * video.duration;
+
+
+        /**
+         *
+         * response header
+         *
+         * content-range: ...;                  // 若浏览器请求体中没有这个属性则不能实现点击跳转
+         *
+         * 需挂载到服务器上后再试验
+         */
+
+        video.currentTime = targetTime;
+
+    };
+
+    setInterval(function () {
+
+        let total = video.duration,                         // 视频总时长
+            nowTime = video.currentTime;                    // 视屏播放当前时间
+
+        time.innerHTML = parseInt(nowTime / 60) + ":" + parseInt(nowTime % 60) + " / " + parseInt(total / 60) +
+            ":" + parseInt(total % 60);
+
+        let progressWidth = nowTime / total * progressBar.clientWidth;
+
+        progressSchedule.style.width = progressWidth + 'px';
+        progressPoint.style.left = progressWidth + "px";
+
+    }, 1000);
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .a{
+            width: 100px;
+            height: 100px;
+            background-color: #0099cc;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+
+<!-- 元素可拖拽 -->
+
+<div class="a" draggable="true"></div>              <!-- 仅 chrome safari 支持 -->
+
+<!-- a & img 标签默认 draggable="true" -->
+
+
+
+<a href="http://wwww.baidu.com">百度</a>
+
+<img
+        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1584884328655&di=479a8885c36fb5ed4f1b41fcb3042e41&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-4o3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F18d8bc3eb13533fa5e2c6ef2a3d3fd1f40345b50.jpg" alt="" width="100">
+
+
+
+<script>
+
+
+    /**
+     * 拖拽生命周期
+     *
+     * 经过: 拖拽开始 -> 拖拽进行中 -> 拖拽结束
+     *
+     * 组成: 拖拽物体，目标区域
+     */
+
+
+    let oDragDiv = document.getElementsByClassName('a')[0];
+
+    oDragDiv.ondragstart = function (e) {
+
+        console.log('start');
+
+        console.log(e);
+    };
+
+    oDragDiv.ondrag = function (e) {
+
+        console.log(e);
+
+    };
+
+    oDragDiv.ondragend = function (e) {
+
+        console.log(e);
+    };
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

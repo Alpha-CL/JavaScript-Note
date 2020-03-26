@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .video-player {
+            position: relative;
+            margin: 100px auto 0;
+            width: 1920px;
+            height: 1080px;
+        }
+
+        .video-player .video {
+            width: 1920px;
+            height: 1080px;
+        }
+
+        .player-menu {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .player-item {
+            float: left;
+            height: 100px;
+            line-height: 100px;
+            color: #fff;
+            font-size: 28px;
+        }
+
+        .player-menu-l {
+            float: left;
+        }
+
+        .player-menu-r {
+            float: right;
+        }
+
+        .player-menu-r .player-item {
+            margin-right: 40px;
+        }
+
+        .clearfix:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .player-icon {
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .play-default {
+            float: left;
+            display: none;
+        }
+
+        .player-btn-clicked {
+            display: block;
+        }
+
+        .player-item {
+            float: left;
+        }
+
+        .player-time {
+            margin-left: 20px;
+        }
+
+        .speed-pop-layer {
+            position: absolute;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<div class="video-player">
+
+    <div class="player-menu">
+        <div class="player-progress-bar">
+            <div class="player-play-load"></div>
+            <div class="player-play-play"></div>
+            <div class="player-play-dot"></div>
+        </div>
+        <div class="player-menu-l clearfix">
+            <div class="player-item player-menu-btn player-play">
+                <div class="play-default player-icon player-btn-clicked">
+                    <svg width="100px" height="100px" viewBox="-30, -30, 160, 160" style="fill: transparent; stroke:
+                    #fff;
+                     stroke-width: 4px; stroke-linejoin: round;">
+                        <circle r="40" cx="50" cy="50"/>
+                        <polygon points="38 30, 70 50, 38 70"/> <!-- auto link start and end of point -->
+                    </svg>
+                </div>
+                <div class="play-default player-icon">
+                    <svg width="100px" height="100px" viewBox="-30, -30, 160, 160" style="fill: transparent; stroke:
+                    #fff;
+            stroke-width: 4px; stroke-linejoin: round;">
+                        <circle r="40" cx="50" cy="50"/>
+                        <line x1="40" y1="30" x2="40" y2="70" style="stroke-linejoin: arcs"/>
+                        <line x1="60" y1="30" x2="60" y2="70" style="stroke-linejoin: arcs"/>
+                    </svg>
+                </div>
+                <span class="player-play-txt">播放</span>
+            </div>
+            <div class="player-item player-time">12:00 / 25:80</div>
+        </div>
+        <div class="player-menu-r clearfix">
+            <div class="player-item player-menu-btn player-btn-speed">
+                <span class="speed-txt">倍速</span>
+                <ul class="speed-pop-layer">
+                    <li class="speed-txt">1.0X</li>
+                    <li class="speed-txt">1.5X</li>
+                    <li class="speed-txt">2.0X</li>
+                </ul>
+            </div>
+            <div class="player-item player-voice">
+                <div class="player-icon">
+                    <svg width="100px" height="100px" viewBox="-30, -30, 160, 160" style="stroke: #fff; stroke-width:
+                     4px; fill: transparent; stroke-linejoin: arcs">
+                        <polygon points="10 35, 30 35, 55 10, 55 90, 30 65, 10 65"/>
+                        <line x1="68" y1="32" x2="68" y2="68"/>
+                        <line x1="80" y1="20" x2="80" y2="80"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="player-item player-fullscreen">
+                <div class="player-icon">
+                    <svg width="100px" height="100px" viewBox="-30, -30, 160, 160" style="stroke-linecap: square; fill:
+                    transparent; stroke: #fff; stroke-width: 4px;">
+                        <polyline points="55 15, 15 15, 15 55"/>
+                        <polyline points="45 85, 85 85, 85 45"/>
+                        <line x1="38" y1="38" x2="62" y2="62"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <video class="video" src="video/demo.mp4"/>
+
+</div>
+
+
+<script>
+
+
+</script>
+
+
+</body>
+</html>

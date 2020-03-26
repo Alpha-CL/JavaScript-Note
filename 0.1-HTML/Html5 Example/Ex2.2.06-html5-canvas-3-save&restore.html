@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- canvas 样式只能写行内样式 -->
+<!-- canvas 行内样式只包括 width & height，添加其他属性需再添加 style -->
+<canvas id="cvs" width="500px" height="300px" style="border: 1px solid black">
+
+
+</canvas>
+
+
+<script>
+
+
+    let canvas = document.getElementById('cvs'),
+        ctx = canvas.getContext("2d");                      // 获取 canvas 内容事件
+
+
+    // 同时绘制多个不同坐标系平移缩放等时，需要使用 save(); 和 restore();
+
+    /**
+     * save();
+     *
+     * 存储当前 坐标系 & 平移 & 缩放数据 & 旋转数据
+     */
+
+    /**
+     * restore();
+     *
+     * 重新载入默认数据( 坐标系 & 平移 & 缩放数据 & 旋转数据 ... )
+     */
+
+
+    ctx.save();                                 // 存储当前 坐标系 & 平移 & 缩放数据 & 旋转数据 等
+
+    ctx.beginPath();
+    ctx.translate(100, 100);
+    ctx.rotate(Math.PI / 4);
+    ctx.strokeRect(0, 0, 100, 50);
+
+    ctx.beginPath();
+    ctx.restore();                              // 重新载入 save(); 时的存储数据( 坐标系 & 平移 & 缩放数据 & 旋转数据 等 )
+    ctx.fillRect(200, 0, 100, 50);
+
+
+</script>
+
+
+</body>
+</html>
