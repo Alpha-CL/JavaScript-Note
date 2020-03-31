@@ -34,7 +34,7 @@
             bottom: 0;
             width: 100%;
             height: 100px;
-            background-color: rgba(0, 0, 0, .3);
+            background-image: linear-gradient(to top, rgba(0, 0, 0, .6), rgba(0, 0, 0, .1));
         }
 
         .player-item {
@@ -87,6 +87,40 @@
 
         .speed-pop-layer {
             position: absolute;
+            top: -180px;
+            background-color: red;
+        }
+
+        .speed-pop-layer {
+            padding: 12px 0;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .speed-txt {
+            padding: 14px 28px;
+            line-height: 24px;
+        }
+
+        .player-progress-bar {
+            width: 100%;
+            height: 2px;
+            background-color: gray;
+        }
+
+        .player-play-played {
+            background-color: forestgreen;
+            width: 20%;
+            height: 100%;
+        }
+
+        .player-play-dot {
+            position: absolute;
+            top: -3px;
+            left: 100px;
+            width: 8px;
+            height: 8px;
+            border-radius: 44px;
+            background-color: rgba(255, 255, 255, 1);
         }
 
 
@@ -102,7 +136,7 @@
     <div class="player-menu">
         <div class="player-progress-bar">
             <div class="player-play-load"></div>
-            <div class="player-play-play"></div>
+            <div class="player-play-played"></div>
             <div class="player-play-dot"></div>
         </div>
         <div class="player-menu-l clearfix">
@@ -132,9 +166,9 @@
             <div class="player-item player-menu-btn player-btn-speed">
                 <span class="speed-txt">倍速</span>
                 <ul class="speed-pop-layer">
-                    <li class="speed-txt">1.0X</li>
-                    <li class="speed-txt">1.5X</li>
-                    <li class="speed-txt">2.0X</li>
+                    <li class="speed-txt">1.0x</li>
+                    <li class="speed-txt">1.5x</li>
+                    <li class="speed-txt">2.0x</li>
                 </ul>
             </div>
             <div class="player-item player-voice">
