@@ -597,6 +597,104 @@ arr.forEach(function () {
 // }
 
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * 书写一个正则表达式，匹配一个字符串，获取匹配的次数和匹配的结果
+ *
+ *
+ */
+
+
+var reg = /\d{3}/g;
+
+var s = '4333nin3nkl1n333n53123nni32132nni3ln431';
+
+var n = 0;
+
+while (result = reg.exec(s)) {
+
+    n++;
+    console.log(result[0]);
+}
+
+console.log(`匹配${n}次`)
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * 获取一个字符串中中文字符的数量
+ *
+ *
+ */
+
+
+var reg = /[\u4e00-\u9fa5]/g;
+
+var s = 'fggg啊是你的adawdw啊额尔法wmadwoa啊aaa啊';
+
+var n = 0;
+
+
+while (result = reg.exec(s)) {
+
+    n++;
+}
+
+console.log(n);
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * 替换数组中的敏感词汇为指定字符
+ *
+ *
+ */
+
+var senWords = ['色情','暴力','贸易战'];               // 敏感词汇
+
+function removeSensitiveWords(str, rep) {
+
+    var reg = new RegExp(`(${senWords.join('|')})`, 'g');
+
+    return s.replace(reg, rep);
+}
+
+console.log(removeSensitiveWords('ssffwafw色情暴力wadadw色情midwanidlwan贸易战'));
+
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -//
+
+
+/**
+ * 判断有字符串中有多少个章节
+ *
+ *
+ */
+
+
+var target = '';
+
+var reg = /<h2>第\d+个<\/h2>/g;
+
+var result = target.match(reg);
+
+
+if (result) {
+
+    console.log(result.length);
+
+} else {
+
+    console.log(0);
+}
+
+
 //-------------------------------------------------------------------------------------------------------------------//
 
 

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-
     <style>
 
         * {
@@ -14,7 +13,6 @@
 
     </style>
 
-
 </head>
 <body>
 
@@ -22,22 +20,52 @@
 <script>
 
 
-function sumOfArray(arr) {
+    //   r-1
 
-    let sum = 0;
+    // 1  4  1
+    // 2  3  3
+    // 3  2  5
+    // 4  1  7
+    // 5  0  9
 
-    arr.forEach(function (value, index, array) {
 
-        sum += value;
-    });
+    // let row = 5;
+    //
+    //
+    // for (let i = 1; i <= row; i++) {
+    //
+    //     let str = '';
+    //
+    //     for (let j = 0; j < row - i; j++) {
+    //
+    //         str += ' ';
+    //     }
+    //
+    //     for (let j = 0; j < 2 * i - 1; j++) {
+    //
+    //         str += "*";
+    //     }
+    //
+    //     console.log(str);
+    //
+    // }
 
-    return sum;
-}
 
-var sumArr = [1, 2, 3, 4];
+    let row = 9,
+        col = 9;
 
-console.log(sumOfArray(sumArr));
+    for (let i = 1; i <= row; i++) {
 
+        var str = ''
+
+        for (let j = 1; j <= i; j++) {
+
+            str += `${i} * ${j} = ${i * j}\t`;
+
+        }
+
+        console.log(str);
+    }
 
 
 </script>
