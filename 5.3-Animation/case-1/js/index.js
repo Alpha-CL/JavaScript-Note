@@ -104,7 +104,7 @@ function autoMove(direction) {
 
 
 function changeIndex(_index) {
-    
+
     for (let i = 0; i < oSpanArray.length; i++) {
 
         oSpanArray[i].className = '';
@@ -117,11 +117,9 @@ function changeIndex(_index) {
 timer = setTimeout(autoMove, 1500);
 
 
-
 // test
 
 HTMLDivElement.prototype.createTurnPage = function () {
-
 
 
 };
