@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 100%;
+            font-weight: normal;
+        }
+
+        :root,
+        body {
+            height: 100%;
+        }
+
+        .wishwall-wrap {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wish-control {
+            position: absolute;
+            display: flex;
+            flex-flow: column nowrap;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 35%;
+            text-align: center;
+        }
+
+        .wish-control span {
+            font-size: 20px;
+        }
+
+        .wish-control textarea {
+            margin: 12px 0;
+            padding: 12px;
+            resize: none;
+            color: #cccccc;
+            font-size: 16px;
+        }
+
+        .wish-control button {
+            padding: 8px 0;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .wish-control button:hover {
+            color: #fff;
+            background-color: #666666;
+        }
+
+        .wish-item-template {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 10%;
+            padding: 12px;
+            background-color: #3c8dff;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        .wish-item-heading {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .6);
+        }
+
+        .wish-item-content {
+            margin: 6px 0 32px;
+        }
+
+        .wish-item-heading,
+        .wish-item-date {
+            font-size: 14px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+
+<!--<div class="wishwall-wrap">
+
+    <div class="wish-list">
+        <div class="wish-item-template">
+            <h3 class="wish-item-heading">愿望-1</h3>
+            <p class="wish-item-content">暴富</p>
+            <span class="wish-item-date">2019/12/12</span>
+        </div>
+    </div>
+
+    <div class="wish-control">
+        <label for="wish-txt"><span class="wish-heading">Make a wish, in case it happens.</span></label>
+        <textarea rows="4" id="wish-txt">Come and make a wish to put</textarea>
+        <button class="wish-btn">Enter</button>
+    </div>
+
+</div>-->
+
+
+<script>
+
+
+    let wishWall = {
+        color: []
+    };
+
+
+    (function () {
+
+        let dom = null,
+            oWrap = null,
+            wishList = null;
+
+        function WishingWall(options, target) {
+
+            this.oOptions = options || {};
+            this.oTarget = document.querySelector(target) || document.body;
+
+            this.init = function () {
+
+                this.createDom(this.oOptions, this.oTarget);
+                this.bindEvent(this.oArr);
+                // this.appendToTarget(this.oTarget);
+            };
+        }
+
+        WishingWall.prototype.createDom = function (oArr, oTarget) {
+
+            dom = document.createDocumentFragment();
+            wishList = document.createElement('div');
+            wishList.className = 'wish-list';
+
+            if (oTarget === document.body) {
+
+                oWrap = document.createElement('div');
+                oWrap.classList.add('wishwall-wrap');
+
+            } else {
+
+                oTarget.classList.add('wishingWall-wrap');
+            }
+
+            let wishItem = this.createWishItem(),
+                wishControl = this.createWishControl();
+
+            wishList.appendChild(wishItem);
+            oWrap.appendChild(wishList);
+            oWrap.appendChild(wishControl);
+
+            dom.appendChild(oWrap);
+            oTarget.appendChild(dom);
+        };
+
+        WishingWall.prototype.createWishItem = function (inputCon) {
+
+            // <div className="wish-list">
+            //     <div className="wish-item-template">
+            //         <h3 className="wish-item-heading">愿望-1</h3>
+            //         <p className="wish-item-content">暴富</p>
+            //         <span className="wish-item-date">2019/12/12</span>
+            //     </div>
+            // </div>
+
+            let wishItem = document.createElement('div'),
+                itemHeading = document.createElement('div'),
+                itemContent = document.createElement('div'),
+                itemData = document.createElement('span');
+
+            wishItem.className = 'wish-item-template';
+            itemHeading.className = 'wish-item-heading';
+            itemContent.className = 'wish-item-content';
+            itemData.className = 'wish-item-date';
+
+            // inputCon(itemHeading, itemContent, itemData);
+
+            wishItem.appendChild(itemHeading);
+            wishItem.appendChild(itemContent);
+            wishItem.appendChild(itemData);
+
+            return wishItem;
+        };
+
+        WishingWall.prototype.createWishControl = function () {
+
+            // <div className="wish-control">
+            //     <label htmlFor="wish-txt"><span className="wish-heading">Make a wish, in case it happens.</span></label>
+            //     <textarea rows="4" id="wish-txt">Come and make a wish to put</textarea>
+            //     <button className="wish-btn">Enter</button>
+            // </div>
+
+            let wishCon = document.createElement('div'),
+                conLabel = document.createElement('label'),
+                conHeading = document.createElement('span'),
+                conTextarea = document.createElement('textarea'),
+                conButton = document.createElement('button');
+
+            wishCon.className = 'wish-control';
+            conLabel.setAttribute('for', '#wish-txt');
+            conHeading.className = 'wish-heading';
+            conHeading.innerText = 'Make a wish, in case it happens.';
+            conTextarea.setAttribute('rows', '4');
+            conTextarea.innerHTML = 'Come and make a wish to put';
+            conTextarea.setAttribute('id', 'wish-txt');
+            conButton.className = 'wish-btn';
+            conButton.innerText = 'Enter';
+
+            wishCon.appendChild(conLabel);
+            conLabel.appendChild(conHeading);
+            wishCon.appendChild(conTextarea);
+            wishCon.appendChild(conButton);
+
+            return wishCon;
+        };
+
+        WishingWall.prototype.bindEvent = function () {
+
+            this.conTextareaEvent();
+            this.conButtonEvent();
+        };
+
+        WishingWall.prototype.conTextareaEvent = function () {
+
+            let conTextarea = oWrap.querySelector('.wish-control textarea');
+
+            conTextarea.addEventListener('focus', function () {
+
+                if (!this.value || this.value.trim() === 'Come and make a wish to put') {
+
+                    this.value = '';
+                    this.style.color = '#333';
+                }
+
+            }, false);
+
+            conTextarea.addEventListener('blur', function () {
+
+                if (!this.value) {
+
+                    this.value = 'Come and make a wish to put';
+                    this.style.color = '#ccc';
+                }
+
+            }, false);
+        };
+
+        WishingWall.prototype.conButtonEvent = function () {
+
+
+        };
+
+
+        window.wishingWall = function (options, target) {
+
+            let wishingWall = new WishingWall(options, target);
+
+            wishingWall.init();
+        };
+
+    }());
+
+    wishingWall(wishWall);
+
+
+</script>
+
+
+</body>
+</html>

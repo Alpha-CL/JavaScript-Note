@@ -63,8 +63,11 @@
 
                 console.log(disX);
 
-                tar.style.left = curTop + disX + 'px';
-                tar.style.top = curLeft + disY + 'px';
+                // tar.style.left = curTop + disX + 'px';
+                // tar.style.top = curLeft + disY + 'px';
+
+                tar.style.left = e.pageX - curPageX / 2 + 'px';
+                tar.style.top = e.pageY - curPageY / 2 + 'px';
             };
 
             window.onmouseup = window.onmouseleave = function (e) {
