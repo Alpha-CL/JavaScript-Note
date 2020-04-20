@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<script>
+
+
+    /**
+     * document.readyState: loading                 // 页面加载
+     *
+     *                      interactive             // domTree 构建完
+     *
+     *                      complete                // 触发 window.onload
+     */
+
+
+    console.log(document.readyState);                                   // loading
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        console.log(document.readyState);                               // interactive
+
+    }, false);
+
+
+    window.onload = function () {
+
+        console.log(document.readyState);                               // complete
+
+    };
+
+
+</script>
+
+
 </body>
 </html>

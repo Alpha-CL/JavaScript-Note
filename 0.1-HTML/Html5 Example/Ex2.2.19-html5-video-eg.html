@@ -10,186 +10,275 @@
         * {
             margin: 0;
             padding: 0;
+            color: #fff;
         }
 
         li {
-            list-style: none;
+            list-style-type: none;
         }
 
-        .video_player {
-            position: relative;
-            margin: 100px auto 0;
-            width: 890px;
-            height: 500px;
-        }
-
-        .video,
-        .video_player .menu,
-        .time,
-        .progress_bar,
-        .progress-schedule,
-        .progress-point,
-        .quick {
-            position: absolute;
-        }
-
-        .video {
-            width: 890px;
-            height: 500px;
-            left: 0;
-            top: 0;
-        }
-
-        .video_player .menu {
-            position: absolute;
-            bottom: 0;
-            /*display: none;*/
+        .ctl-svg {
             width: 100%;
-            height: 70px;
-            background-color: rgba(0, 0, 0, .5);
-            z-index: 10;
+            height: 100%;
         }
 
-        .play {
-            margin-left: 12px;
-            width: 200px;
-            color: #fff;
-            line-height: 70px;
+        .ctl-svg-btn {
+            width: 50px;
+            height: 50px;
+        }
+
+
+        .video-player {
+            margin: 30px auto 0;
+            position: relative;
+            width: 1000px;
+        }
+
+        .video-player video {
+            width: 100%;
+        }
+
+        .video-player .video-control {
+            height: 80px;
+            position: absolute;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            bottom: 0;
+            width: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .8));
+            font-size: 20px;
             cursor: pointer;
         }
 
-        .icon-play,
-        .icon-pause {
+        .vdo-control-progressbar {
+            position: relative;
+            width: 100%;
+        }
+
+        .vdo-control-progressbar .progress-load-hover,
+        .vdo-control-progressbar .progress-play-hover {
+            height: 10px;
+            top: -8px;
+        }
+
+        .vdo-control-progressbar .progress-dot-hover {
+            width: 18px;
+            height: 18px;
+            top: -11px;
+        }
+
+        .progress-load,
+        .progress-play {
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background-color: silver;
+        }
+
+        .progress-play {
+            width: 0;
+            background-color: #3c8dff;
+        }
+
+        .progress-dot {
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #fff;
+        }
+
+        .vdo-control-l {
+            margin-left: 30px;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            flex-flow: row nowrap;
+        }
+
+        .vdo-control-l div {
+            margin-right: 18px;
+        }
+
+        .vdo-control-l .ctl-playcontrol .player-pause {
             display: none;
         }
 
-        .icon-play {
-            float: left;
-            width: 70px;
-            height: 70px;
+        .vdo-control-r {
+            margin-right: 30px;
+            display: flex;
+            align-items: center;
+            flex-flow: row nowrap;
         }
 
-        .play-active {
-            display: block;
+        .vdo-control-r .ctl-btn {
+            margin-left: 18px;
         }
 
-        .icon-play:after {
-            content: "";
-            clear: both;
-            display: block;
+        .vdo-control-r .ctl-speed {
+            position: relative;
         }
 
-        .play svg {
-            float: left;
-        }
-
-        .time {
-            top: 20px;
-            margin-left: 160px;
-            width: 100px;
-            height: 32px;
-            line-height: 32px;
-            text-align: center;
-            color: rgba(255, 255, 255, .8);
-            border: 1px solid rgba(255, 255, 255, .3);
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .progress_bar {
-            top: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: gray;
-        }
-
-        .progress-schedule {
-            width: 120px;
-            height: 2px;
-            left: 0;
-            top: 0;
-            background-color: white;
-        }
-
-        .progress-point {
-            display: block;
-            top: -2px;
-            left: 120px;
-            width: 6px;
-            height: 6px;
-            border-radius: 3px;
-            background-color: rgba(255, 255, 255, 1);
-        }
-
-        .quick,
-        .quick-list {
+        .vdo-control-r .spd-pop-btn {
+            display: none;
             position: absolute;
-            height: 32px;
-            padding: 0 24px;
-            line-height: 32px;
-            text-align: left;
-            cursor: pointer;
+            top: -198px;
+            left: -14px;
+            background-color: rgba(0, 0, 0, .4);
+            border-radius: 6px;
+            font-size: 16px;
+            text-align: center;
+            overflow: hidden;
         }
 
-        .quick {
-            top: 20px;
-            right: 100px;
-            color: rgba(255, 255, 255, .8);
-            border: 1px solid rgba(255, 255, 255, .3);
-            border-radius: 4px;
+        .vdo-control-r .spd-pop-btn li {
+            padding: 12px 16px;
         }
 
-        .quick-list {
-            top: -100px;
-            right: 120px;
+        .vdo-control-r .spd-pop-btn li:hover {
+            background-color: rgba(0, 0, 0, .6);
+        }
+
+        .vdo-control-r .ctl-voice {
+            transform: scale(.6, .6);
+        }
+
+        .vdo-control-r .ctl-fullscreen {
+            transform: scale(.5, .5);
         }
 
 
     </style>
 
-
 </head>
 <body>
 
 
-<div class="video_player">
+<div class="video-player">
 
+    <video src="video/demo.mp4"></video>
 
-    <div class="menu">
-        <div class="play">
-            <div class="icon-play play-active">
-                <svg width="70px" height="70px" viewBox="-30,-30,160,160" style="fill: transparent; stroke: #fff;
-            stroke-width: 3px; stroke-linejoin: round;">
-                    <circle r="40" cx="50" cy="50"/>
-                    <polygon points="38 30, 70 50, 38 70"/> <!-- auto link start and end of point -->
+    <div class="video-control">
+        <div class="vdo-control-progressbar">
+            <div class="progress-load"></div>
+            <div class="progress-play"></div>
+            <i class="progress-dot"></i>
+        </div>
+        <div class="vdo-control-l">
+            <div class="ctl-btn ctl-playcontrol">
+                <div class="ctl-svg-btn player-play">
+
+                    <svg class="ctl-svg ctl-svg-play" width="80px" height="80px" viewBox="0 0 80 80" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-10.000000, -10.000000)" stroke="#FFFFFF"
+                               stroke-width="4">
+                                <circle id="Oval" cx="50" cy="50" r="38"/>
+                                <polygon id="Rectangle" stroke-linejoin="round"
+                                         transform="translate(43.000000, 50.000000) rotate(-315.000000) translate(-43.000000, -50.000000) "
+                                         points="25 34.8284271 61 32 58.1715729 68"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="ctl-svg-btn player-pause">
+
+                    <svg class="ctl-svg" width="80px" height="80px" viewBox="0 0 80 80" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Artboard" transform="translate(-10.000000, -10.000000)" stroke="#FFFFFF"
+                               stroke-width="4">
+                                <circle id="Oval" cx="50" cy="50" r="38"/>
+                                <line x1="39" y1="32" x2="39" y2="68" id="Path" stroke-linecap="round"/>
+                                <line x1="61" y1="32" x2="61" y2="68" id="Path-Copy" stroke-linecap="round"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="ctl-btn ctl-next">
+                <div class="ctl-svg-btn player-next">
+
+                    <svg class="ctl-svg" width="80px" height="80px" viewBox="0 0 80 80" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-10.000000, -10.000000)" stroke="#FFFFFF"
+                               stroke-width="4">
+                                <circle id="Oval" cx="50" cy="50" r="38"></circle>
+                                <polygon id="Rectangle" stroke-linejoin="round"
+                                         transform="translate(37.328427, 50.000000) rotate(-315.000000) translate(-37.328427, -50.000000) "
+                                         points="24.8284271 39.4641855 49.8284271 37.5 47.8642416 62.5"></polygon>
+                                <line x1="63" y1="33" x2="63" y2="67" id="Path-Copy" stroke-linecap="round"></line>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="ctl-time">
+                <span class="time-cur">00:00</span>
+                <span class="time-curline">/</span>
+                <span class="time-dur"></span>
+            </div>
+        </div>
+        <div class="vdo-control-r">
+            <div class="ctl-btn ctl-speed">
+                <div class="spd-btn spd-txt">倍速</div>
+                <div class="spd-pop-btn">
+                    <ul class="spd-pop-bar">
+                        <li class="spd-txt">1.0X</li>
+                        <li class="spd-txt">1.25X</li>
+                        <li class="spd-txt">1.5X</li>
+                        <li class="spd-txt">2.0X</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ctl-btn ctl-svg-btn ctl-voice">
+                <svg class="ctl-svg" width="70px" height="79px" viewBox="0 0 70 79" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                       stroke-linecap="round">
+                        <g id="Artboard" transform="translate(-15.000000, -11.000000)" stroke="#FFFFFF"
+                           stroke-width="4">
+                            <g id="Group-2" transform="translate(17.000000, 13.000000)">
+                                <path d="M14.4,52.7613114 L0,51.6 L0,22.8 L14.4,21.6273132 M14.4,21.6 L34.8,0 L34.8,74.4 L14.4,52.8"
+                                      id="Combined-Shape" stroke-linejoin="round"></path>
+                                <g id="Group" transform="translate(45.600000, 12.000000)">
+                                    <path d="M0,39.499286 C4.65413517,36.4031889 7.72127546,31.1105773 7.72127546,25.1015968 C7.72127546,19.1191071 4.68111879,13.846684 0.0614611871,10.7449834"
+                                          id="Path"></path>
+                                    <path d="M2.4508826,50.2129455 C12.550285,46.3457561 19.7212755,36.5611137 19.7212755,25.1015968 C19.7212755,13.6517001 12.56232,3.87386698 2.4763116,0"
+                                          id="Path"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
                 </svg>
             </div>
-            <div class="icon-pause">
-                <svg width="70px" height="70px" viewBox="-30,-30,160,160" style="fill: transparent; stroke: #fff;
-            stroke-width: 3px; stroke-linejoin: round;">
-                    <circle r="40" cx="50" cy="50"/>
-                    <line x1="40" y1="30" x2="40" y2="70" style="stroke-linejoin: arcs"/>
-                    <line x1="60" y1="30" x2="60" y2="70" style="stroke-linejoin: arcs"/>
+            <div class="ctl-btn ctl-svg-btn ctl-fullscreen">
+
+                <svg class="ctl-svg" width="68px" height="68px" viewBox="0 0 68 68" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                       stroke-linecap="round">
+                        <g id="Artboard" transform="translate(-16.000000, -16.000000)" stroke="#FFFFFF"
+                           stroke-width="4">
+                            <polyline id="Path" stroke-linejoin="round"
+                                      transform="translate(68.000000, 68.000000) rotate(-180.000000) translate(-68.000000, -68.000000) "
+                                      points="54 82 54 54 82 54"></polyline>
+                            <polyline id="Path-Copy" stroke-linejoin="round" points="18 46 18 18 46 18"></polyline>
+                            <line x1="18" y1="18" x2="42.1303695" y2="42.1303695" id="Path-2"></line>
+                            <line x1="57" y1="57" x2="81.1303695" y2="81.1303695" id="Path-2-Copy"></line>
+                        </g>
+                    </g>
                 </svg>
+
             </div>
-            <span>播放</span>
         </div>
-        <div class="time"></div>
-        <div class="progress_bar">
-            <div class="progress-schedule"></div>
-            <i class="progress-point"></i>
-        </div>
-        <div class="quick">倍速 x 1.0</div>
-        <ul class="quick-list">
-            <li>倍速 x 1.25</li>
-            <li>倍速 x 1.5</li>
-            <li>倍速 x 2.0</li>
-        </ul>
     </div>
-
-    <video class="video" src="video/demo.mp4"/>
-
 
 </div>
 
@@ -197,104 +286,221 @@
 <script>
 
 
-    let videoPlayer = document.getElementsByClassName("video_player")[0],
-        videoPlay = videoPlayer.getElementsByClassName("play")[0],
-        playText = videoPlay.getElementsByTagName("span")[0],
-        iconPlay = videoPlay.getElementsByClassName("icon-play")[0],
-        iconPause = videoPlay.getElementsByClassName("icon-pause")[0],
-        video = document.getElementsByClassName("video")[0],
-        videoMenu = document.getElementsByClassName("menu")[0],
-        time = document.getElementsByClassName("time")[0];
+    let videoPlayer = document.querySelector('.video-player'),
+        playCtl = document.querySelector('.ctl-playcontrol'),
+        oVideo = document.querySelector('.video-player video');
 
-    videoPlayer.onmouseenter = function () {
+    playCtl.onclick = function (e) {
 
-        videoMenu.style.display = "block";
-    };
+        let tar = e.target,
+            playerPlay = document.querySelector('.player-play'),
+            playerPause = document.querySelector('.player-pause');
 
-    videoPlayer.onmouseleave = function () {
+        if (oVideo.paused) {
 
-        videoMenu.style.display = "none";
-    };
+            oVideo.play();
 
-    videoPlay.onclick = function () {
+            playerPlay.style.display = 'none';
+            playerPause.style.display = 'block';
 
+            setInterval(function (e) {
 
-        if (video.paused) {
+                let total = oVideo.duration,
+                    curTime = oVideo.currentTime,
+                    proportion = (curTime / total).toFixed(2);
 
-            video.play();
+                progressPlay.style.width = load * proportion + 'px';
+                progressDot.style.left = load * proportion + 'px';
 
-            playText.innerHTML = "暂停";
-
-            iconPlay.style.className = "icon-play";
-
-            iconPlay.setAttribute("class", "icon-play");
-            iconPause.setAttribute("class", "icon-pause play-active");
+            }, 1000);
 
         } else {
 
-            video.pause();
+            oVideo.pause();
 
-            playText.innerHTML = "播放";
-
-            iconPause.setAttribute("class", "icon-pause");
-            iconPlay.setAttribute("class", "icon-play play-active");
+            playerPlay.style.display = 'block';
+            playerPause.style.display = 'none';
         }
     };
 
-    let progressBar = document.getElementsByClassName("progress_bar")[0],
-        progressSchedule = document.getElementsByClassName('progress-schedule')[0],
-        progressPoint = document.getElementsByClassName('progress-point')[0];
-
-    progressBar.onmouseenter = function () {
-
-        progressBar.style.height = "6px";
-        progressBar.style.top = '-3px';
-        progressSchedule.style.height = '6px';
-        progressPoint.style.height = "10px";
-    };
-
-    progressBar.onmouseleave = function () {
-
-        progressBar.style.height = "2px";
-        progressBar.style.top = '-2px';
-        progressSchedule.style.height = '2px';
-        progressPoint.style.height = "6px";
-    };
-
-    progressBar.onclick = function (e) {
-
-        let location = e.layerX,
-            progressWidth = video.currentTime,
-            targetTime = location / progressWidth * video.duration;
-
-
-        /**
-         *
-         * response header
-         *
-         * content-range: ...;                  // 若浏览器请求体中没有这个属性则不能实现点击跳转
-         *
-         * 需挂载到服务器上后再试验
-         */
-
-        video.currentTime = targetTime;
-
-    };
 
     setInterval(function () {
 
-        let total = video.duration,                         // 视频总时长
-            nowTime = video.currentTime;                    // 视屏播放当前时间
+        let durTimeDom = document.querySelector('.time-dur'),
+            total = oVideo.duration,
+            curTime = oVideo.currentTime,
+            curTimeDom = document.querySelector('.time-cur'),
+            totalH,
+            totalS,
+            curH,
+            curS;
 
-        time.innerHTML = parseInt(nowTime / 60) + ":" + parseInt(nowTime % 60) + " / " + parseInt(total / 60) +
-            ":" + parseInt(total % 60);
+        if (parseInt(total / 60 + '') < 10) {
 
-        let progressWidth = nowTime / total * progressBar.clientWidth;
+            totalH = '0' + parseInt(total / 60 + '');
 
-        progressSchedule.style.width = progressWidth + 'px';
-        progressPoint.style.left = progressWidth + "px";
+        } else {
+
+            totalH = parseInt(total / 60 + '');
+        }
+
+        if (parseInt(total % 60 + '') < 10) {
+
+            totalS = '0' + parseInt(total % 60 + '');
+
+        } else {
+
+            totalS = parseInt(total % 60 + '');
+        }
+
+        durTimeDom.innerHTML = totalH + ':' + totalS;
+
+        if (parseInt(curTime / 60 + '') < 10) {
+
+            curH = '0' + parseInt(curTime / 60 + '');
+
+        } else {
+
+            curH = parseInt(curTime / 60 + '');
+        }
+
+        if (parseInt(curTime % 60 + '') < 10) {
+
+            curS = '0' + parseInt(curTime % 60 + '');
+
+        } else {
+
+            curS = parseInt(curTime % 60 + '');
+        }
+
+        curTimeDom.innerHTML = curH + ':' + curS;
 
     }, 1000);
+
+    let progressbar = document.querySelector('.vdo-control-progressbar'),
+        progressLoad = document.querySelector('.progress-load'),
+        progressPlay = document.querySelector('.progress-play'),
+        progressDot = document.querySelector('.progress-dot'),
+        lock = false;
+
+    progressbar.addEventListener('mouseover', function overProgress() {
+
+        progressLoad.classList.add('progress-load-hover');
+        progressPlay.classList.add('progress-play-hover');
+        progressDot.classList.add('progress-dot-hover');
+
+        lock = true;
+
+    }, false);
+
+    function outProgress() {
+
+        if (lock) {
+
+            lock = false;
+
+            setTimeout(function () {
+
+                progressLoad.classList.remove('progress-load-hover');
+                progressPlay.classList.remove('progress-play-hover');
+                progressDot.classList.remove('progress-dot-hover');
+
+            }, 1000);
+        }
+    }
+
+    progressbar.addEventListener('mouseout', outProgress, false);
+
+    let load = parseInt(getComputedStyle(progressbar).width);
+
+    progressbar.addEventListener('click', function (e) {
+
+        let play = e.layerX,
+            proportion = (play / load).toFixed(2),
+            targetTime = parseInt(oVideo.duration * proportion);
+
+        console.log(targetTime);
+
+        oVideo.currentTime = targetTime;
+
+        progressPlay.style.width = load * proportion + 'px';
+        progressDot.style.left = load * proportion + 'px';
+
+    }, false);
+
+
+    let doubleSpeed = document.querySelector('.ctl-speed'),
+        speedDropup = document.querySelector('.spd-pop-btn');
+
+    doubleSpeed.addEventListener('mouseover', function (e) {
+
+        speedDropup.style.display = 'block';
+
+    }, false);
+
+    speedDropup.addEventListener('click', function (e) {
+
+        let tar = e.target,
+            spdTxt = document.querySelector('.spd-txt');
+
+        if (tar.innerText === '1.0X') {
+
+            oVideo.playbackRate = 1;
+            spdTxt.innerHTML = '1.0X';
+
+        } else if (tar.innerText === '1.25X') {
+
+            oVideo.playbackRate = 1.25;
+            spdTxt.innerHTML = '1.25X';
+
+        } else if (tar.innerText === '1.5X') {
+
+            oVideo.playbackRate = 1.5;
+            spdTxt.innerHTML = '1.5X';
+
+        } else if (tar.innerText === '2.0X') {
+
+            oVideo.playbackRate = 2;
+            spdTxt.innerHTML = '2.0X';
+        }
+
+    }, false);
+
+    speedDropup.addEventListener('mouseleave', function (e) {
+
+        speedDropup.style.display = 'none';
+
+    }, false);
+
+    videoPlayer.addEventListener('mouseleave', function (e) {
+
+        speedDropup.style.display = 'none';
+
+    }, false);
+
+
+    /**
+     * video.volume
+     *
+     *
+     * 音量控制，范围[0, 1]
+     */
+
+
+
+    let fullscreen = document.querySelector('.ctl-fullscreen');
+
+    fullscreen.onclick = function (e) {
+
+        let dom = document.documentElement;
+
+        dom.requestFullscreen();
+
+        videoPlayer.style.width = window.screen.width + 'px';
+        videoPlayer.style.height = window.screen.height + 'px';
+        oVideo.style.width = window.screen.width + 'px';
+        oVideo.style.height = window.screen.height + 'px';
+    };
 
 
 </script>
