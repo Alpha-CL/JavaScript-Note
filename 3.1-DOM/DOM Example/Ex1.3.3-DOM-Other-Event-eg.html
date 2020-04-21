@@ -261,9 +261,22 @@
 
         WishingWall.prototype.conButtonEvent = function () {
 
+            let conBtn = oWrap.querySelector('button'),
+                newItem,
+                index = 0;
+
+            conBtn.addEventListener('click', function () {
+
+                newItem = this.createWishItem(function (oHead, oContent, oData) {
+
+                    oHead.innerHTML = 'wish-' + index;
+                    oContent.innerHTML = '111';
+                    oData.innerHTML = new Date();
+                });
+
+            }, false);
 
         };
-
 
         window.wishingWall = function (options, target) {
 
