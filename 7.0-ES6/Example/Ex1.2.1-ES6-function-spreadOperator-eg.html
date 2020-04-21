@@ -102,11 +102,11 @@
             maxVal = document.querySelector('.max-value'),
             minVal = document.querySelector('.min-value');
 
-        maxVal.innerHTML = Math.max.apply(null, numbers);
-        minVal.innerHTML = Math.min.apply(null, numbers);
+        // maxVal.innerHTML = Math.max.apply(null, numbers);
+        // minVal.innerHTML = Math.min.apply(null, numbers);
 
-        // maxVal.innerHTML = Math.max(...numbers);
-        // minVal.innerHTML = Math.min(...numbers);
+        maxVal.innerHTML = Math.max(...numbers);
+        minVal.innerHTML = Math.min(...numbers);
     };
 
 
