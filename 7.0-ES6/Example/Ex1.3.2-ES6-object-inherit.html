@@ -78,6 +78,8 @@
             /**
              * super(...fatherArgs, PersonParams); === class Father{ constructor(...fatherArgs); }
              *
+             * super(); 有切只能执行一次
+             *
              * 1) 在子类中直接调用: 作为函数调用，表示调用父类的 constructor(...arg)
              *
              * 2) 在子类中为对象使用: 则表示父类的原型，用于调用父类中的方法
@@ -92,11 +94,11 @@
              */
 
             // 直接调用
-            super(name, age, money);   // 若有继承关系，则需要在创建继承关系的 constructor 的 第一行调用一次 super
-                                       // 理论上: 建立父子继承连接
+            const father = super(name, age, money);   // 若有继承关系，则需要在创建继承关系的 constructor 的 第一行调用一次 super
+                                                       // 理论上: 建立父子继承连接
 
             // 作为对象使用
-            super().sayHi();           // 调用父类中的方法
+            father.sayHi();           // 调用父类中的方法
         }
     }
 
