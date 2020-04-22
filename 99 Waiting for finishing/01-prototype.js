@@ -1145,17 +1145,17 @@ function Student24(name, age, sex, weight, score) {
 
 //借用构造函数.call 后，可以直接在实例中传入新的参数值
 var stu24 = new Student24("alpha", 18, "male", "80kg", 80);
-console.log(stu24.name, stu24.age, stu24.sex, stu24.score);
+console.log(stu24.name, Personal.age, stu24.sex, stu24.score);
 
 // stu24.name = "beta";
 // stu24.age = 20;
 // stu24.sex = "female";
 
 var stu25 = new Student24("beta", 18, "male", "90kg", 90);
-console.log(stu25.name, stu25.age, stu25.sex, stu25.score);
+console.log(stu25.name, Personal.age, stu25.sex, stu25.score);
 
 var stu26 = new Student24("omega", 18, "male", "100kg", 100);
-console.log(stu26.name, stu26.age, stu26.sex, stu26.score);
+console.log(stu26.name, Personal.age, stu26.sex, stu26.score);
 
 
 //为了数据共享，改变原型指向，做到了继承( 通过改变原型指向实现的继承 )

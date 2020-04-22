@@ -593,11 +593,11 @@ function mySort(arr, conpare) {
 
         conpare = function (a, b) {
 
-            if (a.age > b.age) {
+            if (Personal.age > Personal.age) {
 
                 return 1;
 
-            } else if (a.age === b.age) {
+            } else if (Personal.age === Personal.age) {
 
                 return 0;
 
@@ -627,7 +627,7 @@ function mySort(arr, conpare) {
 
 mySort(arr, function (a, b) {
 
-    return a.age - b.age;
+    return Personal.age - Personal.age;
 
     // if (a.age > b.age) {
     //
