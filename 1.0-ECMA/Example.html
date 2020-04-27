@@ -2,55 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-
-        body {
-            height: 2000px;
-        }
-        .demo {
-            width: 200px;
-            height: 200px;
-        }
-
-        body {
-            background-color: #d0d0d0;
-        }
-
-        svg {
-            width: 100%;
-            height: 100%;
-        }
-
-    </style>
-
+    <title>获取input输入框中的值</title>
 </head>
 <body>
-
-
+<div>
+    <input class="input-box" type="text">
+    <input type="button" value="点击获取input输入框中的值" onclick="getInputVal()">
+</div>
+<p class="content"></p>
 <script>
+    function getInputVal(){
+        const inputBox = document.querySelectorAll('.input-box')[0],
+            content = document.querySelectorAll('.content')[0];
+        // 获取input输入框中的值
 
 
-    window.onscroll = function () {
+        console.log(inputBox);
+        let inputVal = inputBox.value;
 
-        console.log(document.documentElement.scrollTop + document.body.scrollTop);
-        console.log(document.documentElement.scrollTop, document.body.scrollTop);
-    };
+        console.log(inputVal);
 
+        if(inputVal){
+            content.innerHTML = inputVal;
+        }else{
+            alert('请在input输入框中填点东西');
+        }
+    }
 </script>
-
-
-
-
-
-
-
 </body>
 </html>

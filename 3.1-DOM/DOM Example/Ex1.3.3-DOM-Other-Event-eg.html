@@ -43,10 +43,10 @@
             font-size: 20px;
         }
 
-        .wish-control textarea {
+        .wish-control #wish-txt {
             margin: 12px 0;
             padding: 12px;
-            resize: none;
+            /*border: 1px solid #ccc;*/
             color: #cccccc;
             font-size: 16px;
         }
@@ -64,13 +64,14 @@
 
         .wish-item-template {
             position: absolute;
-            left: 100px;
-            top: 100px;
-            width: 10%;
+            /*left: 100px;*/
+            /*top: 100px;*/
+            width: 160px;
             padding: 12px;
             background-color: #3c8dff;
             border-radius: 4px;
             color: #fff;
+            cursor: pointer;
         }
 
         .wish-item-heading {
@@ -85,47 +86,55 @@
         .wish-item-heading,
         .wish-item-date {
             font-size: 14px;
+            color: rgba(255, 255, 255, .7);
         }
 
+
+        .wish-item-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+        }
 
     </style>
 
 </head>
 <body>
 
-
-<!--<div class="wishwall-wrap">
+<!--
+<div class="wishwall-wrap">
 
     <div class="wish-list">
         <div class="wish-item-template">
             <h3 class="wish-item-heading">愿望-1</h3>
             <p class="wish-item-content">暴富</p>
             <span class="wish-item-date">2019/12/12</span>
+            <span class="wish-item-close">X</span>
         </div>
     </div>
 
     <div class="wish-control">
         <label for="wish-txt"><span class="wish-heading">Make a wish, in case it happens.</span></label>
-        <textarea rows="4" id="wish-txt">Come and make a wish to put</textarea>
+        <input type="text" placeholder="come and make a wish to put" id="wish-txt">
         <button class="wish-btn">Enter</button>
     </div>
 
-</div>-->
-
+</div>
+-->
 
 <script>
 
 
-    let wishWall = {
-        color: []
-    };
-
+    let wishWall = {};
 
     (function () {
 
         let dom = null,
             oWrap = null,
-            wishList = null;
+            wishList = null,
+            itemIndex = 0,
+            curWindowWidth = document.documentElement.clientWidth,
+            curWindowHeight = document.documentElement.clientHeight;
 
         function WishingWall(options, target) {
 
@@ -136,7 +145,10 @@
 
                 this.createDom(this.oOptions, this.oTarget);
                 this.bindEvent(this.oArr);
-                // this.appendToTarget(this.oTarget);
+
+                this.itemDrag();
+                this.closeItem();
+                this.windowResize();
             };
         }
 
@@ -156,10 +168,10 @@
                 oTarget.classList.add('wishingWall-wrap');
             }
 
-            let wishItem = this.createWishItem(),
-                wishControl = this.createWishControl();
+            let wishControl = this.createWishControl(),
+                wishItem = this.createWishItem();
 
-            wishList.appendChild(wishItem);
+            // wishList.appendChild(wishItem);
             oWrap.appendChild(wishList);
             oWrap.appendChild(wishControl);
 
@@ -180,18 +192,27 @@
             let wishItem = document.createElement('div'),
                 itemHeading = document.createElement('div'),
                 itemContent = document.createElement('div'),
-                itemData = document.createElement('span');
+                itemData = document.createElement('span'),
+                itemClose = document.createElement('span');
 
             wishItem.className = 'wish-item-template';
+            wishItem.dataset.close = itemIndex + '';
+            // wishItem.style.zIndex = itemIndex + '';
             itemHeading.className = 'wish-item-heading';
             itemContent.className = 'wish-item-content';
             itemData.className = 'wish-item-date';
+            itemClose.className = 'wish-item-close';
 
-            // inputCon(itemHeading, itemContent, itemData);
+            itemClose.innerHTML = 'X';
+
+            inputCon && inputCon(itemHeading, itemContent, itemData);
 
             wishItem.appendChild(itemHeading);
             wishItem.appendChild(itemContent);
             wishItem.appendChild(itemData);
+            wishItem.appendChild(itemClose);
+
+            itemIndex++;
 
             return wishItem;
         };
@@ -207,14 +228,15 @@
             let wishCon = document.createElement('div'),
                 conLabel = document.createElement('label'),
                 conHeading = document.createElement('span'),
-                conTextarea = document.createElement('textarea'),
+                conTextarea = document.createElement('input'),
                 conButton = document.createElement('button');
 
             wishCon.className = 'wish-control';
             conLabel.setAttribute('for', '#wish-txt');
             conHeading.className = 'wish-heading';
             conHeading.innerText = 'Make a wish, in case it happens.';
-            conTextarea.setAttribute('rows', '4');
+            conTextarea.setAttribute('type', 'text');
+            conTextarea.setAttribute('placeholder', 'come and make a wish to put');
             conTextarea.innerHTML = 'Come and make a wish to put';
             conTextarea.setAttribute('id', 'wish-txt');
             conButton.className = 'wish-btn';
@@ -230,52 +252,182 @@
 
         WishingWall.prototype.bindEvent = function () {
 
-            this.conTextareaEvent();
+            // this.conTextareaEvent();
             this.conButtonEvent();
-        };
-
-        WishingWall.prototype.conTextareaEvent = function () {
-
-            let conTextarea = oWrap.querySelector('.wish-control textarea');
-
-            conTextarea.addEventListener('focus', function () {
-
-                if (!this.value || this.value.trim() === 'Come and make a wish to put') {
-
-                    this.value = '';
-                    this.style.color = '#333';
-                }
-
-            }, false);
-
-            conTextarea.addEventListener('blur', function () {
-
-                if (!this.value) {
-
-                    this.value = 'Come and make a wish to put';
-                    this.style.color = '#ccc';
-                }
-
-            }, false);
         };
 
         WishingWall.prototype.conButtonEvent = function () {
 
             let conBtn = oWrap.querySelector('button'),
+                conList = oWrap.querySelector('.wish-list'),
+                wishCon = oWrap.querySelector('#wish-txt'),
+                self = this,
                 newItem,
-                index = 0;
+                index = 1,
+                data = new Date();
 
             conBtn.addEventListener('click', function () {
 
-                newItem = this.createWishItem(function (oHead, oContent, oData) {
+                // if (!wishCon.value) {
+                //
+                //     alert('please enter content text');
+                //
+                //     return false;
+                // }
 
-                    oHead.innerHTML = 'wish-' + index;
-                    oContent.innerHTML = '111';
-                    oData.innerHTML = new Date();
+                newItem = self.createWishItem(function (oHead, oContent, oData) {
+
+                    oHead.innerHTML = 'wish-' + (index < 10 ? '0' + index : index);
+                    oContent.innerHTML = wishCon.value;
+                    oData.innerHTML = `${data.getFullYear()}/${(data.getMonth() + 1) < 10 ? '0' +
+                        (data.getMonth() + 1) : (data.getMonth() + 1)}/${data.getDate()}`;
                 });
+
+                conList.appendChild(newItem);
+
+                self.setRandomPosition(newItem);
+
+                wishCon.value = null;
+
+                index++;
+
+            }, false);
+        };
+
+        WishingWall.prototype.setRandomPosition = function (dom) {
+
+            let oScreenWidth = document.documentElement.clientWidth,
+                oScreenHeight = document.documentElement.clientHeight,
+                oStyle = window.getComputedStyle(dom),
+                curWidth = parseInt(oStyle.width),
+                curHeight = parseInt(oStyle.height),
+                maxLeft = oScreenWidth - curWidth,
+                maxHeight = oScreenHeight * 0.5 - curHeight;
+
+            dom.style.top = this.getRandom(20, maxHeight) + 'px';
+            dom.style.left = this.getRandom(0, maxLeft) + 'px';
+            this.setRandomColor(dom);
+        };
+
+        WishingWall.prototype.setRandomColor = function (dom) {
+
+            let red = Math.floor(this.getRandom(100, 200)),
+                green = Math.floor(this.getRandom(100, 200)),
+                blue = Math.floor(this.getRandom(100, 200));
+
+            dom.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        };
+
+        WishingWall.prototype.getRandom = function (min, max) {
+
+            return Math.floor(Math.random() * (max - min) + min);
+        };
+
+        WishingWall.prototype.itemDrag = function () {
+
+            wishList.addEventListener('mousedown', (e) => {
+
+                let tar = e.target,
+                    viewportWidth = document.documentElement.clientWidth,
+                    viewportHeight = document.documentElement.clientHeight;
+
+                const moveItem = this.getItem(tar);
+
+                if (moveItem) {
+
+                    let oStyle = getComputedStyle(moveItem),
+                        curWidth = parseInt(oStyle.width),
+                        curHeight = parseInt(oStyle.height),
+                        curTop = parseInt(oStyle.top),
+                        curLeft = parseInt(oStyle.left),
+                        maxTop = viewportHeight - curHeight,
+                        maxLeft = viewportWidth - curWidth;
+
+                    moveItem.style.zIndex = itemIndex;
+
+                    window.onmousemove = function (e) {
+
+                        curTop += e.movementY;
+                        curLeft += e.movementX;
+
+                        curTop <= 20 ? curTop = 20 : curTop;
+                        curTop >= maxTop ? curTop = maxTop - 20 : curTop;
+
+                        curLeft <= 20 ? curLeft = 20 : curLeft;
+                        curLeft >= maxLeft ? curLeft = maxLeft - 20 : curLeft;
+
+                        moveItem.style.left = curLeft + 'px';
+                        moveItem.style.top = curTop + 'px';
+                    };
+
+                    window.onmouseup = window.onmouseleave = function () {
+
+                        window.onmousemove = null;
+                    };
+
+                    itemIndex++;
+                }
 
             }, false);
 
+        };
+
+        WishingWall.prototype.getItem = function (dom) {
+
+            if (dom.className === 'wish-item-template') {
+
+                return dom;
+
+            } else if (dom.parentElement.className === 'wish-item-template') {
+
+                return dom.parentElement;
+            }
+        };
+
+        WishingWall.prototype.closeItem = function () {
+
+            window.addEventListener('click', (e) => {
+
+                let tar = e.target;
+
+                if (tar.parentElement && tar.parentElement.className === 'wish-item-template' && tar.className === 'wish-item-close') {
+
+                    tar.parentElement.remove();
+                }
+
+            }, false);
+        };
+
+        WishingWall.prototype.windowResize = function () {
+
+            window.onresize = function () {
+
+                let disX = document.documentElement.clientWidth - curWindowWidth,
+                    dixY = document.documentElement.clientHeight - curWindowHeight,
+                    allItems = wishList.children;
+
+                Array.from(allItems).forEach((value) => {
+
+                    let oStyle = getComputedStyle(value),
+                        oWidth = parseInt(oStyle.width),
+                        oHeight = parseInt(oStyle.height),
+
+                        oLeft = parseFloat(oStyle.left),
+                        oTop = parseFloat(oStyle.top),
+
+                        leftScale = oLeft / (curWindowWidth - oWidth),
+                        topScale = oTop / (curWindowHeight - oHeight),
+
+                        finalLeft = oLeft + disX * leftScale,
+                        finalTop = oTop + dixY * topScale;
+
+                    value.style.left = finalLeft + 'px';
+                    value.style.top = finalTop + 'px';
+                });
+
+                curWindowWidth = document.documentElement.clientWidth;
+                curWindowHeight = document.documentElement.clientHeight;
+            };
         };
 
         window.wishingWall = function (options, target) {
