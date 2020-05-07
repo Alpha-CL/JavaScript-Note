@@ -144,42 +144,40 @@
      */
 
 
-
-    function getRandom(min, max) {
-
-        return Math.random() * (max - min) + min;
-    }
-
-    const proms = [];
-
-    for (let i = 0; i < 10; i++) {
-
-        proms.push(new Promise((resolve, reject) => {
-
-            setTimeout(function () {
-
-                if (getRandom() < 0.8) {
-
-                    console.log(`${i} 完成`);
-
-                    resolve(`${i} 完成`);
-
-                } else {
-
-                    console.log(`${i} 失败`);
-
-                    reject(`${i} 失败`);
-                }
-
-            }, getRandom(1000, 5000));
-
-        }));
-    }
-
-    const prom = Promise.race(proms);                   // 只要数组中的 Promise 其中一个进入 settle 状态，即返回
-
-    console.log(prom);
-
+    // function getRandom(min, max) {
+    //
+    //     return Math.random() * (max - min) + min;
+    // }
+    //
+    // const proms = [];
+    //
+    // for (let i = 0; i < 10; i++) {
+    //
+    //     proms.push(new Promise((resolve, reject) => {
+    //
+    //         setTimeout(function () {
+    //
+    //             if (getRandom(0.01, 0.9) < 0.5) {
+    //
+    //                 console.log(`${i} 完成`);
+    //
+    //                 resolve(`${i} 完成`);
+    //
+    //             } else {
+    //
+    //                 console.log(`${i} 失败`);
+    //
+    //                 reject(`${i} 失败`);
+    //             }
+    //
+    //         }, getRandom(1000, 5000));
+    //
+    //     }));
+    // }
+    //
+    // const prom = Promise.race(proms);                   // 只要数组中的 Promise 其中一个进入 settle 状态，即返回
+    //
+    // console.log(prom);
 
 
 </script>
