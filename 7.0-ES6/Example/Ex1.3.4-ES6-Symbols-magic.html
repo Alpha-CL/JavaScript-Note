@@ -203,26 +203,26 @@
 <script>
 
 
-    /**
-     * Symbol.toStringTag
-     *
-     * 影响 Object.prototype.toString 的返回值
-     */
-
-    class Personal {
-
-        [Symbol.toStringTag] = 'Personal';
-    }
-
-    const arr = [1, 2, 3];
-
-    const p = new Personal();
-
-
-    console.log(Object.prototype.toString.apply(p));             // 默认情况: [object Object]
-                                                                 // 修改后: [object Personal]
-
-    console.log(Object.prototype.toString.apply(arr));           // [object Array]
+    // /**
+    //  * Symbol.toStringTag
+    //  *
+    //  * 影响 Object.prototype.toString 的返回值
+    //  */
+    //
+    // class Personal {
+    //
+    //     [Symbol.toStringTag] = 'Personal';
+    // }
+    //
+    // const arr = [1, 2, 3];
+    //
+    // const p = new Personal();
+    //
+    //
+    // console.log(Object.prototype.toString.apply(p));             // 默认情况: [object Object]
+    //                                                              // 修改后: [object Personal]
+    //
+    // console.log(Object.prototype.toString.apply(arr));           // [object Array]
 
 
 </script>
