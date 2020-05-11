@@ -40,12 +40,12 @@
 
     pro.then(data => {
 
-        console.log('first finally', data);                 // 全部完成后执行
+        console.log('first finally', data);                 // 无论 then or catch，执行一次后，即停止
     });
 
     pro.catch(err => {
 
-        console.log('first failure', err);                 // 全部完成后执行
+        console.log('first failure', err);                 // 无论 then or catch，执行一次后，即停止
     });
 
 

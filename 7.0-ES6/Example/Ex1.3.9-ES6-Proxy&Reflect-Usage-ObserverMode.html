@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="container">
+
+
+</div>
+
+<script>
+
+
+    function observer(target) {
+
+        const obj = {},
+            props = Object.keys(target),
+            wp = document.querySelector('.container');
+
+        for (const prop of props) {
+
+            Object.defineProperty(obj, prop, {
+
+                get() {
+
+                    return target[prop];
+                },
+
+                set(v) {
+
+                    target[prop] = v;
+
+                    render();
+                },
+
+                enumerable: true
+            });
+        }
+
+        function render() {
+
+            let html = '';
+
+            for (const prop of Object.keys(target)) {
+
+                html += `<p><span>${prop}: </span><span>${target[prop]}</span></p>`
+            }
+
+            wp.innerHTML = html;
+        }
+
+        return obj;
+    }
+
+
+    observer({
+        a: 1,
+        b: 2
+    });
+
+
+</script>
+
+
+</body>
+</html>
