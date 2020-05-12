@@ -15,52 +15,123 @@
 <script>
 
 
-    function observer(target) {
+    // function Observer(target) {
+    //
+    //     const ob = {},
+    //         wp = document.querySelector('.container'),
+    //         props = Object.keys(target);
+    //
+    //     for (const prop of props) {
+    //
+    //         Object.defineProperty(ob, prop, {
+    //
+    //             get() {
+    //
+    //                 return target[prop];
+    //             },
+    //
+    //             set(v) {
+    //
+    //                 target[prop] = v;
+    //
+    //                 render();
+    //             },
+    //
+    //             enumerable: true
+    //         });
+    //     }
+    //
+    //     render();
+    //
+    //     function render() {
+    //
+    //         let html = '';
+    //
+    //         for (const prop of Object.keys(ob)) {
+    //
+    //             html += `<p><span>${prop}: </span><span>${ob[prop]}</span></p>`;
+    //         }
+    //
+    //         wp.innerHTML = html;
+    //     }
+    //
+    //     return ob;
+    // }
+    //
+    // const obj = {
+    //     a: 1,
+    //     b: 2
+    // };
+    //
+    // const test = new Observer(obj);
+    //
+    //
+    //
+    // setTimeout(() => {
+    //
+    //     test.a = 996;
+    //     test.b = 669;
+    //     test.c = 111;                   // 无法被监测
+    //
+    // }, 2000);
 
-        const obj = {},
-            props = Object.keys(target),
-            wp = document.querySelector('.container');
 
-        for (const prop of props) {
+</script>
 
-            Object.defineProperty(obj, prop, {
-
-                get() {
-
-                    return target[prop];
-                },
-
-                set(v) {
-
-                    target[prop] = v;
-
-                    render();
-                },
-
-                enumerable: true
-            });
-        }
-
-        function render() {
-
-            let html = '';
-
-            for (const prop of Object.keys(target)) {
-
-                html += `<p><span>${prop}: </span><span>${target[prop]}</span></p>`
-            }
-
-            wp.innerHTML = html;
-        }
-
-        return obj;
-    }
+<script>
 
 
-    observer({
-        a: 1,
-        b: 2
-    });
+//    function Observer(target) {
+//
+//        const wp = document.querySelector('.container');
+//
+//        const proxy = new Proxy(target, {
+//
+//            set(target, p, value) {
+//
+//                Reflect.set(target, p, value);
+//
+//                render();
+//            },
+//            get(target, p) {
+//
+//                return Reflect.get(target, p)
+//            }
+//        });
+//
+//
+//        render();
+//
+//        function render() {
+//
+//            let html = '';
+//
+//            for (const prop of Object.keys(target)) {
+//
+//                html += `<p><span>${prop}: </span><span>${target[prop]}</span></p>`;
+//            }
+//
+//            wp.innerHTML = html;
+//        }
+//
+//        return proxy;
+//    }
+//
+//
+//    const obj = {
+//        a: 1,
+//        b: 2
+//    };
+//
+//    const test = new Observer(obj);
+//
+//    setTimeout(() => {
+//
+//        test.a = 996;
+//        test.b = 669;
+//        test.c = 111;                // 可以被监测
+//
+//    }, 2000);
 
 
 </script>
