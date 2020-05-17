@@ -12,7 +12,6 @@ Json 是一种传输数据的格式( 以对象为样版，本质上就是对象�
 
 json {"key" : "value", "key" : "value", "key" : "value", "key" : "value"}
 
-
 json {
 
     "key" : "value",
