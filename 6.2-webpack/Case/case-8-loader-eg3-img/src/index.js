@@ -1,6 +1,10 @@
-let oSrc = require('./assets/webpack.jpg'),
-    img = document.createElement('img');
+let jpgSrc = require('./assets/webpack1.jpg'),
+    pngSrc = require('./assets/webpack2.png'),
+    png = document.createElement('img'),
+    jpg = document.createElement('img');
 
-img.src = oSrc;
+png.src = pngSrc;
+jpg.src = jpgSrc;
 
-document.body.appendChild(img);
+document.body.appendChild(jpg);
+document.body.appendChild(png);

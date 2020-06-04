@@ -81,52 +81,21 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/a.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/assets/webpack1.jpg":
-/*!*********************************!*\
-  !*** ./src/assets/webpack1.jpg ***!
-  \*********************************/
+/***/ "./src/a.js":
+/*!******************!*\
+  !*** ./src/a.js ***!
+  \******************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = `img-a3035.jpg`
 
-/***/ }),
-
-/***/ "./src/assets/webpack2.png":
-/*!*********************************!*\
-  !*** ./src/assets/webpack2.png ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = `img-315c8.png`
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-let jpgSrc = __webpack_require__(/*! ./assets/webpack1.jpg */ "./src/assets/webpack1.jpg"),
-    pngSrc = __webpack_require__(/*! ./assets/webpack2.png */ "./src/assets/webpack2.png"),
-    png = document.createElement('img'),
-    jpg = document.createElement('img');
-
-png.src = pngSrc;
-jpg.src = jpgSrc;
-
-document.body.appendChild(jpg);
-document.body.appendChild(png);
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=a.80316.js.map

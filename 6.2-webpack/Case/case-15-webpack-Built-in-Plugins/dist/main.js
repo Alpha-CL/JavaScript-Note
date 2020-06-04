@@ -1,3 +1,11 @@
+/*!
+ * 
+ *             hash: f3a3da509d5ec54b80dc
+ *             chunkhash: cf794c46d461f5a67aa6
+ *             name: main
+ *             author: [author]
+ *             corporation: demo
+ */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -86,45 +94,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/assets/webpack1.jpg":
-/*!*********************************!*\
-  !*** ./src/assets/webpack1.jpg ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = `img-a3035.jpg`
-
-/***/ }),
-
-/***/ "./src/assets/webpack2.png":
-/*!*********************************!*\
-  !*** ./src/assets/webpack2.png ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = `img-315c8.png`
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-let jpgSrc = __webpack_require__(/*! ./assets/webpack1.jpg */ "./src/assets/webpack1.jpg"),
-    pngSrc = __webpack_require__(/*! ./assets/webpack2.png */ "./src/assets/webpack2.png"),
-    png = document.createElement('img'),
-    jpg = document.createElement('img');
 
-png.src = pngSrc;
-jpg.src = jpgSrc;
-
-document.body.appendChild(jpg);
-document.body.appendChild(png);
 
 /***/ })
 

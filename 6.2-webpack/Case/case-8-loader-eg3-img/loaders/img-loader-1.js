@@ -19,8 +19,14 @@ loader.raw = true;
 
 module.exports = loader;
 
-
 function getBase64(buffer) {
 
-    return 'data:image/svg;base64,' + buffer.toString("base64");
+    return 'data:image/jpg;base64,' + buffer.toString("base64");
 }
+
+
+
+
+
+
+
