@@ -1,0 +1,53 @@
+.main {
+    color: red;
+}
+
+.red {
+    color: red;
+}
+
+.warp {
+    width: 100px;
+    height: 100px;
+}
+
+::-webkit-input-placeholder {
+    color: red;
+}
+
+::-moz-placeholder {
+    color: red;
+}
+
+:-ms-input-placeholder {
+    color: red;
+}
+
+::-ms-input-placeholder {
+    color: red;
+}
+
+::placeholder {
+    color: red;
+}
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+@custom-selector :--enter :focus, :hover;
+
+a:--enter {
+    color: #f40;
+}
+
+:--heading {
+    font-weight: bold;
+}
+
+:--heading.active {
+    font-weight: bold;
+}
+
+
+
+
+
