@@ -2,8 +2,11 @@ module.exports = {
     map: false,
     plugins: {
         "postcss-preset-env": {
-            // stage: 2,
-            preserve: false
-        }
+            stage: 1,
+            preserve: false,
+        },
+        "postcss-apply": {},
+        "postcss-color-function": {},
+        // "stylelint": {}
     }
 };

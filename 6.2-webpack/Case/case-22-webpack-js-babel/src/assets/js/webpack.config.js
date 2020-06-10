@@ -1,7 +1,6 @@
 const {CleanWebpackPlugin} = require("clean-webpack-plugin"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
-    CopyPlugin = require("copy-webpack-plugin"),
-    MiniCssExtractPlugin = require('mini-css-extract-plugin');
+    CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     mode: "development",
@@ -17,16 +16,20 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader?modules"],
+                use: ["style-loader", "css-loader?modules],
+            },
+            {
+                test: /.less$/,
+                use: ["style-loader", "css-loader?modules", "less-loader"]
             },
             {
                 test: /\.(jpe?g)|(png)|(gif)$/,
                 use: "file-loader",
             },
             {
-                test: /.pcss$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader?modules", "postcss-loader"]
-            },
+                test: /\.js$/,
+                use: ["babel-loader"]
+            }
         ]
     },
     plugins: [
@@ -39,9 +42,6 @@ module.exports = {
             patterns: [
                 {from: "./public", to: "./"},
             ]
-        }),
-        new MiniCssExtractPlugin({
-            filename: "css/[name].[contenthash:5].css"
         })
     ],
     devServer: {

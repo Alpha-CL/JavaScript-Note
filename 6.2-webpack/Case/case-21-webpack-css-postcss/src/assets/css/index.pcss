@@ -1,4 +1,4 @@
-:root{
+:root {
     --lightColor: #ddd;
     --darkColor: #333;
 }
@@ -37,6 +37,49 @@ a:--enter {
 }
 
 
+.a {
+    color: red;
+
+    & .b {
+        color: green;
+    }
+
+    & > .b {
+        color: blue;
+    }
+
+    &:hover {
+        color: black;
+    }
+}
 
 
+:root {
+    --center: {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
 
+.item {
+    @apply --center;
+}
+
+
+:root {
+    --mainColor: #000;
+}
+
+body {
+    color: color(var(--mainColor));
+
+    color: color(var(--mainColor) a(90%));
+
+    color: color(var(--mainColor) red(90%));
+
+    color: color(var(--mainColor) tint(50%));
+
+    color: color(var(--mainColor) shade(50%));
+}

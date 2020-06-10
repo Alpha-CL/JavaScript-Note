@@ -31,23 +31,54 @@
     color: red;
 }
 
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
-
-@custom-selector :--enter :focus, :hover;
-
-a:--enter {
+a:focus,a:hover {
     color: #f40;
 }
 
-:--heading {
+h1,h2,h3,h4,h5,h6 {
     font-weight: bold;
 }
 
-:--heading.active {
+h1.active,h2.active,h3.active,h4.active,h5.active,h6.active {
     font-weight: bold;
 }
 
 
+.a {
+    color: red
+}
 
 
+.a .b {
+        color: green;
+    }
 
+
+.a > .b {
+        color: blue;
+    }
+
+
+.a:hover {
+        color: black;
+    }
+
+.item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+body {
+    color: rgb(0, 0, 0);
+
+    color: rgba(0, 0, 0, 0.9);
+
+    color: rgb(230, 0, 0);
+
+    color: rgb(128, 128, 128);
+
+    color: rgb(0, 0, 0);
+}
