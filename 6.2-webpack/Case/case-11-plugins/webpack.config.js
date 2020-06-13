@@ -21,25 +21,20 @@ module.exports = {
     plugins: [
 
         new CleanWebpackPlugin(),
-
         new HtmlWebpackPlugin({
 
             filename: 'home.html',
             template: './public/index.html',
             chunks: ['home',]
         }),
-
         new HtmlWebpackPlugin({
 
             filename: 'a.html',
             template: './public/index.html',
             chunks: ['a']
         }),
-
         new CopyPlugin({
-
             patterns: [
-
                 {from: './public', to: './'}
             ]
         })

@@ -1,6 +1,7 @@
 const {CleanWebpackPlugin} = require("clean-webpack-plugin"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
-    CopyPlugin = require("copy-webpack-plugin");
+    CopyPlugin = require("copy-webpack-plugin"),
+    path = require("path");
 
 module.exports = {
     mode: "development",
@@ -9,8 +10,9 @@ module.exports = {
         main: "./src/index.js",
     },
     output: {
-        filename: "js/[name].[chunkhash:5].js",
-        publicPath: "/"
+        filename: "js/[name].[hash:5].js",
+        path: path.resolve(__dirname, "dist"),
+        // publicPath: "/"
     },
     module: {
         rules: [
@@ -33,6 +35,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 use: ["babel-loader"]
             }
         ]

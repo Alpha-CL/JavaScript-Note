@@ -1,7 +1,7 @@
 const {CleanWebpackPlugin} = require("clean-webpack-plugin"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
     CopyPlugin = require("copy-webpack-plugin"),
-    MiniCssExtractPlugin = require('mini-css-extract-plugin');
+    MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: "development",

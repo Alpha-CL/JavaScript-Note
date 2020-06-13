@@ -1,6 +1,14 @@
 module.exports = {
 
     mode: "development",
+    devtool: "source-map",
+    entry: {
+        main: "./src/index.js",
+    },
+    output: {
+        filename: "js/[name].[chunkhash:5].js",
+        publicPath: "/"
+    },
 
     module: {                                   // 根据模块配置，目前版本只有两个配置: rules, noParse
 
