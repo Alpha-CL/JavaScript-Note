@@ -7,6 +7,6 @@ module.exports = {
         },
         "postcss-apply": {},
         "postcss-color-function": {},
-        // "stylelint": {}
+        "stylelint": {}
     }
 };

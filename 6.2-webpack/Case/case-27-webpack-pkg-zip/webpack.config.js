@@ -3,15 +3,24 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin"),
     CopyPlugin = require("copy-webpack-plugin"),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
     webpack = require("webpack"),
-    path = require("path");
+    path = require("path"),
+    TerserPlugin = require("terser-webpack-plugin"),
+    OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
+    MiniCss = require("mini-css-extract-plugin"),
+    PurgeCss = require("purgecss-webpack-plugin"),
+    globAll = require("glob-all"),
+    htmlPath = path.resolve(__dirname, "public/index.html"),
+    srcPath = path.resolve(__dirname, "src"),
+    paths = globAll.sync([
+        `${srcPath}**/*.js`,
+        `${htmlPath}`
+    ]);
 
 module.exports = {
     mode: "production",
     devtool: "source-map",
     entry: {
-        main: "./src/index.js",
-        page1: "./src/assets/js/page1.js",
-        page2: "./src/assets/js/page2.js",
+        main: "./src/index.js"
     },
     output: {
         filename: "js/[name].[hash:5].js",
@@ -58,7 +67,11 @@ module.exports = {
             filename: "css/[name].[contenthash:5].css",
             chunkFilename: "common.[chunkhash:5].css"
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCss(),
+        new PurgeCss({
+            paths
+        })
     ],
     optimization: {
         splitChunks: {
@@ -83,7 +96,13 @@ module.exports = {
                     minChunks: 2
                 }
             }
-        }
+        },
+        // minimize: true,                              // 是否启用压缩，默认生产环境自动开启
+        minimizer: [                                    // 设置压缩时，匹配的插件集合数组
+
+            new TerserPlugin(),                         // 针对 js 压缩( 默认已有 )
+            new OptimizeCSSAssetsPlugin(),              // 针对 css 压缩
+        ]
     },
     devServer: {
         open: true,
@@ -94,6 +113,6 @@ module.exports = {
         colors: true,
         modules: false,
         children: false,
-        entrypoints: false
+        entrypoints: false,
     }
 };
