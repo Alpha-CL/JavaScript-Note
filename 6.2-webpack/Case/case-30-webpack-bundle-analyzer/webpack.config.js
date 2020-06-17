@@ -3,15 +3,25 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin"),
     CopyPlugin = require("copy-webpack-plugin"),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
     webpack = require("webpack"),
-    path = require("path");
+    path = require("path"),
+    TerserPlugin = require("terser-webpack-plugin"),
+    OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
+    MiniCss = require("mini-css-extract-plugin"),
+    PurgeCss = require("purgecss-webpack-plugin"),
+    WebpackBundleAnalyzer = require("webpack-bundle-analyzer").BundleAnalyzerPlugin,
+    globAll = require("glob-all"),
+    htmlPath = path.resolve(__dirname, "public/index.html"),
+    srcPath = path.resolve(__dirname, "src"),
+    paths = globAll.sync([
+        `${srcPath}**/*.js`,
+        `${htmlPath}`
+    ]);
 
 module.exports = {
     mode: "development",
     // devtool: "source-map",
     entry: {
-        main: "./src/index.js",
-        page1: "./src/assets/js/page1.js",
-        page2: "./src/assets/js/page2.js",
+        main: "./src/index.js"
     },
     output: {
         filename: "js/[name].[hash:5].js",
@@ -47,7 +57,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: "./public/index.html",
-            chunks: ["page1"],
+            chunks: ["main"]
         }),
         new CopyPlugin({
             patterns: [
@@ -58,16 +68,16 @@ module.exports = {
             filename: "css/[name].[contenthash:5].css",
             chunkFilename: "common.[chunkhash:5].css"
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new MiniCss(),
+        new PurgeCss({
+            paths
+        }),
+        new WebpackBundleAnalyzer()
     ],
     optimization: {
         splitChunks: {
             chunks: "all",                              // 用于设置所有 chunk 都使用 分包策略
-
-            // automaticNameDelimiter: ".",       // 用于设置新建 chunk 名称的分隔符( 默认值: ~ )
-            // minChunks: 1,           // 用于提取公共模块，当 公共代码 被多少模块引用时，才被提取为公共模块分包( 默认值: 1 )
-            // minSize: 300000,        // 用于提取公共模块，当 公共代码 达到多少字节时，才被提取为公共模块分包( 默认值: 300000 )
-
             cacheGroups: {
 
                 // 属性名为缓存组名称，影响分包的 chunk 名
@@ -88,7 +98,13 @@ module.exports = {
                     minChunks: 2
                 }
             }
-        }
+        },
+        // minimize: true,                              // 是否启用压缩，默认生产环境自动开启
+        minimizer: [                                    // 设置压缩时，匹配的插件集合数组
+
+            new TerserPlugin(),                         // 针对 js 压缩( 默认已有 )
+            new OptimizeCSSAssetsPlugin(),              // 针对 css 压缩
+        ]
     },
     devServer: {
         open: true,
@@ -97,9 +113,8 @@ module.exports = {
     },
     stats: {
         colors: true,
-        chunks: false,
         modules: false,
         children: false,
-        entrypoints: false
+        entrypoints: false,
     }
 };

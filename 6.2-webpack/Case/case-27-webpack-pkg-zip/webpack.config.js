@@ -56,7 +56,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: "./public/index.html",
-            chunks: ["index"],
+            chunks: ["main"],
         }),
         new CopyPlugin({
             patterns: [
