@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+
+    /**
+     * 获取地理信息
+     *
+     *
+     * 部分系统，不支持此功能
+     *
+     * 定位( GPS ), 台式电脑几乎都没有 GPS，笔记本大多数都没有 GPS
+     *
+     * 利用网络粗略估计地理位置
+     */
+
+    window.navigator.geolocation.getCurrentPosition(function (position) {
+
+        /**
+         * 仅支持 https 协议，file协议，不支持 http 协议
+         *
+         * 或需要翻墙获取
+         */
+
+        console.log("success",position);
+
+        // success GeolocationPosition {coords: GeolocationCoordinates, timestamp: 1592495740718}
+
+    }, function () {
+
+        console.log("fail");
+    });
+
+
+</script>
+
+
+</body>
+</html>
