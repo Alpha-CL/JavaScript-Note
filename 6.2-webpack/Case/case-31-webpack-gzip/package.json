@@ -7,9 +7,7 @@
     "glob-all": "^3.2.1",
     "jquery": "^3.5.1",
     "less": "^3.11.3",
-    "lodash": "^4.17.15",
-    "postcss-color-function": "^4.1.0",
-    "postcss-preset-env": "^6.7.0"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
@@ -48,7 +46,9 @@
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "postcss-color-function": "^4.1.0",
+    "postcss-preset-env": "^6.7.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
