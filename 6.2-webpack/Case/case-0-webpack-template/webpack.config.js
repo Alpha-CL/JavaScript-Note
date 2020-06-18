@@ -94,20 +94,16 @@ module.exports = {
     ],
     optimization: {
         splitChunks: {
-            chunks: "all",                              // 用于设置所有 chunk 都使用 分包策略
+            chunks: "all",
             cacheGroups: {
-
-                // 属性名为缓存组名称，影响分包的 chunk 名
-                // 属性值巍峨缓存组配置，缓存组集成所有的全局配置，也有自己特殊的配置
-
                 vendors: {
-                    test: /[\\/]node_modules[\\/]/,     // 当匹配到相应模块时，将这些模块进行单独打包
-                    priority: -10                       // 缓存组优先级，优先级越高，该策略越优先处理，默认为 0
+                    test: /[\/]node_modules[\/]/,
+                    priority: -10
                 },
                 default: {
-                    minChunks: 2,                       // 覆盖全局配置，将最小 chunk 引用数改为 2
-                    priority: -20,                      // 缓存组优先级
-                    reuseExistingChunk: true            // 重用已被分离出去的 chunk
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
                 },
                 styles: {
                     minSize: 0,
@@ -116,11 +112,10 @@ module.exports = {
                 }
             }
         },
-        // minimize: true,                              // 是否启用压缩，默认生产环境自动开启
-        minimizer: [                                    // 设置压缩时，匹配的插件集合数组
-
-            new TerserPlugin(),                         // 针对 js 压缩( 默认已有 )
-            new OptimizeCSSAssetsPlugin(),              // 针对 css 压缩
+        // minimize: true,
+        minimizer: [
+            new TerserPlugin(),
+            new OptimizeCSSAssetsPlugin(),
         ]
     },
     devServer: {
