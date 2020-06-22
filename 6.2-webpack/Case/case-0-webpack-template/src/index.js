@@ -1,2 +1,2 @@
-import {moduleHot} from "./assets/js/openServerHot";
+import {moduleHot} from "./assets/serverhot.config.js";
 moduleHot();

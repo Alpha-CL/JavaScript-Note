@@ -25,7 +25,7 @@ const webpack = require("webpack"),
 
 module.exports = {
     mode: "development",
-    // devtool: "source-map",
+    devtool: "source-map",
     entry: {
         main: "./src/index.js"
     },
@@ -41,7 +41,14 @@ module.exports = {
                 include: [
                     path.resolve(__dirname, "src/assets/css/")
                 ],
-                use: [MiniCssExtractPlugin.loader, "css-loader?modules"]
+                use: [MiniCssExtractPlugin.loader, {
+                    loader: "css-loader",
+                    options: {
+                        modules: {
+                            localIdentName: "[name]-[hash:5]"
+                        }
+                    }
+                }]
             },
             {
                 test: /.less$/,
@@ -88,12 +95,12 @@ module.exports = {
             paths
         }),
         // new WebpackBundleAnalyzer(),
-        new CompressionWebpackPlugin({
-            filename: "[file].[ext].gz"
-        }),
+        // new CompressionWebpackPlugin({
+        //     filename: "[file].[ext].gz"
+        // }),
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            _: 'lodash'
+            $: "jquery",
+            _: "lodash"
         })
     ],
     optimization: {
@@ -110,9 +117,8 @@ module.exports = {
                     reuseExistingChunk: true
                 },
                 styles: {
-                    minSize: 0,
                     test: /\.css$/,
-                    minChunks: 2
+                    minChunks: 2,
                 }
             }
         },
