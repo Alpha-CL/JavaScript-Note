@@ -20,7 +20,28 @@
 <script>
 
 
+    var obj = {};
 
+
+    Object.defineProperty(obj, "p", {
+
+        get: function(){
+
+            return "hello world";
+        },
+
+        set: function(val){
+
+            val = "ppp";
+
+            console.log(val);
+        }
+    })
+
+
+    obj.p = 3;
+
+    console.log(obj.p);
 
 
 </script>
