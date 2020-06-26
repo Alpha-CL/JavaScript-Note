@@ -20,28 +20,66 @@
 <script>
 
 
-    var obj = {};
+    function everyFirstLetterUp(str) {
 
+        return str.replace(/\b(\w)(\w*)\b/g, function ($, $1, $2) {
 
-    Object.defineProperty(obj, "p", {
+            return $1.toUpperCase() + $2;
+        });
+    }
 
-        get: function(){
+    function otherLetterLower(str) {
 
-            return "hello world";
-        },
+        return str.replace(/\b(\w)(\w*)\b/g, function ($, $1, $2) {
 
-        set: function(val){
+            return $1 + $2.toLowerCase();
+        });
+    }
 
-            val = "ppp";
+    function removeEmpty(str) {
 
-            console.log(val);
+        return str.replace(/\s+/g, "");
+    }
+
+    function firstLetterLower(str) {
+
+        return str.replace(/\w/, function ($) {
+
+            return $.toLowerCase();
+        });
+    }
+
+    function pipe() {
+
+        let methods = Array.from(arguments);
+
+        return function (val) {
+
+            return methods.reduce((result, func)=>{
+
+                return func(result);
+
+            }, val)
+
+            // for (let i = 0; i < methods.length; i++) {
+            //
+            //     val = methods[i](val);
+            // }
+            //
+            // return val;
         }
-    })
+    }
+
+    const str = "FiRst name   ",
+        smallCamel = pipe(everyFirstLetterUp, otherLetterLower, removeEmpty, firstLetterLower);
 
 
-    obj.p = 3;
+    console.log(everyFirstLetterUp(str));
+    console.log(otherLetterLower(str));
+    console.log(removeEmpty(str));
+    console.log(firstLetterLower(str));
 
-    console.log(obj.p);
+    console.log(smallCamel(str));
 
 
 </script>
