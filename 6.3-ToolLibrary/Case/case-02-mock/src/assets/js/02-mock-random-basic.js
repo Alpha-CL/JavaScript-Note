@@ -11,6 +11,8 @@ import Mock from "mockjs";
 
 let Random = Mock.Random;
 
+console.log("Mock.Random:", Random);
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -149,7 +151,9 @@ console.log("Random.float(60, 100, 3, 5): ", Random.float(60, 100, 3, 5));
  */
 
 
-console.log("Random.character(): ", Random.character());
+console.log("Random.character(): ", Random.character("alpha"));         // 指定字符池
+
+console.log("Random.character(): ", Random.character());                // 随机字符池
 
 console.log("Random.character('lower'): ", Random.character('lower'));
 
@@ -170,11 +174,11 @@ console.log("Random.character('alpha'): ", Random.character('alpha'));
  *
  * Random.string(length);
  *
- * Random.string(pool,length);
+ * Random.string(pool, length);
  *
- * Random.string(min,max);
+ * Random.string(min, max);
  *
- * Random.string(pool?,min?,max?);
+ * Random.string(pool?, min?, max?);
  *
  *
  * @pool: 'lower', 'upper', 'number', 'symbol'
@@ -208,14 +212,13 @@ console.log("Random.string('壹贰叁肆伍陆柒捌玖拾', 3, 5): ", Random.st
  * 返回一个整型数组
  */
 
+console.log("Random.range(10): ", Random.range(10));
 
-console.log("Random.range(10)", Random.range(10));
+console.log("Random.range(3, 7): ", Random.range(3, 7));
 
-console.log("Random.range(3, 7)", Random.range(3, 7));
+console.log("Random.range(1, 10, 2): ", Random.range(1, 10, 2));
 
-console.log("Random.range(1, 10, 2)", Random.range(1, 10, 2));
-
-console.log("Random.range(1, 10, 3)", Random.range(1, 10, 3));
+console.log("Random.range(1, 10, 3): ", Random.range(1, 10, 3));
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
