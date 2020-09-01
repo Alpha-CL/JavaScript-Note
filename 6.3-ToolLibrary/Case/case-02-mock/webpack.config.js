@@ -25,7 +25,7 @@ const webpack = require("webpack"),
 
 module.exports = {
     mode: "development",
-    devtool: "source-map",
+    // devtool: "source-map",
     entry: {
         main: "./src/index.js"
     },
@@ -100,7 +100,8 @@ module.exports = {
         // }),
         new webpack.ProvidePlugin({
             $: "jquery",
-            _: "lodash"
+            _: "lodash",
+            Mock: "mockjs"
         })
     ],
     optimization: {
