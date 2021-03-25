@@ -93,21 +93,26 @@
 
 <script>
 
+
     //qq
     checkInput(my$('qq'), /^\d{5,11}$/);
+
     //phone
     checkInput(my$('phone'), /^\d{11}$/);
+
     //e-mail
     checkInput(my$('e-mail'), /^\d[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/);
+
     //telephone
     checkInput(my$('telephone'), /^\d{3,4}\d{7,8}$/);
+
     //fullName
     checkInput(my$('fullName'), /^\u4e00-\u9fa5}$/);
 
 
-
     //给我文本框，给我这个文本框相应的正则表达式，我把结果显示出来
     //通过正则表达式验证当前的文本框是否匹配并显示结果
+
 
     function checkInput(input, reg) {
 
@@ -123,7 +128,6 @@
 
                 this.nextElementSibling.innerText = '错了';
                 this.nextElementSibling.style.color = 'red';
-
             }
         }
     }
