@@ -8,7 +8,7 @@
     "webpack": "^4.43.0"
   },
   "devDependencies": {
-    "loader-utils": "^2.0.0"
+    "loader-utils": "^2.0.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
